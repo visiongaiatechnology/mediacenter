@@ -32,6 +32,21 @@
 
 ---
 
+## 🚀 Quick Download & Installation
+
+Choose your platform to get the pre-compiled, sovereign offline build:
+
+| Platform | Format / Package | Size | Direct Download | SHA-256 Checksum |
+| :--- | :--- | :--- | :--- | :--- |
+| **Windows** (x64) | Standalone Portable `.exe` | ~61 MB | [⬇️ **Download for Windows**](https://github.com/visiongaiatechnology/mediacenter/releases/download/v1.0.0-beta-windows/VGT-Mediacenter-Supreme-Windows-x64.exe) | `deecfc78ecb9...` |
+| **Linux** (x86_64) | Portable Bundle `.tar.gz` | ~22 MB | [⬇️ **Download for Linux**](https://github.com/visiongaiatechnology/mediacenter/releases/download/v1.0.0-beta-linux/VGT-Mediacenter-Supreme-Linux-x86_64.tar.gz) | `4c8246ea4bf6...` |
+| **WordPress** | Self-Hosted Plugin `.zip` | ~19 MB | [⬇️ **Download Plugin ZIP**](https://github.com/visiongaiatechnology/mediacenter/releases/download/v1.0.0-beta-windows/vgt-mediacenter-wordpress-plugin.zip) | `4d1d1200791a...` |
+
+> [!TIP]
+> **Zero Installation Required:** The desktop versions run completely standalone without external dependencies or administrative installers. For WordPress, upload the `.zip` file under **Plugins > Add New > Upload Plugin** and activate it.
+
+---
+
 ## Table of Contents
 1. [Introduction & Philosophy](#introduction--philosophy)
 2. [Key Features](#key-features)

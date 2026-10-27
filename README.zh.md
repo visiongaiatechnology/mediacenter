@@ -32,6 +32,21 @@
 
 ---
 
+## 🚀 快速下载与安装
+
+选择您的平台以下载预编译的完全独立离线版本：
+
+| 平台 | 格式 / 软件包 | 大小 | 直接下载 | 校验码 (SHA-256) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Windows** (x64) | 便携式单文件 `.exe` | ~61 MB | [⬇️ **下载 Windows 版**](https://github.com/visiongaiatechnology/mediacenter/releases/download/v1.0.0-beta-windows/VGT-Mediacenter-Supreme-Windows-x64.exe) | `deecfc78ecb9...` |
+| **Linux** (x86_64) | 便携式归档包 `.tar.gz` | ~22 MB | [⬇️ **下载 Linux 版**](https://github.com/visiongaiatechnology/mediacenter/releases/download/v1.0.0-beta-linux/VGT-Mediacenter-Supreme-Linux-x86_64.tar.gz) | `4c8246ea4bf6...` |
+| **WordPress** | 独立自托管插件 `.zip` | ~19 MB | [⬇️ **下载插件 ZIP**](https://github.com/visiongaiatechnology/mediacenter/releases/download/v1.0.0-beta-windows/vgt-mediacenter-wordpress-plugin.zip) | `4d1d1200791a...` |
+
+> [!TIP]
+> **无需安装：** 桌面版本直接开箱即用，无需额外依赖或管理员安装器。WordPress 只需在后台 **插件 > 安装插件 > 上传插件** 中上传 `.zip` 文件即可激活。
+
+---
+
 ## 目录
 1. [项目简介与核心理念](#项目简介与核心理念)
 2. [主要特性](#主要特性)

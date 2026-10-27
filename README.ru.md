@@ -32,6 +32,21 @@
 
 ---
 
+## 🚀 Быстрая загрузка и установка
+
+Выберите вашу платформу для загрузки готового автономного пакета:
+
+| Платформа | Формат / Пакет | Размер | Прямая загрузка | Контрольная сумма (SHA-256) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Windows** (x64) | Портативный `.exe` | ~61 МБ | [⬇️ **Скачать для Windows**](https://github.com/visiongaiatechnology/mediacenter/releases/download/v1.0.0-beta-windows/VGT-Mediacenter-Supreme-Windows-x64.exe) | `deecfc78ecb9...` |
+| **Linux** (x86_64) | Портативный архив `.tar.gz` | ~22 МБ | [⬇️ **Скачать для Linux**](https://github.com/visiongaiatechnology/mediacenter/releases/download/v1.0.0-beta-linux/VGT-Mediacenter-Supreme-Linux-x86_64.tar.gz) | `4c8246ea4bf6...` |
+| **WordPress** | Автономный плагин `.zip` | ~19 МБ | [⬇️ **Скачать плагин ZIP**](https://github.com/visiongaiatechnology/mediacenter/releases/download/v1.0.0-beta-windows/vgt-mediacenter-wordpress-plugin.zip) | `4d1d1200791a...` |
+
+> [!TIP]
+> **Установка не требуется:** Версии для ПК запускаются напрямую без дополнительных библиотек или прав администратора. Для WordPress просто загрузите `.zip` через меню **Плагины > Добавить новый > Загрузить плагин**.
+
+---
+
 ## Содержание
 1. [Введение и философия](#введение-и-философия)
 2. [Ключевые особенности](#ключевые-особенности)

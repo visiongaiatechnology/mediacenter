@@ -32,6 +32,21 @@
 
 ---
 
+## 🚀 Téléchargement rapide & Installation
+
+Choisissez votre plateforme pour obtenir le paquet hors ligne précompilé :
+
+| Plateforme | Format / Paquet | Taille | Téléchargement direct | Vérification (SHA-256) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Windows** (x64) | Exécutable portable `.exe` | ~61 Mo | [⬇️ **Télécharger pour Windows**](https://github.com/visiongaiatechnology/mediacenter/releases/download/v1.0.0-beta-windows/VGT-Mediacenter-Supreme-Windows-x64.exe) | `deecfc78ecb9...` |
+| **Linux** (x86_64) | Archive portable `.tar.gz` | ~22 Mo | [⬇️ **Télécharger pour Linux**](https://github.com/visiongaiatechnology/mediacenter/releases/download/v1.0.0-beta-linux/VGT-Mediacenter-Supreme-Linux-x86_64.tar.gz) | `4c8246ea4bf6...` |
+| **WordPress** | Extension autonome `.zip` | ~19 Mo | [⬇️ **Télécharger le plugin ZIP**](https://github.com/visiongaiatechnology/mediacenter/releases/download/v1.0.0-beta-windows/vgt-mediacenter-wordpress-plugin.zip) | `4d1d1200791a...` |
+
+> [!TIP]
+> **Aucune installation requise :** Les versions pour ordinateur fonctionnent directement sans dépendances externes. Pour WordPress, téléversez simplement le fichier `.zip` dans **Extensions > Ajouter une extension > Téléverser une extension**.
+
+---
+
 ## Table des Matières
 1. [Introduction et Philosophie](#introduction-et-philosophie)
 2. [Fonctionnalités Clés](#fonctionnalités-clés)

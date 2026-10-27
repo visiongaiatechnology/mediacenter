@@ -32,6 +32,21 @@
 
 ---
 
+## 🚀 Schnelldownload & Installation
+
+Wähle deine Plattform für das vorkompilierte, 100% autarke Offline-Paket:
+
+| Plattform | Format / Paket | Größe | Direkt-Download | Prüfsumme (SHA-256) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Windows** (x64) | Standalone Portable `.exe` | ~61 MB | [⬇️ **Download für Windows**](https://github.com/visiongaiatechnology/mediacenter/releases/download/v1.0.0-beta-windows/VGT-Mediacenter-Supreme-Windows-x64.exe) | `deecfc78ecb9...` |
+| **Linux** (x86_64) | Portables Bundle `.tar.gz` | ~22 MB | [⬇️ **Download für Linux**](https://github.com/visiongaiatechnology/mediacenter/releases/download/v1.0.0-beta-linux/VGT-Mediacenter-Supreme-Linux-x86_64.tar.gz) | `4c8246ea4bf6...` |
+| **WordPress** | Autarkes Plugin `.zip` | ~19 MB | [⬇️ **Download Plugin ZIP**](https://github.com/visiongaiatechnology/mediacenter/releases/download/v1.0.0-beta-windows/vgt-mediacenter-wordpress-plugin.zip) | `4d1d1200791a...` |
+
+> [!TIP]
+> **Keine Installation notwendig:** Die Desktop-Versionen starten direkt ohne externe Abhängigkeiten oder Administrator-Rechte. Für WordPress einfach die `.zip`-Datei unter **Plugins > Installieren > Plugin hochladen** auswählen und aktivieren.
+
+---
+
 ## Inhaltsverzeichnis
 1. [Einführung & Philosophie](#einführung--philosophie)
 2. [Hauptmerkmale](#hauptmerkmale)

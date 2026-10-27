@@ -32,6 +32,21 @@
 
 ---
 
+## 🚀 クイックダウンロードとインストール
+
+プラットフォームを選択して、事前コンパイル済みの完全オフラインパッケージをダウンロードしてください：
+
+| プラットフォーム | 形式 / パッケージ | サイズ | 直接ダウンロード | 検証 (SHA-256) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Windows** (x64) | ポータブル実行ファイル `.exe` | ~61 MB | [⬇️ **Windows 版をダウンロード**](https://github.com/visiongaiatechnology/mediacenter/releases/download/v1.0.0-beta-windows/VGT-Mediacenter-Supreme-Windows-x64.exe) | `deecfc78ecb9...` |
+| **Linux** (x86_64) | ポータブルアーカイブ `.tar.gz` | ~22 MB | [⬇️ **Linux 版をダウンロード**](https://github.com/visiongaiatechnology/mediacenter/releases/download/v1.0.0-beta-linux/VGT-Mediacenter-Supreme-Linux-x86_64.tar.gz) | `4c8246ea4bf6...` |
+| **WordPress** | 完全自律型プラグイン `.zip` | ~19 MB | [⬇️ **プラグイン ZIP をダウンロード**](https://github.com/visiongaiatechnology/mediacenter/releases/download/v1.0.0-beta-windows/vgt-mediacenter-wordpress-plugin.zip) | `4d1d1200791a...` |
+
+> [!TIP]
+> **インストール不要：** デスクトップ版は外部依存関係や管理者インストーラーなしで直接起動します。WordPress の場合は、管理画面の **プラグイン > 新規追加 > プラグインのアップロード** から `.zip` をアップロードして有効化してください。
+
+---
+
 ## 目次
 1. [はじめに ＆ 開発理念](#はじめに--開発理念)
 2. [主要機能・特徴](#主要機能特徴)

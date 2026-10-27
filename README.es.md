@@ -32,6 +32,21 @@
 
 ---
 
+## 🚀 Descarga rápida e instalación
+
+Selecciona tu plataforma para obtener el paquete autónomo precompilado:
+
+| Plataforma | Formato / Paquete | Tamaño | Descarga directa | Verificación (SHA-256) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Windows** (x64) | Ejecutable portátil `.exe` | ~61 MB | [⬇️ **Descargar para Windows**](https://github.com/visiongaiatechnology/mediacenter/releases/download/v1.0.0-beta-windows/VGT-Mediacenter-Supreme-Windows-x64.exe) | `deecfc78ecb9...` |
+| **Linux** (x86_64) | Paquete portátil `.tar.gz` | ~22 MB | [⬇️ **Descargar para Linux**](https://github.com/visiongaiatechnology/mediacenter/releases/download/v1.0.0-beta-linux/VGT-Mediacenter-Supreme-Linux-x86_64.tar.gz) | `4c8246ea4bf6...` |
+| **WordPress** | Plugin independiente `.zip` | ~19 MB | [⬇️ **Descargar plugin ZIP**](https://github.com/visiongaiatechnology/mediacenter/releases/download/v1.0.0-beta-windows/vgt-mediacenter-wordpress-plugin.zip) | `4d1d1200791a...` |
+
+> [!TIP]
+> **Sin instalación requerida:** Las versiones de escritorio se ejecutan directamente sin dependencias externas ni instaladores de administrador. Para WordPress, sube el archivo `.zip` en **Plugins > Añadir nuevo > Subir plugin**.
+
+---
+
 ## Índice de Contenidos
 1. [Introducción y Filosofía](#introducción-y-filosofía)
 2. [Características Principales](#características-principales)
