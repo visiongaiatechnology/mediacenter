@@ -655,7 +655,9 @@
         }
         if (btn) {
             const currentObj = LANGUAGES.find(l => l.code === code) || LANGUAGES[0];
-            btn.innerHTML = `<span class="vgt-lang-flag">${currentObj.flag}</span> <span class="vgt-lang-code">${currentObj.code.toUpperCase()}</span>`;
+            btn.innerHTML = `<span class="vgt-lang-flag">${currentObj.flag}</span>`;
+            btn.title = `${currentObj.native} (${currentObj.name})`;
+            btn.setAttribute('aria-label', currentObj.native);
         }
     }
 
@@ -833,6 +835,19 @@
                 cards.forEach(c => c.classList.remove('is-active'));
                 card.classList.add('is-active');
                 selected = card.dataset.code;
+
+                // Live Instant Translation Preview
+                currentLang = selected;
+                applyLanguage(selected);
+
+                // Update modal header & confirm button texts in real time
+                const modalTitle = modal.querySelector('.vgt-modal-title');
+                const modalSub = modal.querySelector('.vgt-modal-subtitle');
+                const confirmBtn = document.getElementById('vgt-modal-confirm-lang');
+                const t = UI_TRANSLATIONS.langModal;
+                if (modalTitle) modalTitle.textContent = t.title[selected] || t.title.de;
+                if (modalSub) modalSub.textContent = t.subtitle[selected] || t.subtitle.de;
+                if (confirmBtn) confirmBtn.textContent = t.confirm[selected] || t.confirm.de;
             });
         });
 
