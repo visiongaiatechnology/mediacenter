@@ -10,6 +10,9 @@
 **Station de Travail Desktop Souveraine et Écosystème Sécurisé pour WordPress**  
 *Invariant 100% Côté Client • Zéro Cloud • Zéro Télémétrie • 40 Outils Autonomes*
 
+
+<img width="2007" height="1150" alt="image" src="https://github.com/user-attachments/assets/9ea1ab58-c1c5-4f43-a925-130b778b2400" />
+
 ---
 
 ### Choix de la Langue / Language Selection
@@ -18,12 +21,17 @@
 
 ---
 
-[![Version](https://img.shields.io/badge/version-1.0.0--beta-06b6d4?style=for-the-badge)](https://github.com/VisionGaiaTechnology/VGT-Mediacenter)
+[![Version](https://img.shields.io/badge/version-1.0.0--beta-06b6d4?style=for-the-badge)](https://github.com/visiongaiatechnology/mediacenter)
 [![Licence](https://img.shields.io/badge/licence-AGPL--3.0-blue?style=for-the-badge)](LICENSE)
-[![Plateformes](https://img.shields.io/badge/plateforme-Windows%20%7C%20Linux%20%7C%20WordPress-a855f7?style=for-the-badge)](https://github.com/VisionGaiaTechnology/VGT-Mediacenter)
+[![Plateformes](https://img.shields.io/badge/plateforme-Windows%20%7C%20Linux%20%7C%20WordPress-a855f7?style=for-the-badge)](https://github.com/visiongaiatechnology/mediacenter)
 [![Architecture](https://img.shields.io/badge/architecture-100%25%20Hors%20Ligne%20Souveraine-22c55e?style=for-the-badge)](docs/architecture.md)
 [![Vie Privée](https://img.shields.io/badge/vie%20privée-Zéro%20Télémétrie-10b981?style=for-the-badge)](SECURITY.md)
 [![Outils](https://img.shields.io/badge/outils-40%20Applications%20Natives-f59e0b?style=for-the-badge)](#les-40-applications-souveraines)
+[![Support](https://img.shields.io/badge/💛%20Support-Digital%20Sovereignty-eab308?style=for-the-badge)](#-support)
+
+<br/>
+
+👉 **[💛 Soutenez la souveraineté numérique / Unterstütze Digitale Souveränität](#-support)** 👈
 
 </div>
 
@@ -67,6 +75,8 @@ Choisissez votre plateforme pour obtenir le paquet hors ligne précompilé :
 6. [Sécurité et Modèle Zéro-Trust](#sécurité-et-modèle-zéro-trust)
 7. [Licence (AGPLv3)](#licence)
 8. [Dépendances Tierces et Remerciements](#dépendances-tierces-et-remerciements)
+
+9. [💛 Support](#-support)
 
 ---
 
@@ -242,6 +252,16 @@ Consultez le texte intégral de la licence dans le fichier [LICENSE](LICENSE).
 
 Toutes les bibliothèques tierces intégrées dans VGT Mediacenter font l'objet de licences open source permissives (MIT, Apache-2.0, BSD-3-Clause, ISC, SIL OFL 1.1).  
 Pour consulter la liste complète des auteurs, copyrights et mentions légales, veuillez vous référer au fichier [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+## 💛 Support
+
+Independent development is funded by people who want this stack to exist. If you want to support the work:
+
+| Method | Address / Link |
+| :--- | :--- |
+| **PayPal** | [paypal.me/dergoldenelotus](https://paypal.me/dergoldenelotus) |
+| **Bitcoin** | `bc1q3ue5gq822tddmkdrek79adlkm36fatat3lz0dm` |
+| **ETH / USDT (ERC-20)** | `0xD37DEfb09e07bD775EaaE9ccDaFE3a5b2348Fe85` |
 
 ---
 

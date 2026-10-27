@@ -10,6 +10,9 @@
 **Souveräne lokale Desktop-Workstation & gehärtetes WordPress-Ökosystem**  
 *100% Client-Side Invariante • Zero Cloud • Zero Telemetrie • 40 Autarke Werkzeuge*
 
+
+<img width="2007" height="1150" alt="image" src="https://github.com/user-attachments/assets/9ea1ab58-c1c5-4f43-a925-130b778b2400" />
+
 ---
 
 ### Sprachauswahl / Language Selection
@@ -18,12 +21,17 @@
 
 ---
 
-[![Version](https://img.shields.io/badge/version-1.0.0--beta-06b6d4?style=for-the-badge)](https://github.com/VisionGaiaTechnology/VGT-Mediacenter)
+[![Version](https://img.shields.io/badge/version-1.0.0--beta-06b6d4?style=for-the-badge)](https://github.com/visiongaiatechnology/mediacenter)
 [![Lizenz](https://img.shields.io/badge/lizenz-AGPL--3.0-blue?style=for-the-badge)](LICENSE)
-[![Plattform](https://img.shields.io/badge/plattform-Windows%20%7C%20Linux%20%7C%20WordPress-a855f7?style=for-the-badge)](https://github.com/VisionGaiaTechnology/VGT-Mediacenter)
+[![Plattform](https://img.shields.io/badge/plattform-Windows%20%7C%20Linux%20%7C%20WordPress-a855f7?style=for-the-badge)](https://github.com/visiongaiatechnology/mediacenter)
 [![Architektur](https://img.shields.io/badge/architektur-100%25%20Offline%20Souver%C3%A4n-22c55e?style=for-the-badge)](docs/architecture.md)
 [![Datenschutz](https://img.shields.io/badge/datenschutz-Zero%20Telemetrie-10b981?style=for-the-badge)](SECURITY.md)
 [![Werkzeuge](https://img.shields.io/badge/werkzeuge-40%20Integrierte%20Apps-f59e0b?style=for-the-badge)](#die-40-autarken-werkzeuge)
+[![Support](https://img.shields.io/badge/💛%20Support-Digital%20Sovereignty-eab308?style=for-the-badge)](#-support)
+
+<br/>
+
+👉 **[💛 Unterstütze Digitale Souveränität](#-support)** 👈
 
 </div>
 
@@ -67,6 +75,8 @@ Wähle deine Plattform für das vorkompilierte, 100% autarke Offline-Paket:
 6. [Sicherheit & Zero-Trust-Prinzip](#sicherheit--zero-trust-prinzip)
 7. [Lizenzierung (AGPLv3)](#lizenzierung)
 8. [Eingebettete Abhängigkeiten & Danksagung](#eingebettete-abhängigkeiten--danksagung)
+
+9. [💛 Support](#-support)
 
 ---
 
@@ -242,6 +252,16 @@ Vollständiger Lizenztext: [LICENSE](LICENSE).
 
 Alle mitgelieferten Bibliotheken Dritter unterliegen freien, permissiven Open-Source-Lizenzen (MIT, Apache-2.0, BSD-3-Clause, ISC, SIL OFL 1.1).  
 Die vollständige Übersicht aller Autoren und Lizenztexte befindet sich in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+## 💛 Support
+
+Independent development is funded by people who want this stack to exist. If you want to support the work:
+
+| Method | Address / Link |
+| :--- | :--- |
+| **PayPal** | [paypal.me/dergoldenelotus](https://paypal.me/dergoldenelotus) |
+| **Bitcoin** | `bc1q3ue5gq822tddmkdrek79adlkm36fatat3lz0dm` |
+| **ETH / USDT (ERC-20)** | `0xD37DEfb09e07bD775EaaE9ccDaFE3a5b2348Fe85` |
 
 ---
 

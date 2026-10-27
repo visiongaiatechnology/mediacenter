@@ -10,6 +10,9 @@
 **完全主権型ローカル・デスクトップ・ワークステーション ＆ 高度堅牢化WordPressエコシステム**  
 *100% クライアントサイド不変性 • ゼロクラウド • ゼロテレメトリ • 40の完全自律内蔵ツール*
 
+
+<img width="2007" height="1150" alt="image" src="https://github.com/user-attachments/assets/9ea1ab58-c1c5-4f43-a925-130b778b2400" />
+
 ---
 
 ### 言語選択 / Language Selection
@@ -18,12 +21,17 @@
 
 ---
 
-[![バージョン](https://img.shields.io/badge/version-1.0.0--beta-06b6d4?style=for-the-badge)](https://github.com/VisionGaiaTechnology/VGT-Mediacenter)
+[![バージョン](https://img.shields.io/badge/version-1.0.0--beta-06b6d4?style=for-the-badge)](https://github.com/visiongaiatechnology/mediacenter)
 [![ライセンス](https://img.shields.io/badge/license-AGPL--3.0-blue?style=for-the-badge)](LICENSE)
-[![対応プラットフォーム](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20WordPress-a855f7?style=for-the-badge)](https://github.com/VisionGaiaTechnology/VGT-Mediacenter)
+[![対応プラットフォーム](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20WordPress-a855f7?style=for-the-badge)](https://github.com/visiongaiatechnology/mediacenter)
 [![アーキテクチャ](https://img.shields.io/badge/architecture-100%25%20Offline%20Sovereign-22c55e?style=for-the-badge)](docs/architecture.md)
 [![プライバシー](https://img.shields.io/badge/privacy-Zero%20Telemetry-10b981?style=for-the-badge)](SECURITY.md)
 [![ツール構成](https://img.shields.io/badge/tools-40%20Built--in%20Apps-f59e0b?style=for-the-badge)](#40の自律型アプリケーション)
+[![Support](https://img.shields.io/badge/💛%20Support-Digital%20Sovereignty-eab308?style=for-the-badge)](#-support)
+
+<br/>
+
+👉 **[💛 デジタル主権を支援する / Unterstütze Digitale Souveränität](#-support)** 👈
 
 </div>
 
@@ -67,6 +75,8 @@
 6. [セキュリティとゼロトラスト原則](#セキュリティとゼロトラスト原則)
 7. [ライセンス (AGPLv3)](#ライセンス)
 8. [サードパーティ製依存関係 ＆ 謝辞](#サードパーティ製依存関係--謝辞)
+
+9. [💛 Support](#-support)
 
 ---
 
@@ -242,6 +252,16 @@ VGT Mediacenterは **GNU Affero General Public License v3.0 (AGPLv3)** に基づ
 
 VGT Mediacenterに含まれるすべてのサードパーティ製ライブラリは、寛容なオープンソースライセンス（MIT、Apache-2.0、BSD-3-Clause、ISC、SIL OFL 1.1など）に従っています。  
 原作者情報、著作権表示、ライセンス全文は [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) をご参照ください。
+
+## 💛 Support
+
+Independent development is funded by people who want this stack to exist. If you want to support the work:
+
+| Method | Address / Link |
+| :--- | :--- |
+| **PayPal** | [paypal.me/dergoldenelotus](https://paypal.me/dergoldenelotus) |
+| **Bitcoin** | `bc1q3ue5gq822tddmkdrek79adlkm36fatat3lz0dm` |
+| **ETH / USDT (ERC-20)** | `0xD37DEfb09e07bD775EaaE9ccDaFE3a5b2348Fe85` |
 
 ---
 

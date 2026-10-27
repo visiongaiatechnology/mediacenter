@@ -22,12 +22,17 @@
 
 ---
 
-[![Version](https://img.shields.io/badge/version-1.0.0--beta-06b6d4?style=for-the-badge)](https://github.com/VisionGaiaTechnology/VGT-Mediacenter)
+[![Version](https://img.shields.io/badge/version-1.0.0--beta-06b6d4?style=for-the-badge)](https://github.com/visiongaiatechnology/mediacenter)
 [![License](https://img.shields.io/badge/license-AGPL--3.0-blue?style=for-the-badge)](LICENSE)
-[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20WordPress-a855f7?style=for-the-badge)](https://github.com/VisionGaiaTechnology/VGT-Mediacenter)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20WordPress-a855f7?style=for-the-badge)](https://github.com/visiongaiatechnology/mediacenter)
 [![Architecture](https://img.shields.io/badge/architecture-100%25%20Offline%20Sovereign-22c55e?style=for-the-badge)](docs/architecture.md)
 [![Privacy](https://img.shields.io/badge/privacy-Zero%20Telemetry-10b981?style=for-the-badge)](SECURITY.md)
 [![Tools](https://img.shields.io/badge/tools-40%20Built--in%20Apps-f59e0b?style=for-the-badge)](#the-40-sovereign-applications)
+[![Support](https://img.shields.io/badge/💛%20Support-Digital%20Sovereignty-eab308?style=for-the-badge)](#-support)
+
+<br/>
+
+👉 **[💛 Support Digital Sovereignty / Unterstütze Digitale Souveränität](#-support)** 👈
 
 </div>
 
@@ -71,6 +76,8 @@ Choose your platform to get the pre-compiled, sovereign offline build:
 6. [Security & Zero-Trust Invariant](#security--zero-trust-invariant)
 7. [Licensing (AGPLv3)](#licensing)
 8. [Vendored Dependencies & Acknowledgments](#vendored-dependencies--acknowledgments)
+
+9. [💛 Support](#-support)
 
 ---
 
@@ -246,6 +253,16 @@ See the full license text in [LICENSE](LICENSE).
 
 All third-party libraries included in VGT Mediacenter are licensed under permissive open-source licenses (MIT, Apache-2.0, BSD-3-Clause, ISC, SIL OFL 1.1).  
 For the complete directory of authors, copyrights, and license notices, see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+## 💛 Support
+
+Independent development is funded by people who want this stack to exist. If you want to support the work:
+
+| Method | Address / Link |
+| :--- | :--- |
+| **PayPal** | [paypal.me/dergoldenelotus](https://paypal.me/dergoldenelotus) |
+| **Bitcoin** | `bc1q3ue5gq822tddmkdrek79adlkm36fatat3lz0dm` |
+| **ETH / USDT (ERC-20)** | `0xD37DEfb09e07bD775EaaE9ccDaFE3a5b2348Fe85` |
 
 ---
 

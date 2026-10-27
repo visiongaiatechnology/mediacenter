@@ -10,6 +10,9 @@
 **Estación de Trabajo de Escritorio Soberana y Ecosistema Blindado para WordPress**  
 *Invariante 100% del Lado del Cliente • Zero Cloud • Cero Telemetría • 40 Aplicaciones Nativas*
 
+
+<img width="2007" height="1150" alt="image" src="https://github.com/user-attachments/assets/9ea1ab58-c1c5-4f43-a925-130b778b2400" />
+
 ---
 
 ### Selección de Idioma / Language Selection
@@ -18,12 +21,17 @@
 
 ---
 
-[![Versión](https://img.shields.io/badge/versión-1.0.0--beta-06b6d4?style=for-the-badge)](https://github.com/VisionGaiaTechnology/VGT-Mediacenter)
+[![Versión](https://img.shields.io/badge/versión-1.0.0--beta-06b6d4?style=for-the-badge)](https://github.com/visiongaiatechnology/mediacenter)
 [![Licencia](https://img.shields.io/badge/licencia-AGPL--3.0-blue?style=for-the-badge)](LICENSE)
-[![Plataformas](https://img.shields.io/badge/plataforma-Windows%20%7C%20Linux%20%7C%20WordPress-a855f7?style=for-the-badge)](https://github.com/VisionGaiaTechnology/VGT-Mediacenter)
+[![Plataformas](https://img.shields.io/badge/plataforma-Windows%20%7C%20Linux%20%7C%20WordPress-a855f7?style=for-the-badge)](https://github.com/visiongaiatechnology/mediacenter)
 [![Arquitectura](https://img.shields.io/badge/arquitectura-100%25%20Offline%20Soberana-22c55e?style=for-the-badge)](docs/architecture.md)
 [![Privacidad](https://img.shields.io/badge/privacidad-Cero%20Telemetría-10b981?style=for-the-badge)](SECURITY.md)
 [![Herramientas](https://img.shields.io/badge/herramientas-40%20Apps%20Integradas-f59e0b?style=for-the-badge)](#las-40-aplicaciones-soberanas)
+[![Support](https://img.shields.io/badge/💛%20Support-Digital%20Sovereignty-eab308?style=for-the-badge)](#-support)
+
+<br/>
+
+👉 **[💛 Apoya la soberanía digital / Unterstütze Digitale Souveränität](#-support)** 👈
 
 </div>
 
@@ -67,6 +75,8 @@ Selecciona tu plataforma para obtener el paquete autónomo precompilado:
 6. [Seguridad y Principio de Confianza Cero](#seguridad-y-principio-de-confianza-cero)
 7. [Licencia (AGPLv3)](#licencia)
 8. [Dependencias de Terceros y Reconocimientos](#dependencias-de-terceros-y-reconocimientos)
+
+9. [💛 Support](#-support)
 
 ---
 
@@ -242,6 +252,16 @@ Consulta el texto legal completo en [LICENSE](LICENSE).
 
 Todas las librerías externas incluidas en VGT Mediacenter cuentan con licencias libres permisivas (MIT, Apache-2.0, BSD-3-Clause, ISC, SIL OFL 1.1).  
 Para consultar la relación completa de autores, derechos de autor y avisos de licencia, examina [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+## 💛 Support
+
+Independent development is funded by people who want this stack to exist. If you want to support the work:
+
+| Method | Address / Link |
+| :--- | :--- |
+| **PayPal** | [paypal.me/dergoldenelotus](https://paypal.me/dergoldenelotus) |
+| **Bitcoin** | `bc1q3ue5gq822tddmkdrek79adlkm36fatat3lz0dm` |
+| **ETH / USDT (ERC-20)** | `0xD37DEfb09e07bD775EaaE9ccDaFE3a5b2348Fe85` |
 
 ---
 

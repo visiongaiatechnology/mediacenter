@@ -10,6 +10,9 @@
 **Суверенная локальная десктоп-станция и защищенная экосистема для WordPress**  
 *100% клиентский инвариант • Zero Cloud • Без телеметрии • 40 автономных инструментов*
 
+
+<img width="2007" height="1150" alt="image" src="https://github.com/user-attachments/assets/9ea1ab58-c1c5-4f43-a925-130b778b2400" />
+
 ---
 
 ### Языки / Language Selection
@@ -18,12 +21,17 @@
 
 ---
 
-[![Версия](https://img.shields.io/badge/version-1.0.0--beta-06b6d4?style=for-the-badge)](https://github.com/VisionGaiaTechnology/VGT-Mediacenter)
+[![Версия](https://img.shields.io/badge/version-1.0.0--beta-06b6d4?style=for-the-badge)](https://github.com/visiongaiatechnology/mediacenter)
 [![Лицензия](https://img.shields.io/badge/license-AGPL--3.0-blue?style=for-the-badge)](LICENSE)
-[![Платформы](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20WordPress-a855f7?style=for-the-badge)](https://github.com/VisionGaiaTechnology/VGT-Mediacenter)
+[![Платформы](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20WordPress-a855f7?style=for-the-badge)](https://github.com/visiongaiatechnology/mediacenter)
 [![Архитектура](https://img.shields.io/badge/architecture-100%25%20Offline%20Sovereign-22c55e?style=for-the-badge)](docs/architecture.md)
 [![Приватность](https://img.shields.io/badge/privacy-Zero%20Telemetry-10b981?style=for-the-badge)](SECURITY.md)
 [![Инструменты](https://img.shields.io/badge/tools-40%20Встроенных%20Приложений-f59e0b?style=for-the-badge)](#40-автономных-приложений)
+[![Support](https://img.shields.io/badge/💛%20Support-Digital%20Sovereignty-eab308?style=for-the-badge)](#-support)
+
+<br/>
+
+👉 **[💛 Поддержите цифровой суверенитет / Unterstütze Digitale Souveränität](#-support)** 👈
 
 </div>
 
@@ -67,6 +75,8 @@
 6. [Безопасность и принцип Zero-Trust](#безопасность-и-принцип-zero-trust)
 7. [Лицензирование (AGPLv3)](#лицензирование)
 8. [Вендорные зависимости и благодарности](#вендорные-зависимости-и-благодарности)
+
+9. [💛 Support](#-support)
 
 ---
 
@@ -242,6 +252,16 @@ VGT Mediacenter является свободным программным об�
 
 Все сторонние библиотеки, включенные в дистрибутив VGT Mediacenter, распространяются под разрешительными открытыми лицензиями (MIT, Apache-2.0, BSD-3-Clause, ISC, SIL OFL 1.1).  
 Полный перечень авторов, авторских прав и текстов лицензий приведен в документе [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+## 💛 Support
+
+Independent development is funded by people who want this stack to exist. If you want to support the work:
+
+| Method | Address / Link |
+| :--- | :--- |
+| **PayPal** | [paypal.me/dergoldenelotus](https://paypal.me/dergoldenelotus) |
+| **Bitcoin** | `bc1q3ue5gq822tddmkdrek79adlkm36fatat3lz0dm` |
+| **ETH / USDT (ERC-20)** | `0xD37DEfb09e07bD775EaaE9ccDaFE3a5b2348Fe85` |
 
 ---
 

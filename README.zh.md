@@ -10,6 +10,9 @@
 **本地主权桌面工作站与加固型 WordPress 生态系统**  
 *100% 纯客户端不变量 • 零云端依赖 • 零数据遥测 • 40 款自主内置工具*
 
+
+<img width="2007" height="1150" alt="image" src="https://github.com/user-attachments/assets/9ea1ab58-c1c5-4f43-a925-130b778b2400" />
+
 ---
 
 ### 语言选择 / Language Selection
@@ -18,12 +21,17 @@
 
 ---
 
-[![版本](https://img.shields.io/badge/版本-1.0.0--beta-06b6d4?style=for-the-badge)](https://github.com/VisionGaiaTechnology/VGT-Mediacenter)
+[![版本](https://img.shields.io/badge/版本-1.0.0--beta-06b6d4?style=for-the-badge)](https://github.com/visiongaiatechnology/mediacenter)
 [![开源协议](https://img.shields.io/badge/开源协议-AGPL--3.0-blue?style=for-the-badge)](LICENSE)
-[![支持平台](https://img.shields.io/badge/支持平台-Windows%20%7C%20Linux%20%7C%20WordPress-a855f7?style=for-the-badge)](https://github.com/VisionGaiaTechnology/VGT-Mediacenter)
+[![支持平台](https://img.shields.io/badge/支持平台-Windows%20%7C%20Linux%20%7C%20WordPress-a855f7?style=for-the-badge)](https://github.com/visiongaiatechnology/mediacenter)
 [![系统架构](https://img.shields.io/badge/系统架构-100%25%20离线数字主权-22c55e?style=for-the-badge)](docs/architecture.md)
 [![隐私保护](https://img.shields.io/badge/隐私保护-零遥测跟踪-10b981?style=for-the-badge)](SECURITY.md)
 [![内置套件](https://img.shields.io/badge/内置套件-40%20款独立应用-f59e0b?style=for-the-badge)](#40-款主权独立工具)
+[![Support](https://img.shields.io/badge/💛%20Support-Digital%20Sovereignty-eab308?style=for-the-badge)](#-support)
+
+<br/>
+
+👉 **[💛 支持数字主权 / Unterstütze Digitale Souveränität](#-support)** 👈
 
 </div>
 
@@ -67,6 +75,8 @@
 6. [安全规范与零信任准则](#安全规范与零信任准则)
 7. [开源许可证 (AGPLv3)](#开源许可证)
 8. [第三方依赖与致谢](#第三方依赖与致谢)
+
+9. [💛 Support](#-support)
 
 ---
 
@@ -242,6 +252,16 @@ VGT Mediacenter 属于自由开源软件，遵循 **GNU Affero 通用公共许�
 
 本工作站内嵌的所有第三方外部库与开源组件均遵守宽松开源许可协议（包括 MIT、Apache-2.0、BSD-3-Clause、ISC 及 SIL OFL 1.1）。  
 完整的作者名单、版权说明与对应许可证全文请查阅 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+
+## 💛 Support
+
+Independent development is funded by people who want this stack to exist. If you want to support the work:
+
+| Method | Address / Link |
+| :--- | :--- |
+| **PayPal** | [paypal.me/dergoldenelotus](https://paypal.me/dergoldenelotus) |
+| **Bitcoin** | `bc1q3ue5gq822tddmkdrek79adlkm36fatat3lz0dm` |
+| **ETH / USDT (ERC-20)** | `0xD37DEfb09e07bD775EaaE9ccDaFE3a5b2348Fe85` |
 
 ---
 
