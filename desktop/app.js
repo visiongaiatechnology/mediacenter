@@ -216,6 +216,9 @@
                 const toolInfo = (window.VGT_I18N && window.VGT_I18N.getTool) ? window.VGT_I18N.getTool(tool.id) : null;
                 const title = toolInfo ? toolInfo.title : tool.title;
                 document.title = `${title} — VGT Mediacenter V1.0 Beta`;
+                if (window.VGT_I18N && window.VGT_I18N.translateDOM) {
+                    window.VGT_I18N.translateDOM(mainContent, tool.id);
+                }
             }
         });
     }
@@ -276,6 +279,12 @@
             }
 
             mainContent.innerHTML = html;
+            window.vgtCurrentToolId = tool.id;
+
+            // Deep Sovereign I18N DOM Translation Pass
+            if (window.VGT_I18N && window.VGT_I18N.translateDOM) {
+                window.VGT_I18N.translateDOM(mainContent, tool.id);
+            }
 
             // 4. Enqueue JS Dependencies sequentially (normalized array)
             const jsDeps = Array.isArray(tool.deps_js) ? tool.deps_js : (tool.deps_js && typeof tool.deps_js === 'string' ? [tool.deps_js] : []);
@@ -291,6 +300,9 @@
             setTimeout(() => {
                 try {
                     document.dispatchEvent(new Event('DOMContentLoaded'));
+                    if (window.VGT_I18N && window.VGT_I18N.translateDOM) {
+                        window.VGT_I18N.translateDOM(mainContent, tool.id);
+                    }
                 } catch (_) {}
             }, 30);
 

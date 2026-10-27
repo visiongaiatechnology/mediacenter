@@ -1165,3 +1165,343 @@ textarea { max-width: 100%; min-width: 100%; }
     .stat-divider { display: none; }
     .stat-savings { padding-left: 0 !important; border-left: none !important; border-top: 1px solid var(--vg-border); padding-top: 1rem; width: 100%; align-items: flex-start !important; }
 }
+
+
+/* ==========================================================================
+   VGT GLASS 2100 OPAL SILVER EDITION - COMPREHENSIVE LIGHT THEME ENGINE
+   ========================================================================== */
+html.light-mode .vgt-app-wrapper {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+    --vgt-bg-0: #f1f5f9;
+    --vgt-bg-1: #ffffff;
+    --vgt-text-primary: #0f172a;
+    --vgt-text-muted: #64748b;
+    --vgt-glass-1: rgba(255, 255, 255, 0.90);
+    --vgt-glass-2: rgba(255, 255, 255, 0.97);
+    --vgt-glass-stroke: rgba(15, 23, 42, 0.09);
+    --vgt-glass-highlight: rgba(255, 255, 255, 1);
+    --vgt-elevation-1: 0 10px 30px -10px rgba(15, 23, 42, 0.07);
+    --vgt-elevation-2: 0 20px 50px -14px rgba(15, 23, 42, 0.12);
+    --vg-bg: #f1f5f9;
+    --vg-surface: rgba(255, 255, 255, 0.90);
+    --vg-surface-solid: #ffffff;
+    --vg-border: rgba(15, 23, 42, 0.09);
+    --vg-border-hover: rgba(14, 165, 233, 0.35);
+    --vg-text: #0f172a;
+    --vg-text-muted: #64748b;
+}
+
+/* 1. Custom Titlebar Light Mode */
+html.light-mode .vgt-titlebar {
+    background: rgba(255, 255, 255, 0.94) !important;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08) !important;
+    box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.06) !important;
+}
+
+html.light-mode .vgt-titlebar-title {
+    color: #0f172a !important;
+}
+
+html.light-mode .vgt-titlebar-badge {
+    background: rgba(14, 165, 233, 0.1) !important;
+    color: #0284c7 !important;
+    border-color: rgba(14, 165, 233, 0.25) !important;
+}
+
+html.light-mode .vgt-titlebar-control {
+    color: #475569 !important;
+}
+
+html.light-mode .vgt-titlebar-control:hover {
+    background: rgba(15, 23, 42, 0.06) !important;
+    color: #0f172a !important;
+}
+
+html.light-mode .vgt-titlebar-control.vgt-btn-close:hover {
+    background: #ef4444 !important;
+    color: #ffffff !important;
+}
+
+/* 2. System Shell Navigation Header */
+html.light-mode .vgt-system-shell {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.92)) !important;
+    border: 1px solid rgba(15, 23, 42, 0.09) !important;
+    box-shadow: 0 16px 48px -20px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+}
+
+html.light-mode .vgt-shell-brand,
+html.light-mode .vgt-shell-title {
+    color: #0f172a !important;
+}
+
+html.light-mode .vgt-shell-command {
+    background: rgba(15, 23, 42, 0.04) !important;
+    border: 1px solid rgba(15, 23, 42, 0.1) !important;
+    color: #0f172a !important;
+}
+
+html.light-mode .vgt-shell-command:hover {
+    background: rgba(15, 23, 42, 0.07) !important;
+    border-color: rgba(14, 165, 233, 0.4) !important;
+}
+
+html.light-mode #vg-search {
+    color: #0f172a !important;
+}
+
+html.light-mode #vg-search::placeholder {
+    color: #64748b !important;
+}
+
+html.light-mode .vgt-shell-icon-btn {
+    background: rgba(15, 23, 42, 0.04) !important;
+    border: 1px solid rgba(15, 23, 42, 0.08) !important;
+    color: #334155 !important;
+}
+
+html.light-mode .vgt-shell-icon-btn:hover {
+    background: rgba(15, 23, 42, 0.08) !important;
+    color: #0f172a !important;
+}
+
+html.light-mode .vgt-recent-strip {
+    background: rgba(255, 255, 255, 0.72) !important;
+    border: 1px solid rgba(15, 23, 42, 0.06) !important;
+}
+
+html.light-mode .vgt-recent-chip {
+    background: rgba(15, 23, 42, 0.04) !important;
+    border: 1px solid rgba(15, 23, 42, 0.08) !important;
+    color: #334155 !important;
+}
+
+html.light-mode .vgt-recent-chip:hover {
+    background: rgba(14, 165, 233, 0.1) !important;
+    color: #0284c7 !important;
+    border-color: rgba(14, 165, 233, 0.3) !important;
+}
+
+/* 3. Tool Headers & Typography */
+html.light-mode .tool-title,
+html.light-mode .vgt-tool-header h1,
+html.light-mode .vgt-tool-header h2,
+html.light-mode .vgt-tool-title {
+    color: #0f172a !important;
+    background: linear-gradient(135deg, #0f172a 0%, #334155 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+html.light-mode .tool-desc,
+html.light-mode .vgt-tool-header p,
+html.light-mode .vgt-tool-desc {
+    color: #475569 !important;
+}
+
+html.light-mode h1,
+html.light-mode h2,
+html.light-mode h3,
+html.light-mode h4,
+html.light-mode h5,
+html.light-mode h6 {
+    color: #0f172a !important;
+}
+
+/* 4. Panels, Cards & Vault Containers */
+html.light-mode .glass-panel,
+html.light-mode .wb-panel,
+html.light-mode .tool-card,
+html.light-mode .vgt-card,
+html.light-mode .card,
+html.light-mode .panel,
+html.light-mode .cipher-card,
+html.light-mode .stego-card,
+html.light-mode .vault-box,
+html.light-mode .meta-card,
+html.light-mode .vgt-command-dialog {
+    background: rgba(255, 255, 255, 0.92) !important;
+    border: 1px solid rgba(15, 23, 42, 0.09) !important;
+    box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+    color: #0f172a !important;
+}
+
+html.light-mode .tool-card:hover {
+    border-color: rgba(14, 165, 233, 0.4) !important;
+    box-shadow: 0 16px 40px -12px rgba(14, 165, 233, 0.15) !important;
+    transform: translateY(-2px);
+}
+
+/* 5. Form Controls (Inputs, Textareas, Selects) */
+html.light-mode textarea,
+html.light-mode input[type="text"],
+html.light-mode input[type="password"],
+html.light-mode input[type="number"],
+html.light-mode input[type="search"],
+html.light-mode select {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    border: 1px solid rgba(15, 23, 42, 0.16) !important;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), inset 0 1px 2px rgba(15, 23, 42, 0.02) !important;
+}
+
+html.light-mode textarea:focus,
+html.light-mode input[type="text"]:focus,
+html.light-mode input[type="password"]:focus,
+html.light-mode input[type="number"]:focus,
+html.light-mode input[type="search"]:focus,
+html.light-mode select:focus {
+    border-color: #0ea5e9 !important;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.18) !important;
+    outline: none !important;
+}
+
+html.light-mode textarea::placeholder,
+html.light-mode input::placeholder {
+    color: #94a3b8 !important;
+}
+
+/* 6. Dropzones & File Upload Targets */
+html.light-mode .drop-zone,
+html.light-mode .file-dropzone,
+html.light-mode .stego-drop,
+html.light-mode .wb-dropzone,
+html.light-mode .dropzone,
+html.light-mode [class*="drop-zone"],
+html.light-mode [class*="dropzone"] {
+    background: rgba(248, 250, 252, 0.85) !important;
+    border: 2px dashed rgba(15, 23, 42, 0.22) !important;
+    color: #334155 !important;
+}
+
+html.light-mode .drop-zone:hover,
+html.light-mode .drop-zone.dragover,
+html.light-mode .file-dropzone:hover,
+html.light-mode .file-dropzone.dragover,
+html.light-mode .wb-dropzone:hover,
+html.light-mode .wb-dropzone.dragover {
+    background: rgba(224, 242, 254, 0.85) !important;
+    border-color: #0ea5e9 !important;
+    color: #0284c7 !important;
+}
+
+/* 7. Output Boxes, Code Views, Tables & Logs */
+html.light-mode .output-box,
+html.light-mode .result-box,
+html.light-mode .code-view,
+html.light-mode pre,
+html.light-mode .wb-output,
+html.light-mode .clean-output,
+html.light-mode .hash-table,
+html.light-mode .terminal-output {
+    background: #f8fafc !important;
+    color: #0f172a !important;
+    border: 1px solid rgba(15, 23, 42, 0.12) !important;
+}
+
+html.light-mode table {
+    color: #0f172a !important;
+    border-color: rgba(15, 23, 42, 0.1) !important;
+}
+
+html.light-mode th {
+    background: rgba(15, 23, 42, 0.05) !important;
+    color: #0f172a !important;
+    border-color: rgba(15, 23, 42, 0.1) !important;
+}
+
+html.light-mode td {
+    color: #1e293b !important;
+    border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+/* 8. Mode Tabs, Filter Buttons & Action Buttons */
+html.light-mode .mode-tab,
+html.light-mode .algo-btn,
+html.light-mode .tab-btn,
+html.light-mode .filter-btn,
+html.light-mode .vgt-mode-btn {
+    background: rgba(15, 23, 42, 0.05) !important;
+    color: #475569 !important;
+    border: 1px solid rgba(15, 23, 42, 0.09) !important;
+}
+
+html.light-mode .mode-tab.active,
+html.light-mode .algo-btn.active,
+html.light-mode .tab-btn.active,
+html.light-mode .filter-btn.active,
+html.light-mode .vgt-mode-btn.active {
+    background: #ffffff !important;
+    color: #0284c7 !important;
+    border-color: rgba(14, 165, 233, 0.4) !important;
+    box-shadow: 0 2px 8px -2px rgba(14, 165, 233, 0.25) !important;
+}
+
+html.light-mode .btn-primary,
+html.light-mode .vgt-btn-primary {
+    background: linear-gradient(135deg, #0284c7, #0ea5e9) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px -3px rgba(14, 165, 233, 0.4) !important;
+}
+
+html.light-mode .btn-secondary,
+html.light-mode .vgt-btn-secondary {
+    background: rgba(15, 23, 42, 0.06) !important;
+    color: #0f172a !important;
+    border: 1px solid rgba(15, 23, 42, 0.12) !important;
+}
+
+/* 9. Global Footer */
+html.light-mode .vgt-global-footer {
+    border-top: 1px solid rgba(15, 23, 42, 0.08) !important;
+    color: #64748b !important;
+}
+
+html.light-mode .vgt-global-footer a {
+    color: #475569 !important;
+}
+
+html.light-mode .vgt-global-footer a:hover {
+    color: #0284c7 !important;
+}
+
+/* 10. Modals & Dialogs */
+html.light-mode .vgt-modal-card {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border: 1px solid rgba(15, 23, 42, 0.12) !important;
+    box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.2) !important;
+    color: #0f172a !important;
+}
+
+html.light-mode .vgt-modal-title {
+    color: #0f172a !important;
+}
+
+html.light-mode .vgt-modal-subtitle {
+    color: #64748b !important;
+}
+
+html.light-mode .vgt-lang-card {
+    background: rgba(15, 23, 42, 0.03) !important;
+    border-color: rgba(15, 23, 42, 0.08) !important;
+    color: #0f172a !important;
+}
+
+html.light-mode .vgt-lang-card:hover {
+    background: rgba(14, 165, 233, 0.06) !important;
+    border-color: rgba(14, 165, 233, 0.3) !important;
+}
+
+html.light-mode .vgt-lang-card.is-active {
+    background: rgba(14, 165, 233, 0.1) !important;
+    border-color: #0ea5e9 !important;
+}
+
+html.light-mode .vgt-lang-card-name {
+    color: #0f172a !important;
+}
+
+html.light-mode .vgt-lang-card-sub {
+    color: #64748b !important;
+}
+

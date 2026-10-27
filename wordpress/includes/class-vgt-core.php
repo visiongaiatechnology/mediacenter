@@ -148,7 +148,9 @@ final class Core {
     public function register_global_assets(): void {
         wp_register_script('vgt-client-shield', VGT_MC_URL . 'assets/js/vgt-client-shield.js', [], VGT_MC_VERSION, false);
         wp_register_script('vgt-frontend-guard', VGT_MC_URL . 'assets/js/vgt-frontend-guard.js', ['vgt-client-shield'], VGT_MC_VERSION, false);
-        wp_register_script('vgt-core-shell', VGT_MC_URL . 'includes/core-shell.js', ['vgt-frontend-guard'], VGT_MC_VERSION, true);
+        wp_register_script('vgt-i18n-dict', VGT_MC_URL . 'includes/i18n-dict.js', [], VGT_MC_VERSION, false);
+        wp_register_script('vgt-i18n', VGT_MC_URL . 'includes/i18n.js', ['vgt-i18n-dict'], VGT_MC_VERSION, false);
+        wp_register_script('vgt-core-shell', VGT_MC_URL . 'includes/core-shell.js', ['vgt-frontend-guard', 'vgt-i18n'], VGT_MC_VERSION, true);
 
         wp_register_style('vgt-core-style', VGT_MC_URL . 'includes/core-style.css', [], VGT_MC_VERSION);
 
@@ -175,6 +177,8 @@ final class Core {
         $requested_tool = $this->get_requested_tool();
         wp_enqueue_script('vgt-client-shield');
         wp_enqueue_script('vgt-frontend-guard');
+        wp_enqueue_script('vgt-i18n-dict');
+        wp_enqueue_script('vgt-i18n');
 
         wp_enqueue_style('vgt-font-inter');
         wp_enqueue_style('vgt-core-style');
@@ -221,6 +225,8 @@ final class Core {
         $this->register_global_assets();
         wp_enqueue_script('vgt-client-shield');
         wp_enqueue_script('vgt-frontend-guard');
+        wp_enqueue_script('vgt-i18n-dict');
+        wp_enqueue_script('vgt-i18n');
         wp_enqueue_style('vgt-font-inter');
         wp_enqueue_style('vgt-core-style');
         $this->enqueue_tool_assets($requested_tool);

@@ -531,6 +531,7 @@
             }, 250);
         }
         applyLanguage(currentLang);
+        setupMutationObserver();
     }
 
     function setLanguage(code) {
@@ -621,7 +622,13 @@
         // 5. Update Language Switcher in Header
         updateLanguageButton(code);
 
-        // 6. Broadcast event so Dashboard re-renders cards with translated titles & descriptions
+        // 6. Deep DOM Translation for active tool view
+        const mainContent = document.getElementById('vgt-main-content');
+        if (mainContent) {
+            translateDOM(mainContent, window.vgtCurrentToolId || null);
+        }
+
+        // 7. Broadcast event so Dashboard re-renders cards with translated titles & descriptions
         document.dispatchEvent(new CustomEvent('vgt:language-changed', { detail: { lang: code } }));
     }
 
@@ -650,6 +657,126 @@
             const currentObj = LANGUAGES.find(l => l.code === code) || LANGUAGES[0];
             btn.innerHTML = `<span class="vgt-lang-flag">${currentObj.flag}</span> <span class="vgt-lang-code">${currentObj.code.toUpperCase()}</span>`;
         }
+    }
+
+    let domObserver = null;
+    let isTranslating = false;
+    let observerTimeout = null;
+
+    function translateDOM(container, toolId) {
+        if (!container) return;
+        const code = currentLang;
+        const dict = window.VGT_DICTIONARY || {};
+
+        // 1. Tool Header translation (title & desc)
+        if (toolId && TOOL_TRANSLATIONS[toolId]) {
+            const entry = TOOL_TRANSLATIONS[toolId];
+            const titleEl = container.querySelector('.tool-title, .vgt-tool-header h1, .vgt-tool-header h2, .vgt-tool-title');
+            if (titleEl && entry.title) {
+                if (!titleEl._vgtOrigTitle) titleEl._vgtOrigTitle = titleEl.textContent.trim();
+                titleEl.textContent = entry.title[code] || entry.title['de'] || titleEl._vgtOrigTitle;
+            }
+            const descEl = container.querySelector('.tool-desc, .vgt-tool-header p, .vgt-tool-desc');
+            if (descEl && entry.desc) {
+                if (!descEl._vgtOrigDesc) descEl._vgtOrigDesc = descEl.textContent.trim();
+                descEl.textContent = entry.desc[code] || entry.desc['de'] || descEl._vgtOrigDesc;
+            }
+        }
+
+        // 2. TreeWalker for all text nodes
+        const walker = document.createTreeWalker(
+            container,
+            NodeFilter.SHOW_TEXT,
+            {
+                acceptNode: (node) => {
+                    if (!node || !node.parentElement) return NodeFilter.FILTER_REJECT;
+                    const tag = node.parentElement.tagName.toLowerCase();
+                    if (tag === 'script' || tag === 'style' || tag === 'textarea' || tag === 'code' || tag === 'pre' || tag === 'svg' || tag === 'path') {
+                        return NodeFilter.FILTER_REJECT;
+                    }
+                    const text = node.textContent.trim();
+                    if (!text || text.length < 2) return NodeFilter.FILTER_SKIP;
+                    if (/^[0-9\.,:\-_/\\#%°±€\$\s]+$/.test(text)) return NodeFilter.FILTER_SKIP;
+                    return NodeFilter.FILTER_ACCEPT;
+                }
+            }
+        );
+
+        let node;
+        while ((node = walker.nextNode())) {
+            const text = node.textContent.trim();
+            if (!node._vgtOrig) {
+                node._vgtOrig = text;
+            }
+            const orig = node._vgtOrig;
+            if (dict[orig]) {
+                const trans = dict[orig][code] || dict[orig]['de'];
+                if (trans && trans !== text) {
+                    const matchLeading = node.textContent.match(/^\s*/);
+                    const matchTrailing = node.textContent.match(/\s*$/);
+                    const lead = matchLeading ? matchLeading[0] : '';
+                    const trail = matchTrailing ? matchTrailing[0] : '';
+                    node.textContent = lead + trans + trail;
+                }
+            }
+        }
+
+        // 3. Scan attributes: placeholder, title, aria-label, button values
+        const attrElements = container.querySelectorAll('[placeholder], [title], [aria-label], input[type="button"], input[type="submit"]');
+        attrElements.forEach(el => {
+            ['placeholder', 'title', 'aria-label'].forEach(attr => {
+                if (el.hasAttribute(attr)) {
+                    const val = el.getAttribute(attr).trim();
+                    const origKey = 'vgtOrig_' + attr;
+                    if (!el.dataset[origKey]) {
+                        el.dataset[origKey] = val;
+                    }
+                    const orig = el.dataset[origKey];
+                    if (dict[orig]) {
+                        const trans = dict[orig][code] || dict[orig]['de'];
+                        if (trans) el.setAttribute(attr, trans);
+                    }
+                }
+            });
+
+            if (el.tagName.toLowerCase() === 'input' && (el.type === 'button' || el.type === 'submit')) {
+                const val = el.value.trim();
+                if (!el.dataset.vgtOrig_value) {
+                    el.dataset.vgtOrig_value = val;
+                }
+                const orig = el.dataset.vgtOrig_value;
+                if (dict[orig]) {
+                    const trans = dict[orig][code] || dict[orig]['de'];
+                    if (trans) el.value = trans;
+                }
+            }
+        });
+    }
+
+    function setupMutationObserver() {
+        const mainContent = document.getElementById('vgt-main-content');
+        if (!mainContent) return;
+        if (domObserver) domObserver.disconnect();
+
+        domObserver = new MutationObserver(() => {
+            if (isTranslating) return;
+            if (observerTimeout) clearTimeout(observerTimeout);
+            observerTimeout = setTimeout(() => {
+                if (isTranslating) return;
+                isTranslating = true;
+                try {
+                    translateDOM(mainContent, window.vgtCurrentToolId || null);
+                } finally {
+                    isTranslating = false;
+                }
+            }, 60);
+        });
+
+        domObserver.observe(mainContent, {
+            childList: true,
+            subtree: true,
+            characterData: false
+        });
     }
 
     function showLanguageModal(isFirstLaunch = false) {
@@ -750,6 +877,8 @@
             };
         },
         showLanguageModal,
+        translateDOM,
+        setupMutationObserver,
         init: initLanguage
     };
 
