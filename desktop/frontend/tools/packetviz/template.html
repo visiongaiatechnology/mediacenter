@@ -1,0 +1,189 @@
+﻿<div class="vgt-tool-wrapper" id="vgt-packetviz">
+    
+    <!-- Hero Header: Navigation und forensische Identität -->
+    <div class="tool-hero">
+        <a href="#/tool/dashboard" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>System Hub</span>
+        </a>
+        <div class="hero-content">
+            <div class="hero-icon-wrapper pv-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <line x1="3" y1="12" x2="9" y2="12"></line>
+                    <line x1="15" y1="12" x2="21" y2="12"></line>
+                    <line x1="12" y1="3" x2="12" y2="9"></line>
+                    <line x1="12" y1="15" x2="12" y2="21"></line>
+                    <circle cx="21" cy="12" r="1.5"></circle>
+                    <circle cx="3" cy="12" r="1.5"></circle>
+                    <circle cx="12" cy="21" r="1.5"></circle>
+                    <circle cx="12" cy="3" r="1.5"></circle>
+                </svg>
+            </div>
+            <div>
+                <h2 class="tool-title">VGT Packet-Viz</h2>
+                <p class="tool-desc">
+                    Netzwerk-Forensik & Traffic-Analyse. Dekodiert .pcap und .pcapng Dumps lokal im RAM und visualisiert Kommunikations-Knoten, IPs und Payloads über ein interaktives D3.js Force-Graph Array.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface Body -->
+    <div class="tool-body pv-layout">
+        
+        <!-- View 1: Ingestion Zone (Dropzone) -->
+        <div class="glass-panel drop-zone" id="pv-dropzone">
+            <div class="drop-content">
+                <div class="drop-icon-glow cyan"></div>
+                <svg viewBox="0 0 24 24" class="drop-icon">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+                <h3 class="drop-title">Traffic-Dump (PCAP) injizieren</h3>
+                <p class="drop-subtitle">Ziehe eine .pcap oder .pcapng Datei in den Scanner</p>
+                <div class="drop-badge">Heuristic Binary Parsing</div>
+            </div>
+            <input type="file" 
+                   id="pv-file-input" 
+                   class="hidden-input" 
+                   accept=".pcap, .pcapng, .eth, application/vnd.tcpdump.pcap" />
+        </div>
+
+        <!-- View 2: D3 Visualization Workspace (Hidden until load) -->
+        <div id="pv-workspace" class="pv-workspace hidden">
+            
+            <!-- Global Stats Bar: Echtzeit-Telemetrie -->
+            <div class="pv-stats-bar glass-panel">
+                <div class="stat-box">
+                    <span class="stat-lbl">Datei</span>
+                    <span class="stat-val highlight-cyan" id="stat-filename">dump.pcap</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-lbl">Entdeckte Knoten (Nodes)</span>
+                    <span class="stat-val" id="stat-nodes">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-lbl">Flows (Links)</span>
+                    <span class="stat-val" id="stat-links">0</span>
+                </div>
+                <div class="stat-box action-box">
+                    <button id="btn-pv-reset" class="btn-action-small danger outline">
+                        <svg viewBox="0 0 24 24" class="svg-icon"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        FLUSH
+                    </button>
+                </div>
+            </div>
+
+            <!-- Visualization Grid -->
+            <div class="pv-grid">
+                
+                <!-- Main D3 Force Graph Canvas -->
+                <div class="glass-panel pv-chart-panel checkerboard">
+                    
+                    <div id="pv-loader" class="pv-loader hidden">
+                        <div class="spinner"></div>
+                        <span id="pv-loader-text">Analysiere Binärstrom...</span>
+                    </div>
+
+                    <!-- Mounting Point für den D3 SVG Graphen -->
+                    <div id="d3-container" class="d3-wrapper">
+                        <!-- SVG wird via JS injiziert -->
+                    </div>
+                    
+                    <!-- Graph Simulation Controls -->
+                    <div class="graph-controls">
+                        <span class="gc-label">Graph Physics:</span>
+                        <button id="btn-physics-pause" class="btn-action-small">Pause</button>
+                        <button id="btn-physics-resume" class="btn-action-small active">Play</button>
+                    </div>
+                </div>
+
+                <!-- Threat Matrix & Forensic Node Inspector (Sidebar) -->
+                <div class="glass-panel pv-data-panel">
+                    <div class="panel-header">
+                        <span class="panel-label">Forensic Node Inspector</span>
+                    </div>
+                    
+                    <div id="node-inspector-empty" class="node-empty-state">
+                        <svg viewBox="0 0 24 24" class="svg-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <p>Klicke auf einen Knoten im Graphen, um Details zum Traffic-Flow anzuzeigen.</p>
+                    </div>
+
+                    <div id="node-inspector-active" class="node-active-state hidden">
+                        <div class="na-header">
+                            <span class="na-type" id="ni-type">IPv4 Node</span>
+                            <span class="na-title" id="ni-name">192.168.1.1</span>
+                        </div>
+                        
+                        <div class="na-body">
+                            <div class="na-row">
+                                <span class="na-key">Verbindungen (Weight):</span>
+                                <span class="na-val" id="ni-weight">0</span>
+                            </div>
+                            <div class="na-row">
+                                <span class="na-key">Traffic Anteil:</span>
+                                <span class="na-val" id="ni-percent">0%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="na-connections mt-4">
+                            <div class="flow-group">
+                                <span class="na-subtitle" style="color: rgba(34, 211, 238, 1)">Eingehend (Inbound):</span>
+                                <div class="na-targets custom-scrollbar" id="ni-inbound">
+                                    <!-- Inbound Entitäten Tags -->
+                                </div>
+                            </div>
+                            <div class="flow-group mt-3">
+                                <span class="na-subtitle" style="color: rgba(244, 114, 182, 1)">Ausgehend (Outbound):</span>
+                                <div class="na-targets custom-scrollbar" id="ni-outbound">
+                                    <!-- Outbound Entitäten Tags -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Ranking Matrix: Volumen-Analyse -->
+                    <div class="panel-header" style="margin-top: 2rem;">
+                        <span class="panel-label">Top Entities (Volumen)</span>
+                    </div>
+                    <div class="top-nodes-list custom-scrollbar" id="top-nodes-list">
+                        <!-- Auto-filled via Analytics Engine -->
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Forensic Report: Aggregated Node List & CSV Vector Export -->
+            <div class="glass-panel pv-export-panel mt-4">
+                <div class="panel-header" style="margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: none;">
+                    <span class="panel-label">Komplette Knotenpunkt-Matrix (Alle gefundenen Entitäten)</span>
+                    <button id="btn-pv-export" class="btn-action-small highlight-cyan">
+                        <svg viewBox="0 0 24 24" class="svg-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Als CSV Exportieren
+                    </button>
+                </div>
+                <div class="pv-table-wrapper custom-scrollbar">
+                    <table class="vgt-data-table">
+                        <thead id="pv-table-head">
+                            <tr>
+                                <th>Entität (IP / Domain / String)</th>
+                                <th>Typisierung</th>
+                                <th>Traffic-Gewichtung (Vorkommen)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pv-node-table-body">
+                            <tr>
+                                <td class="empty-cell" colspan="100%">
+                                    Warte auf Scan-Ergebnisse...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de" class="dark-mode">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VGT Mediacenter V1.0 Beta — Sovereign Local Desktop Workstation</title>
+    <meta name="description" content="100% lokales, autarkes Tool-Ökosystem. Privacy First. Zero Cloud. Zero Tracking.">
+    
+    <!-- Local Favicon, Fonts & Core Stylesheet -->
+    <link rel="icon" type="image/png" href="assets/vendor/vgtcode.png">
+    <link rel="stylesheet" href="assets/vendor/google-fonts-inter.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="vgt-mc-desktop-body">
+
+<div class="vgt-app-wrapper" id="vgt-main-wrapper">
+    <!-- VGT Glass 2100 Sovereign Frameless Window Titlebar -->
+    <header class="vgt-titlebar" id="vgt-titlebar">
+        <div class="vgt-titlebar-drag-region">
+            <div class="vgt-titlebar-brand">
+                <span class="vgt-titlebar-orbit" aria-hidden="true">
+                    <img src="assets/vendor/vgtcode.png" alt="VGT" class="vgt-titlebar-logo">
+                </span>
+                <span class="vgt-titlebar-title">VGT Mediacenter V1.0 Beta</span>
+                <span class="vgt-titlebar-badge">SOVEREIGN WORKSTATION</span>
+            </div>
+        </div>
+        <div class="vgt-titlebar-controls">
+            <button type="button" class="vgt-win-btn vgt-win-min" id="vgt-win-min" title="Minimieren" aria-label="Minimieren">
+                <svg viewBox="0 0 12 12"><path d="M1 6h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            </button>
+            <button type="button" class="vgt-win-btn vgt-win-max" id="vgt-win-max" title="Maximieren / Wiederherstellen" aria-label="Maximieren">
+                <svg class="icon-max" viewBox="0 0 12 12"><rect x="1.5" y="1.5" width="9" height="9" rx="1.2" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+            </button>
+            <button type="button" class="vgt-win-btn vgt-win-close" id="vgt-win-close" title="Schließen" aria-label="Schließen">
+                <svg viewBox="0 0 12 12"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Z0 Ambient Environment (Glass 2100 - Zero Grids) -->
+    <div class="bg-layer" aria-hidden="true">
+        <div class="vgt-ambient-glow"></div>
+    </div>
+
+    <div class="vgt-container">
+        <!-- VGT System Shell / Header -->
+        <header class="vgt-system-shell" id="vgt-system-shell" role="banner">
+            <div class="vgt-shell-primary">
+                <a href="#/tool/dashboard" class="vgt-shell-brand" aria-label="VGT Mediacenter Dashboard">
+                    <span class="vgt-shell-orbit" aria-hidden="true">
+                        <img src="assets/vendor/vgtcode.png" alt="VGT" class="vgt-shell-logo">
+                    </span>
+                    <span class="vgt-shell-copy">
+                        <span class="vgt-shell-title">VGT Mediacenter</span>
+                        <span class="vgt-shell-subtitle">V1.0 Beta • Sovereign Desktop Workstation</span>
+                    </span>
+                </a>
+
+                <div class="vgt-shell-badges" aria-label="Systemstatus">
+                    <span class="vgt-shell-badge tone-green">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="6" rx="2"></rect><rect x="4" y="14" width="16" height="6" rx="2"></rect><line x1="8" y1="7" x2="8.01" y2="7"></line><line x1="8" y1="17" x2="8.01" y2="17"></line></svg>
+                        100% Lokal
+                    </span>
+                    <span class="vgt-shell-badge tone-blue">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+                        Zero Cloud
+                    </span>
+                    <span class="vgt-shell-badge tone-purple">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+                        Privacy First
+                    </span>
+                </div>
+
+                <button type="button" class="vgt-shell-mobile-toggle" id="vgt-shell-mobile-toggle" aria-expanded="false" aria-controls="vgt-shell-panel">
+                    <span>Controls</span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+            </div>
+
+            <div class="vgt-shell-panel" id="vgt-shell-panel">
+                <div class="vgt-shell-search">
+                    <span class="vgt-shell-search-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </span>
+                    <input type="search" id="vg-search" class="vgt-shell-search-input search-input" autocomplete="off" spellcheck="false" placeholder="Tools suchen (z. B. PDF, AES, Hash, PCAP)...">
+                </div>
+
+                <div class="vgt-shell-actions">
+                    <button type="button" class="vgt-shell-command" id="vgt-command-open" aria-label="Command Palette">
+                        <span>Tools</span>
+                        <kbd>Ctrl K</kbd>
+                    </button>
+                    <button type="button" class="vgt-shell-mode" id="vgt-mc-mode-toggle" aria-pressed="false" title="Zwischen Grid- und Desktop-Fenster-Modus umschalten">
+                        Desktop
+                    </button>
+                    <button type="button" id="btn-lang-desktop" class="vgt-shell-icon-btn vgt-lang-btn" aria-label="Sprache wechseln" title="Sprache / Language">
+                        <span class="vgt-lang-flag">🌐</span> <span class="vgt-lang-code">LANG</span>
+                    </button>
+                    <button type="button" id="btn-theme-desktop" class="vgt-shell-icon-btn" aria-label="Theme wechseln">
+                        <span id="icon-theme-desktop"></span>
+                    </button>
+                    <span class="vgt-shell-status">Lokal aktiv</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Recent Tools Strip -->
+        <nav class="vgt-recent-strip is-empty" id="vgt-recent-strip" aria-label="Zuletzt verwendete Tools"></nav>
+
+        <!-- Command Palette Layer -->
+        <div class="vgt-command-layer" id="vgt-command-layer" aria-hidden="true"></div>
+
+        <!-- Dynamic Tool Mounting Root -->
+        <main id="vgt-main-content" class="vgt-main-content" role="main"></main>
+
+        <!-- Global Footer -->
+        <footer class="vgt-global-footer">
+            <span>VGT Mediacenter V1.0 Beta — Sovereign Desktop Edition</span>
+            <div class="footer-links">
+                <span class="tone-muted">Zero Telemetry • Zero External Network Calls</span>
+            </div>
+        </footer>
+    </div>
+</div>
+
+<!-- Precompiled In-Memory Manifests & Templates (Zero CORS / Offline Shield) -->
+<script src="manifests.js"></script>
+<!-- Sovereign Multilingual Engine (DE, EN, RU, ES, IT, ZH, JA, FR) -->
+<script src="i18n.js"></script>
+<!-- Desktop Standalone App Engine -->
+<script src="app.js"></script>
+</body>
+</html>
+
+

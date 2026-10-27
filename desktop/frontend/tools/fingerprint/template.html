@@ -1,0 +1,159 @@
+﻿<div class="vgt-tool-wrapper" id="vgt-fingerprint">
+    
+    <!-- Hero Header: Navigations- und Titelbereich -->
+    <div class="tool-hero">
+        <a href="#/tool/dashboard" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>System Hub</span>
+        </a>
+        <div class="hero-content">
+            <div class="hero-icon-wrapper fg-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon">
+                    <path d="M2 12C2 6.48 6.48 2 12 2s10 4.48 10 10M6 12c0-3.31 2.69-6 6-6s6 2.69 6 6M10 12c0-1.1.9-2 2-2s2 .9 2 2"></path>
+                </svg>
+            </div>
+            <div>
+                <h2 class="tool-title">VGT Trace Scanner</h2>
+                <p class="tool-desc">
+                    Analysiert deinen digitalen Browser-Fingerabdruck. Cookies löschen reicht nicht – WebGL, Audio-Chips und Canvas-Rendering verraten deine exakte Hardware-Signatur.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface Body -->
+    <div class="tool-body fg-layout">
+        
+        <!-- Scanner Control Panel: Radar & Master Toggle -->
+        <div class="glass-panel fg-control-panel">
+            <div class="radar-container" id="fg-radar">
+                <div class="radar-sweep"></div>
+                <div class="radar-core">
+                    <svg viewBox="0 0 24 24" class="svg-icon">
+                        <path d="M2 12C2 6.48 6.48 2 12 2s10 4.48 10 10"></path>
+                        <path d="M6 12c0-3.31 2.69-6 6-6s6 2.69 6 6"></path>
+                        <path d="M10 12c0-1.1.9-2 2-2s2 .9 2 2"></path>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="scan-status">
+                <span class="status-label">System-Status</span>
+                <h3 class="status-value" id="fg-status-text">
+                    Standby. Bereit für Tiefen-Scan.
+                </h3>
+            </div>
+
+            <button id="btn-start-scan" class="btn-prime green-glow">
+                <svg viewBox="0 0 24 24" class="svg-icon">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                Deep Scan Initiieren
+            </button>
+
+            <!-- Overall Threat Metric: Anomalie-Score -->
+            <div class="threat-meter hidden" id="fg-threat-meter">
+                <span class="threat-label">Digitale Einzigartigkeit (Entropie)</span>
+                <div class="threat-val-wrap">
+                    <span class="threat-val" id="fg-entropy-score">0</span>
+                    <span class="threat-unit">%</span>
+                </div>
+                <p class="threat-desc">
+                    Je höher der Wert, desto leichter bist du im Netz trackingbar, selbst mit VPN.
+                </p>
+            </div>
+        </div>
+
+        <!-- Metrics Matrix: Die verschiedenen Fingerprinting-Vektoren -->
+        <div class="fg-matrix">
+            
+            <!-- Canvas Fingerprint: Grafik-Hardware Signatur -->
+            <div class="glass-panel metric-card" id="card-canvas">
+                <div class="metric-header">
+                    <span class="metric-title">Canvas Image Rendering</span>
+                    <div class="metric-status spinner hidden"></div>
+                </div>
+                <div class="metric-content">
+                    <div class="canvas-preview-box checkerboard">
+                        <!-- Hidden Canvas for bitwise analysis -->
+                        <canvas id="fg-hidden-canvas" width="200" height="50" style="display:none;"></canvas>
+                        <!-- Rendered UI Placeholder -->
+                        <img id="fg-canvas-img" src="" alt="Awaiting Scan..." class="hidden">
+                        <span class="placeholder-text" id="ph-canvas">
+                            Awaiting Engine...
+                        </span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-key">Hash-Signatur:</span>
+                        <span class="data-val terminal-text" id="val-canvas-hash">---------</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WebGL Fingerprint: GPU & Treiber Details -->
+            <div class="glass-panel metric-card" id="card-webgl">
+                <div class="metric-header">
+                    <span class="metric-title">WebGL GPU Extraction</span>
+                    <div class="metric-status spinner hidden"></div>
+                </div>
+                <div class="metric-content">
+                    <div class="data-row">
+                        <span class="data-key">Vendor:</span>
+                        <span class="data-val terminal-text" id="val-webgl-vendor">---------</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-key">Renderer:</span>
+                        <span class="data-val terminal-text highlight-green" id="val-webgl-renderer">---------</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Audio Context Fingerprint: Soundchip-Varianz -->
+            <div class="glass-panel metric-card" id="card-audio">
+                <div class="metric-header">
+                    <span class="metric-title">Audio DSP Resonance</span>
+                    <div class="metric-status spinner hidden"></div>
+                </div>
+                <div class="metric-content">
+                    <p class="metric-desc">
+                        AudioContext erzeugt einen versteckten Ton. Abweichungen in der Soundkarte erzeugen einzigartige Hashes.
+                    </p>
+                    <div class="data-row mt-auto">
+                        <span class="data-key">DSP-Hash:</span>
+                        <span class="data-val terminal-text" id="val-audio-hash">---------</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hardware & OS: Klassische System-Telemetrie -->
+            <div class="glass-panel metric-card" id="card-hardware">
+                <div class="metric-header">
+                    <span class="metric-title">Hardware Telemetrie</span>
+                    <div class="metric-status spinner hidden"></div>
+                </div>
+                <div class="metric-content list-layout">
+                    <div class="data-row">
+                        <span class="data-key">CPU Kerne:</span>
+                        <span class="data-val terminal-text" id="val-hw-cores">---------</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-key">Device RAM:</span>
+                        <span class="data-val terminal-text" id="val-hw-ram">---------</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-key">Plattform (OS):</span>
+                        <span class="data-val terminal-text" id="val-hw-os">---------</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-key">Screen Res:</span>
+                        <span class="data-val terminal-text" id="val-hw-screen">---------</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

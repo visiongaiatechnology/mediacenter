@@ -1,0 +1,100 @@
+﻿<div class="vgt-tool-wrapper" id="vgt-metaclean">
+    
+    <!-- Hero Header: Navigation und forensische Identität -->
+    <div class="tool-hero">
+        <a href="#/tool/dashboard" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>System Hub</span>
+        </a>
+        <div class="hero-content">
+            <div class="hero-icon-wrapper mc-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon">
+                    <path d="m21 21-5.19-5.19M16.5 4.5l3 3L7 19.5 4 16.5 16.5 4.5z"></path>
+                </svg>
+            </div>
+            <div>
+                <h2 class="tool-title">Metadata Cleaner</h2>
+                <p class="tool-desc">
+                    Extrahiert und vernichtet unsichtbare EXIF-Metadaten (GPS, Geräte-IDs, Timestamps) aus deinen Bildern. 100% Client-Side. Zero Uploads.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface Body -->
+    <div class="tool-body">
+        
+        <!-- View 1: Ingestion Zone (Dropzone) -->
+        <div class="glass-panel drop-zone" id="mc-dropzone">
+            <div class="drop-content">
+                <div class="drop-icon-glow"></div>
+                <svg viewBox="0 0 24 24" class="drop-icon">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+                <h3 class="drop-title">Bildmaterial analysieren</h3>
+                <p class="drop-subtitle">JPG, PNG, WEBP, HEIC hier ablegen</p>
+            </div>
+            <input type="file" 
+                   id="mc-file-input" 
+                   class="hidden-input" 
+                   accept="image/jpeg, image/png, image/webp, image/heic" />
+        </div>
+
+        <!-- View 2: Analysis & Action Matrix (Hidden until Ingestion) -->
+        <div id="mc-analysis-view" class="mc-matrix hidden">
+            
+            <div class="mc-grid">
+                <!-- Image Preview Panel: Visueller Abgleich -->
+                <div class="glass-panel mc-preview-panel">
+                    <div class="mc-preview-header">
+                        <span class="mc-label">Visuelle Signatur</span>
+                        <button id="mc-btn-reset" class="btn-action-small">
+                            <svg viewBox="0 0 24 24" class="svg-icon"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            Verwerfen
+                        </button>
+                    </div>
+                    <div class="mc-preview-wrapper" id="mc-preview-wrapper">
+                        <img id="mc-preview-img" src="" alt="Preview">
+                        
+                        <!-- Scrubbing Animation Layer: Kognitive Visualisierung -->
+                        <div class="mc-scrubber-layer" id="mc-scrubber">
+                            <div class="mc-laser"></div>
+                        </div>
+                    </div>
+                    <div class="mc-file-meta">
+                        <span id="mc-meta-name">image.jpg</span>
+                        <span id="mc-meta-size" class="mc-badge">0 MB</span>
+                    </div>
+                </div>
+
+                <!-- Threat Analysis Panel: Heuristische Extraktion -->
+                <div class="glass-panel mc-threat-panel">
+                    <div class="mc-threat-header">
+                        <span class="mc-label">Metadaten-Extraktion</span>
+                        <span id="mc-threat-level" class="mc-badge warning">
+                            Analysiere...
+                        </span>
+                    </div>
+                    
+                    <div class="mc-data-list" id="mc-exif-list">
+                        <!-- Dynamische Injektion der EXIF-Tags via JavaScript (Safe Rendering) -->
+                    </div>
+
+                    <!-- Action Vector: Neutralisierung -->
+                    <div class="mc-actions">
+                        <button id="mc-btn-clean" class="btn-prime warning-glow">
+                            <svg viewBox="0 0 24 24" class="svg-icon"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"></path><polyline points="21 3 21 8 16 8"></polyline></svg>
+                            EXIF-Daten vernichten
+                        </button>
+                        <button id="mc-btn-download" class="btn-prime success-glow hidden">
+                            <svg viewBox="0 0 24 24" class="svg-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Sicheres Bild speichern
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

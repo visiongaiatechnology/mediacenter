@@ -1,0 +1,120 @@
+﻿<div class="vgt-tool-wrapper" id="vgt-truthlense">
+    
+    <!-- Hero Header: Navigation und funktionale Identität -->
+    <div class="tool-hero">
+        <a href="#/tool/dashboard" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Zurück zum Hub</span>
+        </a>
+        <div class="hero-content">
+            <div class="hero-icon-wrapper tl-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon">
+                    <path d="M12 3v18M4 11h16M7 11l-3 7h6l-3-7zM17 11l-3 7h6l-3-7z"></path>
+                </svg>
+            </div>
+            <div>
+                <h2 class="tool-title">Truthlense Engine</h2>
+                <p class="tool-desc">
+                    Echtzeit-Text- und Code-Vergleich. Identifiziert Anomalien, Hinzufügungen und Löschungen präzise auf Wort- oder Zeilenebene.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface Body -->
+    <div class="tool-body tl-layout">
+        
+        <!-- Controls Context Bar: Analyse-Parameter -->
+        <div class="glass-panel tl-controls">
+            <div class="tl-control-group">
+                <label class="tl-label">Analyse-Modus:</label>
+                <div class="tl-toggle-group">
+                    <button class="tl-toggle active" data-mode="lines">
+                        Zeilen-Level
+                    </button>
+                    <button class="tl-toggle" data-mode="words">
+                        Wort-Level
+                    </button>
+                    <button class="tl-toggle" data-mode="chars">
+                        Zeichen-Level
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Statistics Cluster: Live-Anomalie-Metrik -->
+            <div class="tl-stats" id="tl-stats-container">
+                <div class="stat-pill stat-removed">
+                    <svg viewBox="0 0 24 24" class="svg-icon"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    <span id="stat-del">0</span> Entfernt
+                </div>
+                <div class="stat-pill stat-added">
+                    <svg viewBox="0 0 24 24" class="svg-icon"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    <span id="stat-add">0</span> Hinzugefügt
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Grid: Dual-Pane Editor Matrix -->
+        <div class="tl-input-grid">
+            
+            <!-- Source A: Original-Datenstrom -->
+            <div class="tl-editor-box">
+                <div class="tl-editor-header">
+                    <span class="tl-editor-title">A: Original-Datensatz</span>
+                    <label class="btn-action-small">
+                        <svg viewBox="0 0 24 24" class="svg-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                        Laden
+                        <input type="file" 
+                               id="tl-file-original" 
+                               accept=".txt,.md,.json,.html,.csv,.js,.php" 
+                               class="hidden-input">
+                    </label>
+                </div>
+                <textarea 
+                    id="tl-input-original" 
+                    class="tl-textarea" 
+                    spellcheck="false" 
+                    placeholder="Füge den Original-Text hier ein..."></textarea>
+            </div>
+
+            <!-- Source B: Modifizierter Datenstrom -->
+            <div class="tl-editor-box">
+                <div class="tl-editor-header">
+                    <span class="tl-editor-title">B: Modifizierter Datensatz</span>
+                    <label class="btn-action-small">
+                        <svg viewBox="0 0 24 24" class="svg-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                        Laden
+                        <input type="file" 
+                               id="tl-file-modified" 
+                               accept=".txt,.md,.json,.html,.csv,.js,.php" 
+                               class="hidden-input">
+                    </label>
+                </div>
+                <textarea 
+                    id="tl-input-modified" 
+                    class="tl-textarea tl-glow-focus" 
+                    spellcheck="false" 
+                    placeholder="Füge den modifizierten Text hier ein..."></textarea>
+            </div>
+        </div>
+
+        <!-- Output Matrix: Unified Diff-View -->
+        <div class="tl-output-matrix glass-panel">
+            <div class="tl-editor-header output-header">
+                <span class="tl-editor-title">Diff-Analyse (Unified View)</span>
+                <button id="tl-btn-clear" class="btn-action-small danger" title="Eingaben löschen">
+                    <svg viewBox="0 0 24 24" class="svg-icon"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                    Wischen
+                </button>
+            </div>
+            
+            <!-- Mounting Point für die Differentiations-Vektoren -->
+            <div id="tl-output-content" class="tl-output-render tl-mono">
+                <div class="tl-placeholder-text">
+                    Warte auf Dateneingabe für die Anomalie-Erkennung...
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

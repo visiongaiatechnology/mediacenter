@@ -1,0 +1,38 @@
+﻿<div id="vgt-dashboard-root" class="vgt-dashboard-root flex-col">
+    <!-- CONTENT AREA: Dynamische Tool-Matrix -->
+    <main class="vgt-dashboard-main flex-col">
+        
+        <!-- Filter Nav: Kognitive Kategorisierung -->
+        <section class="vgt-dashboard-grid-mode" id="vgt-dashboard-grid-mode">
+        <nav class="filter-nav">
+            <div class="filter-container" id="vg-filter-container">
+                <!-- Dynamische Injektion der Filter-Chips via JavaScript -->
+            </div>
+        </nav>
+
+        <!-- GRID View Container: Mounting-Point für VGT Tool-Karten -->
+        <div id="vg-tools-grid" class="tools-grid">
+            <!-- Die Tool-Karten werden hier durch die Core-JS Engine im RAM gerendert -->
+        </div>
+        </section>
+
+        <section class="vgt-mc-desk" id="vgt-mc-desk" aria-label="Desktop Modus">
+            <div class="vgt-mc-desk-topbar">
+                <div>
+                    <span class="vgt-mc-desk-kicker">Desktop Modus</span>
+                    <h2>Mediacenter Workbench</h2>
+                </div>
+                <div class="vgt-mc-desk-clock" id="vgt-mc-desk-clock">--:--</div>
+            </div>
+
+            <div class="vgt-mc-desk-stage">
+                <div class="vgt-mc-desk-icons" id="vgt-mc-desk-icons"></div>
+                <div class="vgt-mc-desk-windows" id="vgt-mc-desk-windows"></div>
+            </div>
+
+            <div class="vgt-mc-desk-dock" id="vgt-mc-desk-dock"></div>
+        </section>
+    </main>
+
+</div>
+

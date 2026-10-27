@@ -1,0 +1,142 @@
+﻿<div class="vgt-tool-wrapper" id="vgt-json">
+    
+    <!-- Hero Header: Navigation und System-Identität -->
+    <div class="tool-hero">
+        <a href="#/tool/dashboard" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>System Hub</span>
+        </a>
+        <div class="hero-content">
+            <div class="hero-icon-wrapper js-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon">
+                    <path d="M9 3H7a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2 2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h2M15 3h2a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2 2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2"></path>
+                </svg>
+            </div>
+            <div>
+                <h2 class="tool-title">VGT JSON Architect</h2>
+                <p class="tool-desc">
+                    Entwickler-Terminal zur Formatierung, Validierung und Baum-Struktur-Analyse von komplexen JSON-Datenströmen. 100% lokales Parsing.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface Body -->
+    <div class="tool-body js-layout">
+        
+        <!-- Control Strip (Top): System-Aktionen -->
+        <div class="glass-panel js-toolbar">
+            <div class="tb-group">
+                <button id="js-btn-format" class="btn-action">
+                    <svg viewBox="0 0 24 24" class="svg-icon"><line x1="21" y1="10" x2="3" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="21" y1="18" x2="3" y2="18"></line></svg>
+                    Formatieren (Beautify)
+                </button>
+                <button id="js-btn-minify" class="btn-action">
+                    <svg viewBox="0 0 24 24" class="svg-icon"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"></path></svg>
+                    Minify (Kompakt)
+                </button>
+            </div>
+
+            <div class="tb-group center-status">
+                <span class="status-badge" id="js-status">
+                    <span class="pulse-dot"></span> 
+                    <span id="js-status-text">Bereit für Datenstrom</span>
+                </span>
+            </div>
+
+            <div class="tb-group end">
+                <label class="btn-action outline">
+                    <svg viewBox="0 0 24 24" class="svg-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    Datei laden
+                    <input type="file" id="js-file-in" class="hidden-input" accept=".json,application/json">
+                </label>
+                <button id="js-btn-clear" class="btn-action danger">
+                    <svg viewBox="0 0 24 24" class="svg-icon"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                    Wischen
+                </button>
+            </div>
+        </div>
+
+        <!-- Main IDE Grid: Input & Visualization -->
+        <div class="js-ide-grid">
+            
+            <!-- Left: Raw Input (Editor) -->
+            <div class="glass-panel js-panel">
+                <div class="panel-header">
+                    <span class="panel-label">Raw Input (Editor)</span>
+                    <button class="btn-icon-small" id="js-btn-paste" title="Einfügen">
+                        <svg viewBox="0 0 24 24" class="svg-icon"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+                    </button>
+                </div>
+                <div class="editor-wrap">
+                    <textarea 
+                        id="js-input" 
+                        class="js-textarea" 
+                        placeholder="{\n  \"vgt_status\": \"ready\"></textarea>
+                </div>
+                
+                <!-- Metrics Bar: Live-Telemetrie -->
+                <div class="metrics-bar">
+                    <div class="metric">
+                        <span class="m-val" id="met-size">0 B</span>
+                        <span class="m-lbl">Größe</span>
+                    </div>
+                    <div class="metric">
+                        <span class="m-val" id="met-keys">0</span>
+                        <span class="m-lbl">Keys</span>
+                    </div>
+                    <div class="metric">
+                        <span class="m-val" id="met-objs">0</span>
+                        <span class="m-lbl">Objects</span>
+                    </div>
+                    <div class="metric">
+                        <span class="m-val" id="met-arrs">0</span>
+                        <span class="m-lbl">Arrays</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Visualizer Output -->
+            <div class="glass-panel js-panel">
+                <div class="panel-header">
+                    <div class="js-view-toggles">
+                        <button class="view-toggle active" data-view="highlight">Syntax-Code</button>
+                        <button class="view-toggle" data-view="tree">Data-Tree</button>
+                    </div>
+                    <div class="action-group">
+                        <button class="btn-icon-small" id="js-btn-copy" title="Ergebnis kopieren">
+                            <svg viewBox="0 0 24 24" class="svg-icon"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
+                        <button class="btn-icon-small" id="js-btn-download" title="Als .json speichern">
+                            <svg viewBox="0 0 24 24" class="svg-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="visualizer-wrap" id="js-output-wrap">
+                    
+                    <!-- Highlight View: Syntax Highlighting -->
+                    <pre id="view-highlight" class="js-code-view active-view"><code id="js-highlight-code" class="language-json"><span style="color:var(--vg-text-muted); font-style:italic;">// Analysiertes JSON erscheint hier...</span></code></pre>
+                    
+                    <!-- Tree View: Interaktive Objekt-Matrix -->
+                    <div id="view-tree" class="js-tree-view">
+                        <div class="tree-placeholder" id="tree-placeholder">
+                            Warte auf validen JSON-Code.
+                        </div>
+                        <ul class="vgt-json-tree" id="js-tree-root"></ul>
+                    </div>
+
+                    <!-- Error Overlay: Kognitive Crash-Abwehr -->
+                    <div id="js-error-overlay" class="error-overlay hidden">
+                        <svg viewBox="0 0 24 24" class="svg-icon"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        <h4 style="margin: 0.5rem 0 0.25rem 0;">Syntax Error (Parser Crash)</h4>
+                        <p id="js-error-msg">Unexpected token ' in JSON at position 42</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

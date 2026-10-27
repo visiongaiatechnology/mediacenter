@@ -1,0 +1,51 @@
+﻿<div class="vgt-tool-wrapper uc-tool" id="vgt-url-clean">
+    <div class="tool-hero">
+        <a href="#/tool/dashboard" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>System Hub</span>
+        </a>
+
+        <div class="hero-content">
+            <div class="hero-icon-wrapper uc-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon" aria-hidden="true">
+                    <path d="M10 13a5 5 0 0 0 7.07 0l2.12-2.12a5 5 0 0 0-7.07-7.07L11 4.93"></path>
+                    <path d="M14 11a5 5 0 0 0-7.07 0L4.81 13.12a5 5 0 0 0 7.07 7.07L13 19.07"></path>
+                    <line x1="4" y1="4" x2="20" y2="20"></line>
+                </svg>
+            </div>
+            <div>
+                <h2 class="tool-title">URL Cleaner Pro</h2>
+                <p class="tool-desc">Entfernt Tracking-Parameter, Click-IDs und Redirect-Muell lokal im Browser. Keine Requests, keine Logs, keine Cloud.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="uc-layout">
+        <section class="glass-panel uc-panel">
+            <label class="uc-label" for="uc-input">URLs einfügen</label>
+            <textarea id="uc-input" class="uc-textarea" spellcheck="false" placeholder="https://example.org/?utm_source=newsletter&fbclid=..."></textarea>
+            <div class="uc-actions">
+                <button type="button" class="uc-btn uc-btn-primary" id="uc-clean">Tracking entfernen</button>
+                <button type="button" class="uc-btn" id="uc-sample">Demo laden</button>
+                <button type="button" class="uc-btn" id="uc-reset">Reset</button>
+            </div>
+        </section>
+
+        <section class="uc-stats">
+            <div class="glass-panel uc-stat"><span>URLs</span><strong id="uc-stat-urls">0</strong></div>
+            <div class="glass-panel uc-stat"><span>Parameter entfernt</span><strong id="uc-stat-removed">0</strong></div>
+            <div class="glass-panel uc-stat uc-hot"><span>Redirects gelöst</span><strong id="uc-stat-redirects">0</strong></div>
+        </section>
+
+        <section class="glass-panel uc-panel">
+            <div class="uc-result-head">
+                <span>Bereinigte Ausgabe</span>
+                <button type="button" class="uc-btn uc-btn-compact" id="uc-copy" disabled>Kopieren</button>
+            </div>
+            <div id="uc-results" class="uc-results">
+                <p class="uc-empty">Noch keine URL bereinigt.</p>
+            </div>
+        </section>
+    </div>
+</div>
+

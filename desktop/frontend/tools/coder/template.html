@@ -1,0 +1,145 @@
+﻿<div class="vgt-tool-wrapper" id="vgt-coder">
+    
+    <!-- Hero Header: Navigations- und Titelbereich -->
+    <div class="tool-hero">
+        <a href="#/tool/dashboard" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>System Hub</span>
+        </a>
+        <div class="hero-content">
+            <div class="hero-icon-wrapper cd-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+            </div>
+            <div>
+                <h2 class="tool-title">VGT Code Omega 2100</h2>
+                <p class="tool-desc">
+                    Hochperformante Dual-Pane IDE. Führe differentielle Code-Analysen durch, extrahiere Deltas (Änderungen) und analysiere Modifikations-Sequenzen in Echtzeit.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface Body: Hauptbedienelemente -->
+    <div class="tool-body cd-layout">
+        
+        <!-- Action Toolbar: Systemsteuerung -->
+        <div class="cd-toolbar glass-panel">
+            <div class="tb-status">
+                <span class="pulse-dot"></span>
+                <span class="status-text">SYSTEM_STATUS: OPTIMAL</span>
+            </div>
+            <div class="tb-actions">
+                <button id="btn-flush" class="btn-action-small danger">
+                    <svg viewBox="0 0 24 24" class="svg-icon">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                    FLUSH STREAMS
+                </button>
+                <button id="btn-toggle-extractor" class="btn-action-small highlight-purple">
+                    <svg viewBox="0 0 24 24" class="svg-icon">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    EXTRACTOR
+                </button>
+                <button id="btn-execute-diff" class="btn-prime cyan-glow">
+                    <svg viewBox="0 0 24 24" class="svg-icon">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    EXECUTE (DIFF)
+                </button>
+            </div>
+        </div>
+
+        <!-- ==================== EDITOR MATRIX ==================== -->
+        <div id="cd-editor-matrix" class="cd-editor-grid">
+            
+            <!-- Source Alpha (Links) -->
+            <div class="cd-editor-panel group-alpha">
+                <div class="editor-header">
+                    <div class="eh-tag alpha-tag">SRC_ALPHA</div>
+                    <span class="eh-id">ID: 8X-99</span>
+                    <div class="eh-line alpha-line"></div>
+                </div>
+                <div class="editor-container">
+                    <div class="editor-corner top-right"></div>
+                    <div class="editor-corner bottom-left"></div>
+                    <textarea 
+                        id="cd-input-alpha" 
+                        class="cd-textarea" 
+                        spellcheck="false" 
+                        placeholder="// Paste Code Sequence Alpha..."></textarea>
+                    <pre aria-hidden="true" class="cd-highlight"><code id="cd-highlight-alpha"></code></pre>
+                    <span class="editor-watermark">INPUT_STREAM_ACTIVE</span>
+                </div>
+            </div>
+
+            <!-- Source Beta (Rechts) -->
+            <div class="cd-editor-panel group-beta">
+                <div class="editor-header">
+                    <div class="eh-tag beta-tag">SRC_BETA</div>
+                    <span class="eh-id">ID: 8X-100</span>
+                    <div class="eh-line beta-line"></div>
+                </div>
+                <div class="editor-container">
+                    <div class="editor-corner top-right"></div>
+                    <div class="editor-corner bottom-left"></div>
+                    <textarea 
+                        id="cd-input-beta" 
+                        class="cd-textarea" 
+                        spellcheck="false" 
+                        placeholder="// Paste Code Sequence Beta..."></textarea>
+                    <pre aria-hidden="true" class="cd-highlight"><code id="cd-highlight-beta"></code></pre>
+                    <span class="editor-watermark">MODIFICATION_LAYER</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ==================== UNIFIED DIFF VIEW ==================== -->
+        <div id="cd-diff-view" class="cd-diff-panel glass-panel hidden">
+            <div class="diff-header">
+                <div class="dh-title">
+                    <span class="pulse-dot green-pulse"></span>
+                    <span>DIFFERENTIAL_ANALYSIS_MATRIX</span>
+                </div>
+                <button id="btn-close-diff" class="btn-action-small danger outline">
+                    [ TERMINATE VIEW ]
+                </button>
+            </div>
+            <div id="cd-diff-content" class="diff-content checkerboard">
+                <!-- JS injiziert hier die differenzierten Zeilen -->
+            </div>
+        </div>
+
+        <!-- ==================== DELTA EXTRACTOR PANEL ==================== -->
+        <div id="cd-extractor-panel" class="cd-extractor glass-panel collapsed">
+            <div class="extractor-header" id="btn-collapse-extractor">
+                <div class="ex-title">
+                    <div class="ex-diamond"></div>
+                    <span>Delta Extraction Module</span>
+                    <span id="cd-change-count" class="ex-badge hidden">0 DETECTED</span>
+                </div>
+                <svg id="ex-chevron" viewBox="0 0 24 24" class="svg-icon ex-chevron">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
+            
+            <div id="cd-extractor-content" class="extractor-content">
+                <div class="ex-empty-state">
+                    <div class="spinner"></div>
+                    <span>// WAITING FOR DATA INPUT STREAMS...</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

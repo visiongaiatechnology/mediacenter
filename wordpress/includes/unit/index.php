@@ -1,0 +1,154 @@
+<?php
+/**
+ * VGT MEDIACENTER - UNIVERSAL CONVERTER (MATH ENGINE)
+ * STATUS: DIAMANT SUPREME (Hardened PHP Template)
+ * Vektor: XSS, Attribute Injection & Math-UI Hardening
+ */
+
+declare(strict_types=1);
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+/**
+ * Zero Dependencies - 100% Native Math Engine im Frontend.
+ * Führt hochpräzise Transformationen direkt im Browser-RAM durch.
+ */
+
+// Lokalisierungs-Domain für konsistente Sicherheit
+$text_domain = 'vgt-mediacenter';
+?>
+
+<div class="vgt-tool-wrapper" id="<?php echo esc_attr('vgt-unit'); ?>">
+    
+    <!-- Hero Header: Navigation und funktionale Identität -->
+    <div class="tool-hero">
+        <a href="<?php echo esc_url('?vgt_tool=dashboard'); ?>" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span><?php echo esc_html__('System Hub', $text_domain); ?></span>
+        </a>
+        <div class="hero-content">
+            <div class="hero-icon-wrapper unit-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon">
+                    <rect x="3" y="9" width="18" height="6" rx="1" ry="1"></rect>
+                    <line x1="7" y1="9" x2="7" y2="12"></line>
+                    <line x1="12" y1="9" x2="12" y2="12"></line>
+                    <line x1="17" y1="9" x2="17" y2="12"></line>
+                </svg>
+            </div>
+            <div>
+                <h2 class="tool-title"><?php echo esc_html__('VGT Universal Converter', $text_domain); ?></h2>
+                <p class="tool-desc">
+                    <?php echo esc_html__('Hochpräzise Transformation von physikalischen und digitalen Metriken. Echtzeit-Konvertierung mit Formel-Inspektor über 6 Maß-Dimensionen.', $text_domain); ?>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface Body -->
+    <div class="tool-body unit-layout">
+        
+        <!-- Category Selector: Dimensions-Matrix -->
+        <div class="glass-panel cat-panel">
+            <div class="panel-header" style="margin-bottom: 1rem; padding-bottom: 0.5rem;">
+                <span class="panel-label"><?php echo esc_html__('Maß-Dimension wählen', $text_domain); ?></span>
+            </div>
+            <div class="cat-grid" id="<?php echo esc_attr('unit-categories'); ?>">
+                
+                <?php
+                $categories = [
+                    ['id' => 'length', 'label' => 'Länge',     'icon' => '<line x1="22" y1="12" x2="2" y2="12"></line><polygon points="5.45 15.11 2 12 5.45 8.89"></polygon><polygon points="18.55 8.89 22 12 18.55 15.11"></polygon>'],
+                    ['id' => 'mass',   'label' => 'Masse',     'icon' => '<path d="M12 3v18M4 11h16M7 11l-3 7h6l-3-7zM17 11l-3 7h6l-3-7z"></path>'],
+                    ['id' => 'temp',   'label' => 'Temperatur', 'icon' => '<path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path>'],
+                    ['id' => 'data',   'label' => 'Daten',      'icon' => '<rect x="4" y="4" width="16" height="6" rx="2" ry="2"></rect><rect x="4" y="14" width="16" height="6" rx="2" ry="2"></rect><line x1="8" y1="7" x2="8.01" y2="7"></line><line x1="8" y1="17" x2="8.01" y2="17"></line>'],
+                    ['id' => 'speed',  'label' => 'Speed',      'icon' => '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>'],
+                    ['id' => 'area',   'label' => 'Fläche',     'icon' => '<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><path d="M3 9h18M9 21V9"></path>']
+                ];
+
+                foreach ($categories as $index => $cat): 
+                    $active_class = ($index === 0) ? ' active' : '';
+                ?>
+                    <button class="cat-btn<?php echo esc_attr($active_class); ?>" data-cat="<?php echo esc_attr($cat['id']); ?>">
+                        <svg viewBox="0 0 24 24" class="svg-icon"><?php echo $cat['icon']; ?></svg>
+                        <span><?php echo esc_html__($cat['label'], $text_domain); ?></span>
+                    </button>
+                <?php endforeach; ?>
+
+            </div>
+        </div>
+
+        <!-- Conversion Matrix: Operative Ebene -->
+        <div class="glass-panel conv-panel">
+            
+            <div class="conv-wrapper">
+                
+                <!-- Input 1 (Source: Vektor Alpha) -->
+                <div class="conv-block input-block">
+                    <div class="conv-header">
+                        <span class="conv-label"><?php echo esc_html__('Ausgangswert (Source)', $text_domain); ?></span>
+                    </div>
+                    <div class="conv-core">
+                        <input type="number" 
+                               id="<?php echo esc_attr('val-from'); ?>" 
+                               class="conv-input" 
+                               value="1" 
+                               placeholder="0.0">
+                        <div class="select-wrap">
+                            <select id="<?php echo esc_attr('sel-from'); ?>" class="vgt-select">
+                                <!-- Dynamische Injektion via JavaScript -->
+                            </select>
+                            <svg viewBox="0 0 24 24" class="select-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Swap Action: Vektor-Inversion -->
+                <div class="swap-action">
+                    <button id="<?php echo esc_attr('btn-swap'); ?>" class="btn-swap" title="<?php echo esc_attr__('Einheiten tauschen', $text_domain); ?>">
+                        <svg viewBox="0 0 24 24"><polyline points="16 3 21 8 16 13"></polyline><line x1="21" y1="8" x2="9" y2="8"></line><polyline points="8 21 3 16 8 11"></polyline><line x1="3" y1="16" x2="15" y2="16"></line></svg>
+                    </button>
+                </div>
+
+                <!-- Input 2 (Target: Vektor Beta) -->
+                <div class="conv-block target-block">
+                    <div class="conv-header">
+                        <span class="conv-label"><?php echo esc_html__('Zielwert (Target)', $text_domain); ?></span>
+                        <button class="btn-copy-small" id="<?php echo esc_attr('btn-copy-res'); ?>" title="<?php echo esc_attr__('In Zwischenablage kopieren', $text_domain); ?>">
+                            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
+                    </div>
+                    <div class="conv-core">
+                        <input type="number" 
+                               id="<?php echo esc_attr('val-to'); ?>" 
+                               class="conv-input target-input" 
+                               value="" 
+                               placeholder="0.0">
+                        <div class="select-wrap">
+                            <select id="<?php echo esc_attr('sel-to'); ?>" class="vgt-select">
+                                <!-- Dynamische Injektion via JavaScript -->
+                            </select>
+                            <svg viewBox="0 0 24 24" class="select-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Formula Inspector: Kognitive Herleitung -->
+            <div class="formula-inspector">
+                <div class="fi-header">
+                    <svg viewBox="0 0 24 24" class="svg-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <span class="fi-title"><?php echo esc_html__('Formel-Inspektor', $text_domain); ?></span>
+                </div>
+                <div class="fi-body">
+                    <code class="fi-code" id="<?php echo esc_attr('formula-display'); ?>">
+                        <?php echo esc_html__('Warte auf Eingabe...', $text_domain); ?>
+                    </code>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

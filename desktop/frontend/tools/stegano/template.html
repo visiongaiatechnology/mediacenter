@@ -1,0 +1,213 @@
+﻿<div class="vgt-tool-wrapper" id="vgt-stegano">
+    
+    <!-- Hero Header: Navigation und funktionale Identität -->
+    <div class="tool-hero">
+        <a href="#/tool/dashboard" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>System Hub</span>
+        </a>
+        <div class="hero-content">
+            <div class="hero-icon-wrapper sg-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon">
+                    <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path>
+                </svg>
+            </div>
+            <div>
+                <h2 class="tool-title">VGT Stegano-Vault</h2>
+                <p class="tool-desc">
+                    Visuelle Phantom-Kommunikation. Verstecke AES-256 verschlüsselte Nachrichten in den tiefsten Bit-Ebenen (LSB) unscheinbarer Bilder. 100% Offline-Sicherheit.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface Body -->
+    <div class="tool-body sg-layout">
+        
+        <!-- Mode Tabs: Kognitive Modus-Umschaltung -->
+        <div class="cipher-mode-tabs">
+            <button class="mode-tab active" data-mode="encode">
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg>
+                <div class="mt-text">
+                    <span class="mt-title">Versiegeln (Encode)</span>
+                    <span class="mt-sub">Nachricht in Bild verstecken</span>
+                </div>
+            </button>
+            <button class="mode-tab" data-mode="decode">
+                <svg viewBox="0 0 24 24"><path d="M2 12a10 10 0 0 1 10-10"></path><path d="M22 12a10 10 0 0 1-10 10"></path><path d="M12 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line></svg>
+                <div class="mt-text">
+                    <span class="mt-title">Extrahieren (Decode)</span>
+                    <span class="mt-sub">Versteckte Daten auslesen</span>
+                </div>
+            </button>
+        </div>
+
+        <!-- ==================== ENCODE WORKSPACE ==================== -->
+        <div id="sg-workspace-encode" class="workspace-area active-workspace">
+            
+            <div class="sg-grid">
+                
+                <!-- Left: Carrier Selection (Das Träger-Medium) -->
+                <div class="glass-panel sg-panel flex flex-col">
+                    <div class="panel-header">
+                        <span class="panel-label">1. Trägerbild (Carrier)</span>
+                        <button id="btn-enc-reset" class="btn-action-small hidden">
+                            Neues Bild
+                        </button>
+                    </div>
+
+                    <div class="drop-zone" id="enc-dropzone">
+                        <div class="drop-content">
+                            <div class="drop-icon-glow cyan"></div>
+                            <svg viewBox="0 0 24 24" class="drop-icon"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                            <h3 class="drop-title">Trägerbild ablegen</h3>
+                            <p class="drop-subtitle">JPG oder PNG (wird in PNG konvertiert)</p>
+                        </div>
+                        <input type="file" id="enc-file-input" class="hidden-input" accept="image/jpeg, image/png, image/webp" />
+                    </div>
+
+                    <div class="preview-container hidden checkerboard" id="enc-preview-box">
+                        <img id="enc-preview-img" src="" alt="Carrier Preview">
+                        <div class="capacity-meter mt-4">
+                            <div class="cap-header">
+                                <span class="cap-label">Verfügbare Matrix-Kapazität:</span>
+                                <span id="enc-capacity-val" class="cap-val highlight-cyan">0 Zeichen</span>
+                            </div>
+                            <div class="cap-bar"><div class="cap-fill" id="enc-cap-fill" style="width: 0%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Payload & Seal (Verschlüsselung & Einbettung) -->
+                <div class="glass-panel sg-panel flex flex-col">
+                    <div class="panel-header">
+                        <span class="panel-label">2. Payload (Geheime Daten)</span>
+                    </div>
+
+                    <textarea id="enc-payload-text" class="sg-textarea" placeholder="Gib hier deine geheime Nachricht ein..."></textarea>
+
+                    <div class="key-vault mt-4">
+                        <div class="key-header">
+                            <span class="key-label">3. AES-256 Passwort (Optional)</span>
+                        </div>
+                        <div class="key-input-wrapper">
+                            <svg viewBox="0 0 24 24" class="key-icon"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
+                            <input type="password" id="enc-password" class="key-input" placeholder="Verschlüsselt die Nachricht vor der Einbettung..." />
+                            <button type="button" class="btn-toggle-vis" id="btn-enc-toggle-vis">
+                                <svg viewBox="0 0 24 24" class="svg-icon"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Progress Tracking -->
+                    <div class="encoding-progress hidden mt-4" id="enc-progress-wrap">
+                        <div class="progress-bar">
+                            <div class="progress-fill cyan-fill" id="enc-progress-fill" style="width: 0%;"></div>
+                        </div>
+                        <span class="progress-text" id="enc-progress-text">
+                            Modifiziere Pixel-Bits...
+                        </span>
+                    </div>
+
+                    <button id="btn-enc-execute" class="btn-prime cyan-glow mt-4">
+                        <svg viewBox="0 0 24 24" class="svg-icon"><polygon points="12 2 12 12 22 12"></polygon><path d="M22 12A10 10 0 1 1 12 2"></path></svg>
+                        Signatur einbetten & PNG speichern
+                    </button>
+                </div>
+
+            </div>
+            
+            <div class="info-banner mt-4">
+                <svg viewBox="0 0 24 24" class="svg-icon"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                Das ausgegebene Bild MUSS als PNG versendet werden. Jegliche Kompression (wie beim Senden per WhatsApp als normales Bild) zerstört die versteckten LSB-Daten!
+            </div>
+
+        </div>
+
+        <!-- ==================== DECODE WORKSPACE ==================== -->
+        <div id="sg-workspace-decode" class="workspace-area hidden">
+            
+            <div class="sg-grid">
+                
+                <!-- Left: Stego Carrier (Die forensische Analyse) -->
+                <div class="glass-panel sg-panel flex flex-col">
+                    <div class="panel-header">
+                        <span class="panel-label">1. Stego-Bild analysieren</span>
+                        <button id="btn-dec-reset" class="btn-action-small hidden">
+                            Neues Bild
+                        </button>
+                    </div>
+
+                    <div class="drop-zone" id="dec-dropzone">
+                        <div class="drop-content">
+                            <div class="drop-icon-glow purple"></div>
+                            <svg viewBox="0 0 24 24" class="drop-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            <h3 class="drop-title">Verdächtiges PNG ablegen</h3>
+                            <p class="drop-subtitle">Das Tool sucht nach VGT-LSB Signaturen</p>
+                        </div>
+                        <input type="file" id="dec-file-input" class="hidden-input" accept="image/png, image/bmp" />
+                    </div>
+
+                    <div class="preview-container hidden checkerboard" id="dec-preview-box">
+                        <img id="dec-preview-img" src="" alt="Stego Preview">
+                    </div>
+                </div>
+
+                <!-- Right: Extraction (Daten-Wiederherstellung) -->
+                <div class="glass-panel sg-panel flex flex-col">
+                    <div class="panel-header">
+                        <span class="panel-label">2. Payload Extraktion</span>
+                    </div>
+
+                    <div class="key-vault">
+                        <div class="key-header">
+                            <span class="key-label">AES-256 Passwort (falls verwendet)</span>
+                        </div>
+                        <div class="key-input-wrapper">
+                            <svg viewBox="0 0 24 24" class="key-icon"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
+                            <input type="password" id="dec-password" class="key-input" placeholder="Passwort eingeben..." />
+                            <button type="button" class="btn-toggle-vis" id="btn-dec-toggle-vis">
+                                <svg viewBox="0 0 24 24" class="svg-icon"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button id="btn-dec-execute" class="btn-prime purple-glow mt-4" disabled>
+                        <svg viewBox="0 0 24 24" class="svg-icon"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        Deep-Scan starten
+                    </button>
+
+                    <div class="encoding-progress hidden mt-4" id="dec-progress-wrap">
+                        <div class="progress-bar">
+                            <div class="progress-fill purple-fill" id="dec-progress-fill" style="width: 0%;"></div>
+                        </div>
+                        <span class="progress-text" id="dec-progress-text">
+                            Lese Bit-Ebenen...
+                        </span>
+                    </div>
+
+                    <div class="output-container mt-4">
+                        <div class="panel-header" style="margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom:none;">
+                            <span class="panel-label">Extrahierter Datensatz</span>
+                            <button id="btn-dec-copy" class="btn-action-small hidden">
+                                Kopieren
+                            </button>
+                        </div>
+                        <textarea 
+                            id="dec-payload-output" 
+                            class="sg-textarea terminal-output" 
+                            readonly 
+                            placeholder="Ausgabe erscheint hier..."></textarea>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    
+    <!-- Hidden Master-Canvas: Forensische Pixel-Matrix-Operationen -->
+    <canvas id="steg-hidden-canvas" style="display:none;"></canvas>
+</div>

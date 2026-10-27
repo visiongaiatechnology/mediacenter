@@ -1,0 +1,163 @@
+﻿<div class="vgt-tool-wrapper" id="vgt-datacore">
+    
+    <!-- Hero Header: Navigation und System-Identität -->
+    <div class="tool-hero">
+        <a href="#/tool/dashboard" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>System Hub</span>
+        </a>
+        <div class="hero-content">
+            <div class="hero-icon-wrapper dc-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                </svg>
+            </div>
+            <div>
+                <h2 class="tool-title">VGT Data Core</h2>
+                <p class="tool-desc">
+                    Lokale Analytics Engine. Importiere CSV oder JSON Datensätze und rendere komplexe interaktive Visualisierungen im RAM. Zero-Trust Datenverarbeitung.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface Body: Dual-Pane Layout -->
+    <div class="tool-body dc-layout">
+        
+        <!-- Left: Controls & Ingestion Sidebar -->
+        <div class="dc-sidebar">
+            
+            <!-- Ingestion Zone: Drag & Drop Interface -->
+            <div class="glass-panel drop-zone" id="dc-drop-zone">
+                <div class="drop-content">
+                    <div class="drop-icon-glow purple"></div>
+                    <svg viewBox="0 0 24 24" class="drop-icon">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <h3 class="drop-title">Daten injizieren</h3>
+                    <p class="drop-subtitle" id="dc-drop-text">
+                        CSV oder JSON hier ablegen
+                    </p>
+                </div>
+                <input type="file" id="dc-file-input" class="hidden-input" accept=".csv, .json, application/json, text/csv" />
+            </div>
+
+            <!-- Configuration Panel: Mapping & Chart Selection -->
+            <div id="dc-config-panel" class="glass-panel dc-config hidden">
+                <div class="panel-header">
+                    <span class="panel-label">Render Config</span>
+                </div>
+
+                <div class="control-group">
+                    <label>X-Achse (Dimension)</label>
+                    <div class="select-wrap">
+                        <select id="dc-select-x" class="vgt-select">
+                            <option value="">Lade Metadaten...</option>
+                        </select>
+                        <svg viewBox="0 0 24 24" class="select-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                </div>
+
+                <div class="control-group mt-4">
+                    <label>Y-Achse (Metrik)</label>
+                    <div class="select-wrap">
+                        <select id="dc-select-y" class="vgt-select">
+                            <option value="">Lade Metadaten...</option>
+                        </select>
+                        <svg viewBox="0 0 24 24" class="select-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                </div>
+
+                <div class="control-group mt-4">
+                    <label>Visualisierung</label>
+                    <div class="dc-chart-types">
+                        <button class="dc-type-btn active" data-type="bar" title="Bar Chart">
+                            <svg viewBox="0 0 24 24" class="svg-icon"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                        </button>
+                        <button class="dc-type-btn" data-type="line" title="Line Chart">
+                            <svg viewBox="0 0 24 24" class="svg-icon"><polyline points="3 17 9 11 13 15 21 7"></polyline></svg>
+                        </button>
+                        <button class="dc-type-btn" data-type="pie" title="Pie Chart">
+                            <svg viewBox="0 0 24 24" class="svg-icon"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <button id="dc-btn-render" class="btn-prime purple-glow mt-4">
+                    <svg viewBox="0 0 24 24" class="svg-icon"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    <span>Compute Visuals</span>
+                </button>
+            </div>
+
+            <!-- Stats Panel: Data Integrity Info -->
+            <div id="dc-stats-panel" class="glass-panel dc-stats hidden mt-4">
+                <div class="stat-row">
+                    <span class="stat-lbl">Datensätze (Rows)</span>
+                    <span id="dc-stat-rows" class="stat-val highlight-cyan">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-lbl">Dimensionen (Cols)</span>
+                    <span id="dc-stat-cols" class="stat-val highlight-purple">0</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Right: Global Workspace -->
+        <div class="dc-workspace">
+            
+            <!-- Workspace Navigation Tabs -->
+            <div class="dc-tabs">
+                <button class="dc-tab-btn active" data-target="dc-view-visuals">
+                    <svg viewBox="0 0 24 24" class="svg-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    Visual Analytics
+                </button>
+                <button class="dc-tab-btn" data-target="dc-view-raw">
+                    <svg viewBox="0 0 24 24" class="svg-icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    Raw Matrix (Preview)
+                </button>
+            </div>
+
+            <div class="glass-panel dc-view-container">
+                
+                <!-- View: Visuals Output -->
+                <div id="dc-view-visuals" class="dc-view active">
+                    <div id="dc-chart-empty" class="dc-empty-state">
+                        <svg viewBox="0 0 24 24" class="svg-icon"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                        <p>System erwartet Dateneinspeisung. Konfiguriere die Achsen in der Seitenleiste, um die Berechnung zu starten.</p>
+                    </div>
+                    <!-- ApexCharts Output Mount-Point -->
+                    <div id="dc-chart-canvas" class="dc-chart-wrap"></div>
+                </div>
+
+                <!-- View: Raw Data Preview -->
+                <div id="dc-view-raw" class="dc-view hidden">
+                    <div class="dc-table-wrapper custom-scrollbar">
+                        <table class="vgt-data-table">
+                            <thead id="dc-table-head">
+                                <!-- Dynamische Injektion via JavaScript -->
+                            </thead>
+                            <tbody id="dc-table-body">
+                                <tr>
+                                    <td class="empty-cell" colspan="100%">
+                                        Keine Daten im Speicher
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="dc-table-footer">
+                        Aus Performance-Gründen werden hier maximal die ersten 100 Datensätze visualisiert.
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

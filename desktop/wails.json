@@ -1,0 +1,19 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "VGT-Mediacenter-Supreme",
+  "outputfilename": "VGT-Mediacenter-Supreme",
+  "frontend:dir": "./frontend",
+  "wailsjsdir": "./frontend",
+  "version": "1.0.0-beta",
+  "author": {
+    "name": "VisionGaiaTechnology",
+    "email": "dev@visiongaia.de"
+  },
+  "info": {
+    "companyName": "VisionGaiaTechnology",
+    "productName": "VGT Mediacenter V1.0 Beta",
+    "productVersion": "1.0.0-beta",
+    "copyright": "Copyright © 2026 VisionGaiaTechnology. All rights reserved.",
+    "comments": "VGT Mediacenter V1.0 Beta — Sovereign Desktop Workstation. 100% Client-Side Invariant. Zero Cloud. Zero Telemetry."
+  }
+}

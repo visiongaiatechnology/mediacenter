@@ -1,0 +1,154 @@
+﻿<div class="vgt-tool-wrapper" id="vgt-jung">
+    
+    <!-- Hero Header: Navigation und System-Identität -->
+    <div class="tool-hero">
+        <a href="#/tool/dashboard" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>System Hub</span>
+        </a>
+        <div class="hero-content">
+            <div class="hero-icon-wrapper jg-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polygon points="12 2 22 17 2 17 12 2"></polygon>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+            </div>
+            <div>
+                <h2 class="tool-title">VGT Archetype Matrix</h2>
+                <p class="tool-desc">
+                    Entschlüssele deine Rolle im kollektiven Unbewussten. Eine Vektor-Analyse der 12 Jung\'schen Ur-Muster basierend auf deinen psychologischen Antriebskräften.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface Body -->
+    <div class="tool-body jg-layout">
+        
+        <!-- Left: Dualitäts-Scanner (Kalibrierungs-Matrix) -->
+        <div class="glass-panel jg-scanner-panel">
+            <div class="panel-header">
+                <span class="panel-label">Neuronale Dualitäts-Fader</span>
+                <span class="status-badge" id="jg-sync-status">
+                    Sync: 0%
+                </span>
+            </div>
+            
+            <p class="scanner-desc">
+                Verschiebe die Fader, um deine inneren Antriebe zu kalibrieren. Die Matrix berechnet deine Signatur in Echtzeit.
+            </p>
+
+            <div class="fader-group mt-4">
+                <div class="fader-labels">
+                    <span class="label-left">Struktur & Kontrolle</span>
+                    <span class="label-right">Freiheit & Chaos</span>
+                </div>
+                <input type="range" class="vgt-fader" id="axis-order" min="0" max="100" value="50">
+            </div>
+
+            <div class="fader-group">
+                <div class="fader-labels">
+                    <span class="label-left">Ego & Macht</span>
+                    <span class="label-right">Empathie & Zugehörigkeit</span>
+                </div>
+                <input type="range" class="vgt-fader" id="axis-ego" min="0" max="100" value="50">
+            </div>
+
+            <div class="fader-group">
+                <div class="fader-labels">
+                    <span class="label-left">Logik & Realismus</span>
+                    <span class="label-right">Vision & Mystik</span>
+                </div>
+                <input type="range" class="vgt-fader" id="axis-logic" min="0" max="100" value="50">
+            </div>
+
+            <div class="fader-group">
+                <div class="fader-labels">
+                    <span class="label-left">Bewahrung & Schutz</span>
+                    <span class="label-right">Risiko & Transformation</span>
+                </div>
+                <input type="range" class="vgt-fader" id="axis-risk" min="0" max="100" value="50">
+            </div>
+
+            <div class="scanner-action">
+                <button id="btn-lock-archetype" class="btn-prime gold-glow">
+                    <svg viewBox="0 0 24 24" class="svg-icon"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    Signatur Verriegeln
+                </button>
+            </div>
+        </div>
+
+        <!-- Right: Archetype Matrix / Result Rendering -->
+        <div class="glass-panel jg-matrix-panel">
+            
+            <!-- Result Card: Dominante Signatur (Hidden until calibrated) -->
+            <div id="jg-result-card" class="archetype-card hidden">
+                <div class="card-glow"></div>
+                <div class="ac-header">
+                    <span class="ac-subtitle">Dominanter Archetyp</span>
+                    <h2 class="ac-title" id="ac-name">Der Magier</h2>
+                    <span class="ac-motto" id="ac-motto">
+                        "Ich mache Visionen zur Realität."
+                    </span>
+                </div>
+                
+                <div class="ac-body">
+                    <div class="ac-data-row">
+                        <span class="ac-key">Kernwunsch:</span>
+                        <span class="ac-val" id="ac-desire">Die fundamentalen Gesetze des Universums verstehen.</span>
+                    </div>
+                    <div class="ac-data-row">
+                        <span class="ac-key">Größte Angst:</span>
+                        <span class="ac-val" id="ac-fear">Unbeabsichtigte negative Konsequenzen.</span>
+                    </div>
+                    <div class="ac-data-row">
+                        <span class="ac-key">Lebensstrategie:</span>
+                        <span class="ac-val" id="ac-strategy">Eine Vision entwickeln und danach leben.</span>
+                    </div>
+                    
+                    <div class="ac-divider"></div>
+                    
+                    <div class="ac-data-row highlight-row">
+                        <span class="ac-key">Primäre Stärken:</span>
+                        <span class="ac-val" id="ac-strengths">Transformation, Charisma, Heilung.</span>
+                    </div>
+                    <div class="ac-data-row warning-row">
+                        <span class="ac-key">Der Schatten (Schwächen):</span>
+                        <span class="ac-val" id="ac-weaknesses">Manipulation, Realitätsverlust, Arroganz.</span>
+                    </div>
+
+                    <!-- Secondary Archetype: Wing-Analysis -->
+                    <div class="ac-secondary">
+                        <span class="ac-subtitle">Dein Flügel (Sekundärer Archetyp)</span>
+                        <div class="sec-wrap">
+                            <div class="sec-info">
+                                <svg viewBox="0 0 24 24" class="svg-icon"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                                <h4 id="ac-sec-name">Der Schöpfer</h4>
+                            </div>
+                            <span id="ac-sec-match">85.2% Match</span>
+                        </div>
+                        <p class="sec-desc">
+                            Dein dominanter Typ wird stark von diesem Verhaltensmuster eingefärbt und gelenkt.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="ac-footer">
+                    <button id="btn-unlock" class="btn-action-small">
+                        <svg viewBox="0 0 24 24" class="svg-icon"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg>
+                        Neural rekalibrieren
+                    </button>
+                </div>
+            </div>
+
+            <!-- The 12 Archetypes Grid: Mounting-Point für die interaktive Matrix -->
+            <div id="jg-grid-view" class="archetype-grid">
+                <!-- Dynamische Injektion via kognitiver JavaScript-Engine -->
+            </div>
+
+        </div>
+
+    </div>
+</div>

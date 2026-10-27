@@ -1,0 +1,144 @@
+﻿<div class="vgt-tool-wrapper" id="vgt-imgcomp">
+    
+    <!-- Hero Header: Navigation und Titelbereich -->
+    <div class="tool-hero">
+        <a href="#/tool/dashboard" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>System Hub</span>
+        </a>
+        <div class="hero-content">
+            <div class="hero-icon-wrapper ic-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon">
+                    <polyline points="7 16 3 12 7 8"></polyline><line x1="3" y1="12" x2="11" y2="12"></line>
+                    <polyline points="17 8 21 12 17 16"></polyline><line x1="21" y1="12" x2="13" y2="12"></line>
+                    <line x1="12" y1="4" x2="12" y2="20"></line>
+                </svg>
+            </div>
+            <div>
+                <h2 class="tool-title">VGT Quantum Squeeze</h2>
+                <p class="tool-desc">
+                    Verlustfreie und verlustbehaftete Bildkompression im Browser. Reduziere Dateigrößen massiv, ohne deine Bilder in eine fremde Cloud hochzuladen.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface Body -->
+    <div class="tool-body">
+        
+        <!-- View 1: Dropzone (Initial Ingestion) -->
+        <div class="glass-panel drop-zone" id="ic-dropzone">
+            <div class="drop-content">
+                <div class="drop-icon-glow"></div>
+                <svg viewBox="0 0 24 24" class="drop-icon"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                <h3 class="drop-title">Bildmaterial injizieren</h3>
+                <p class="drop-subtitle">Ziehe ein JPG, PNG oder WEBP hierher</p>
+                <div class="drop-badge">Unlimitiertes Limit (Local)</div>
+            </div>
+            <input type="file" id="ic-file-input" class="hidden-input" accept="image/jpeg, image/png, image/webp" />
+        </div>
+
+        <!-- View 2: Workspace View (Hidden until Ingestion) -->
+        <div id="ic-workspace" class="ic-workspace hidden">
+            
+            <!-- Controls Sidebar: Kompressions-Parameter -->
+            <div class="glass-panel ic-controls">
+                <div class="controls-header">
+                    <span class="panel-label">Kompressions-Matrix</span>
+                    <button id="ic-btn-reset" class="btn-action-small">
+                        <svg viewBox="0 0 24 24" class="svg-icon"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        Verwerfen
+                    </button>
+                </div>
+
+                <!-- Quality Control -->
+                <div class="control-group">
+                    <div class="control-label-row">
+                        <label>Qualität (Entropy)</label>
+                        <span id="lbl-quality" class="val-badge">80%</span>
+                    </div>
+                    <input type="range" id="ic-quality" class="vgt-slider" min="0" max="100" value="80" step="1">
+                </div>
+
+                <!-- Dimension Control -->
+                <div class="control-group">
+                    <label>Maximale Dimensionen (px)</label>
+                    <div class="dim-inputs">
+                        <div class="input-wrap">
+                            <span class="dim-prefix">W</span>
+                            <input type="number" id="ic-max-width" class="vgt-input" placeholder="Auto">
+                        </div>
+                        <div class="dim-separator"><svg viewBox="0 0 24 24" class="svg-icon"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></div>
+                        <div class="input-wrap">
+                            <span class="dim-prefix">H</span>
+                            <input type="number" id="ic-max-height" class="vgt-input" placeholder="Auto">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Format Selection -->
+                <div class="control-group">
+                    <label>Output Format</label>
+                    <div class="format-toggles">
+                        <button class="fmt-btn active" data-fmt="auto">Auto</button>
+                        <button class="fmt-btn" data-fmt="image/jpeg">JPG</button>
+                        <button class="fmt-btn" data-fmt="image/webp">WEBP</button>
+                        <button class="fmt-btn" data-fmt="image/png">PNG</button>
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <button id="ic-btn-download" class="btn-prime orange-glow mt-auto">
+                    <svg viewBox="0 0 24 24" class="svg-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Optimiertes Bild speichern
+                </button>
+            </div>
+
+            <!-- Previews & Stats: Visueller Abgleich -->
+            <div class="ic-previews">
+                
+                <!-- Telemetry Header -->
+                <div class="glass-panel ic-stats-panel">
+                    <div class="stat-box">
+                        <span class="stat-label">Original</span>
+                        <span id="stat-orig-size" class="stat-val">0 MB</span>
+                    </div>
+                    <div class="stat-divider">
+                        <svg viewBox="0 0 24 24" class="svg-icon"><polyline points="13 17 18 12 13 7"></polyline><line x1="6" y1="12" x2="18" y2="12"></line></svg>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Komprimiert</span>
+                        <span id="stat-comp-size" class="stat-val highlight-orange">0 MB</span>
+                    </div>
+                    <div class="stat-savings" id="stat-savings">
+                        <span class="savings-val">-0%</span>
+                        <span class="savings-label">Speicher gespart</span>
+                    </div>
+                </div>
+
+                <!-- Image Comparison Grid -->
+                <div class="ic-image-grid">
+                    <div class="glass-panel img-panel">
+                        <div class="img-header">Original Source</div>
+                        <div class="img-container checkerboard">
+                            <img id="ic-img-original" src="" alt="Original Preview">
+                        </div>
+                    </div>
+                    <div class="glass-panel img-panel">
+                        <div class="img-header">
+                            Quantum Output 
+                            <span id="lbl-processing" class="processing-badge hidden">
+                                Rechne...
+                            </span>
+                        </div>
+                        <div class="img-container checkerboard">
+                            <img id="ic-img-compressed" src="" alt="Compressed Preview">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

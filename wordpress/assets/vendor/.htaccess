@@ -1,0 +1,19 @@
+# VGT SHADOW NET: APEX CACHE PROTOCOL
+Options +FollowSymLinks -Indexes -ExecCGI
+<IfModule mod_authz_core.c>
+    Require all granted
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Allow from all
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 year"
+</IfModule>
+<IfModule mod_headers.c>
+    <FilesMatch "\.(js|css|woff|woff2|ttf|svg|png|jpg)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+</IfModule>

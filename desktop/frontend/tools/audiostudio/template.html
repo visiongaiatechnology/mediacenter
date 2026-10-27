@@ -1,0 +1,164 @@
+﻿<div class="vgt-tool-wrapper" id="vgt-audiostudio">
+    
+    <!-- Hero Header -->
+    <div class="tool-hero">
+        <a href="#/tool/dashboard" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>System Hub</span>
+        </a>
+        <div class="hero-content">
+            <div class="hero-icon-wrapper as-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                </svg>
+            </div>
+            <div>
+                <h2 class="tool-title">Audio Studio Pro</h2>
+                <p class="tool-desc">
+                    Echtzeit Audio-Analyse, 5-Band Equalizer und Format-Konvertierung (MP3/WAV) im Browser. Absolute Vertraulichkeit.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="tool-body">
+        
+        <!-- Dropzone View -->
+        <div class="glass-panel drop-zone" id="as-dropzone">
+            <div class="drop-content">
+                <div class="drop-icon-glow"></div>
+                <svg viewBox="0 0 24 24" class="drop-icon">
+                    <path d="M9 18V5l12-2v13"></path>
+                    <circle cx="6" cy="18" r="3"></circle>
+                    <circle cx="18" cy="16" r="3"></circle>
+                </svg>
+                <h3 class="drop-title">Audiospur injizieren</h3>
+                <p class="drop-subtitle">Ziehe WAV, MP3, OGG oder M4A Dateien hierher</p>
+                <div class="drop-badge">Lokale Waveform-Analyse & EQ</div>
+            </div>
+            <input type="file" id="as-file-input" class="hidden-input" accept="audio/*" />
+        </div>
+
+        <!-- Workspace View -->
+        <div id="as-workspace" class="as-layout hidden">
+            
+            <!-- Main Audio Editor Panel -->
+            <div class="glass-panel as-editor-panel">
+                <div class="as-header">
+                    <div class="as-track-info">
+                        <span class="as-filename" id="as-filename">track_01.mp3</span>
+                        <span class="as-filesize" id="as-filesize">0 MB</span>
+                    </div>
+                    <button id="as-btn-reset" class="btn-action-small danger">
+                        <svg viewBox="0 0 24 24" class="svg-icon">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                        Spur verwerfen
+                    </button>
+                </div>
+
+                <!-- Waveform Display -->
+                <div class="as-waveform-container" id="as-waveform-container">
+                    <div class="waveform-loader hidden" id="as-loader">
+                        <div class="waveform-spinner"></div>
+                        <span>Dekodiere Audiospur...</span>
+                    </div>
+                    <div id="waveform" class="waveform-canvas"></div>
+                </div>
+
+                <!-- Playback Controls -->
+                <div class="as-playback-controls">
+                    <button class="btn-play" id="btn-play-pause">
+                        <svg viewBox="0 0 24 24" class="svg-icon play-icon">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                    </button>
+                    
+                    <div class="as-time-display">
+                        <span id="time-current">00:00</span> / <span id="time-total">00:00</span>
+                    </div>
+
+                    <div class="as-volume-control">
+                        <svg viewBox="0 0 24 24" class="svg-icon">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                        </svg>
+                        <input type="range" id="as-volume" class="vgt-slider volume-slider" min="0" max="1" step="0.05" value="1">
+                    </div>
+                </div>
+
+                <!-- Studio Equalizer (5-Band) -->
+                <div class="as-eq-section">
+                    <div class="panel-label">Studio Equalizer (5-Band Biquad)</div>
+                    <div class="eq-grid">
+                        <?php 
+                        $freqs = ['60 Hz', '230 Hz', '910 Hz', '3.6 kHz', '14 kHz'];
+                        foreach ($freqs as $index => $freq): 
+                        ?>
+                        <div class="eq-band">
+                            <span class="eq-val" id="val-eq-{$index}">0 dB</span>
+                            <div class="slider-container">
+                                <input type="range" 
+                                       class="vertical-slider eq-slider" 
+                                       data-band="" 
+                                       min="-12" max="12" step="1" value="0">
+                            </div>
+                            <span class="eq-freq"></span>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conversion Panel -->
+            <div class="glass-panel as-convert-panel">
+                <h3 class="panel-label">Export & Konvertierung</h3>
+                
+                <div class="control-group">
+                    <label>Zielformat</label>
+                    <div class="format-toggles">
+                        <button class="fmt-btn active" data-fmt="mp3">MP3 (LameJS)</button>
+                        <button class="fmt-btn" data-fmt="wav">WAV (Lossless)</button>
+                    </div>
+                </div>
+
+                <div class="control-group" id="mp3-quality-group">
+                    <div class="control-label-row">
+                        <label>MP3 Bitrate (Qualität)</label>
+                        <span id="lbl-bitrate" class="val-badge">192 kbps</span>
+                    </div>
+                    <input type="range" id="as-bitrate" class="vgt-slider" min="64" max="320" value="192" step="64">
+                    <div class="range-marks">
+                        <span>64 (Low)</span>
+                        <span>128</span>
+                        <span>192</span>
+                        <span>256</span>
+                        <span>320 (Pro)</span>
+                    </div>
+                </div>
+
+                <div class="encoding-progress hidden" id="as-encode-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="encode-fill"></div>
+                    </div>
+                    <span class="progress-text" id="encode-text">Kodiere: 0%</span>
+                </div>
+
+                <button id="as-btn-export" class="btn-prime pink-glow mt-auto">
+                    <svg viewBox="0 0 24 24" class="svg-icon">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Audiospur Rendern
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>

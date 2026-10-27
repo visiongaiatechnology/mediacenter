@@ -1,0 +1,149 @@
+﻿<div class="vgt-tool-wrapper" id="vgt-whistle">
+    
+    <!-- Hero Header: Navigation und funktionale Identität -->
+    <div class="tool-hero">
+        <a href="#/tool/dashboard" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>System Hub</span>
+        </a>
+        <div class="hero-content">
+            <div class="hero-icon-wrapper wb-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon">
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                </svg>
+            </div>
+            <div>
+                <h2 class="tool-title">VisionWhistleBlow</h2>
+                <p class="tool-desc">
+                    Militärische Dokumenten-Schwärzung. Zerstört versteckte Text-Layer und Metadaten physisch durch Rasterisierung. 100% lokal und sicher für Whistleblower.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface Body -->
+    <div class="tool-body wb-layout">
+        
+        <!-- Mode Selector: Strategische Wahl der Zensur-Methode -->
+        <div class="wb-mode-selector glass-panel">
+            <button class="mode-btn active" data-mode="pdf">
+                <svg viewBox="0 0 24 24" class="svg-icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M16 13H8"></path><path d="M16 17H8"></path><path d="M10 9H8"></path></svg>
+                PDF-Shredder (Visuell)
+            </button>
+            <button class="mode-btn" data-mode="text">
+                <svg viewBox="0 0 24 24" class="svg-icon"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>
+                Text-Sanitizer (Regex)
+            </button>
+        </div>
+
+        <!-- ==================== MODE: TEXT SANITIZER ==================== -->
+        <div id="wb-mode-text" class="wb-mode-view hidden">
+            <div class="wb-grid">
+                <div class="glass-panel wb-panel">
+                    <div class="panel-header">
+                        <span class="panel-label">Original Datensatz</span>
+                        <div class="action-group">
+                            <input type="text" 
+                                   id="wb-regex-input" 
+                                   class="vgt-input small" 
+                                   placeholder="Zu schwärzende Worte (Komma getrennt)...">
+                        </div>
+                    </div>
+                    <textarea id="wb-text-input" class="wb-textarea" placeholder="Kopiere deinen geheimen Text hier hinein..."></textarea>
+                </div>
+                
+                <div class="glass-panel wb-panel">
+                    <div class="panel-header">
+                        <span class="panel-label">Sanitized Output</span>
+                        <button id="wb-btn-copy-text" class="btn-action-small">
+                            <svg viewBox="0 0 24 24" class="svg-icon"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            Copy
+                        </button>
+                    </div>
+                    <textarea id="wb-text-output" class="wb-textarea output" readonly placeholder="Geschwärzter Text erscheint hier..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== MODE: PDF SHREDDER ==================== -->
+        <div id="wb-mode-pdf" class="wb-mode-view">
+            
+            <!-- Ingestion Zone (Dropzone) -->
+            <div class="glass-panel drop-zone" id="wb-pdf-dropzone">
+                <div class="drop-content">
+                    <div class="drop-icon-glow pink"></div>
+                    <svg viewBox="0 0 24 24" class="drop-icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                    <h3 class="drop-title">PDF injizieren</h3>
+                    <p class="drop-subtitle">Ziehe ein Dokument hierher zur visuellen Zensur</p>
+                    <div class="drop-badge">Lokale Render-Engine</div>
+                </div>
+                <input type="file" id="wb-pdf-input" class="hidden-input" accept="application/pdf" />
+            </div>
+
+            <!-- PDF Workspace (Hidden until load) -->
+            <div id="wb-pdf-workspace" class="wb-pdf-layout hidden">
+                
+                <!-- Toolbar: Navigations- und Korrektur-Matrix -->
+                <div class="glass-panel wb-toolbar">
+                    <div class="toolbar-nav">
+                        <button id="wb-pdf-prev" class="btn-nav" disabled><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+                        <span class="page-indicator">Seite <span id="wb-page-current">1</span> / <span id="wb-page-total">?</span></span>
+                        <button id="wb-pdf-next" class="btn-nav"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                    </div>
+                    
+                    <div class="toolbar-actions">
+                        <button id="wb-btn-undo" class="btn-action-small">
+                            <svg viewBox="0 0 24 24" class="svg-icon"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+                            Rückgängig (Seite)
+                        </button>
+                        <button id="wb-btn-close-pdf" class="btn-action-small danger">
+                            <svg viewBox="0 0 24 24" class="svg-icon"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            Verwerfen
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Main Canvas Container: Forensische Manipulations-Fläche -->
+                <div class="wb-canvas-container checkerboard" id="wb-canvas-wrapper">
+                    <div class="canvas-loading" id="wb-canvas-loader">
+                        <div class="spinner"></div>
+                        <span>Rendere Vektoren...</span>
+                    </div>
+                    
+                    <!-- Background Canvas: PDF-Signatur-Render -->
+                    <canvas id="wb-pdf-canvas"></canvas>
+                    
+                    <!-- Foreground Canvas: Aktive Zensur-Layer (Drawing) -->
+                    <canvas id="wb-draw-canvas"></canvas>
+                </div>
+
+                <!-- Export Panel: Destruktive Finalisierung -->
+                <div class="glass-panel wb-export-panel">
+                    <div class="export-warning">
+                        <svg viewBox="0 0 24 24" class="svg-icon"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        <span>Hinweis: Das Master-PDF wird als Bild gerastert, um die Text-Layer unter den Zensurblöcken physisch und unwiderruflich zu zerstören.</span>
+                    </div>
+                    
+                    <!-- Progress Tracker -->
+                    <div class="encoding-progress hidden" id="wb-export-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill pink-fill" id="wb-progress-fill"></div>
+                        </div>
+                        <span class="progress-text" id="wb-progress-text">
+                            Rastere Seite 1...
+                        </span>
+                    </div>
+
+                    <button id="wb-btn-export" class="btn-prime pink-glow">
+                        <svg viewBox="0 0 24 24" class="svg-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Sicheres Zensur-PDF Exportieren
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,71 @@
+﻿<div class="vgt-tool-wrapper mf-tool" id="vgt-manifest">
+    <div class="tool-hero">
+        <a href="#/tool/dashboard" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>System Hub</span>
+        </a>
+
+        <div class="hero-content">
+            <div class="hero-icon-wrapper mf-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon" aria-hidden="true">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <polyline points="9 15 11 17 16 12"></polyline>
+                </svg>
+            </div>
+            <div>
+                <h2 class="tool-title">Manifest Forge</h2>
+                <p class="tool-desc">Erstellt und verifiziert SHA-256 Datei-Manifeste lokal. Perfekt fuer Releases, Upload-Pruefung, Backups und Integritaetsnachweise.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mf-layout">
+        <section class="glass-panel mf-dropzone" id="mf-dropzone">
+            <div class="mf-drop-content">
+                <svg viewBox="0 0 24 24" class="mf-drop-icon" aria-hidden="true">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <h3>Dateien oder Ordner wählen</h3>
+                <p>Web Crypto berechnet SHA-256 direkt im Browser. Keine Datei wird hochgeladen.</p>
+                <div class="mf-actions">
+                    <button type="button" class="mf-btn mf-btn-primary" id="mf-select-files">Dateien wählen</button>
+                    <button type="button" class="mf-btn" id="mf-select-dir">Ordner wählen</button>
+                </div>
+            </div>
+            <input type="file" id="mf-file-input" class="hidden-input" multiple />
+            <input type="file" id="mf-dir-input" class="hidden-input" multiple webkitdirectory directory />
+        </section>
+
+        <section class="mf-stats">
+            <div class="glass-panel mf-stat"><span>Dateien</span><strong id="mf-stat-files">0</strong></div>
+            <div class="glass-panel mf-stat"><span>Gehashed</span><strong id="mf-stat-hashed">0</strong></div>
+            <div class="glass-panel mf-stat mf-hot"><span>Verifiziert</span><strong id="mf-stat-ok">0</strong></div>
+        </section>
+
+        <section class="glass-panel mf-panel">
+            <div class="mf-head">
+                <span>Manifest Output</span>
+                <div class="mf-actions">
+                    <button type="button" class="mf-btn mf-btn-compact" id="mf-copy" disabled>Kopieren</button>
+                    <button type="button" class="mf-btn mf-btn-compact" id="mf-download" disabled>Download</button>
+                </div>
+            </div>
+            <progress class="mf-progress" id="mf-progress" max="100" value="0"></progress>
+            <p id="mf-status" class="mf-status">Bereit.</p>
+            <textarea id="mf-output" class="mf-output" readonly spellcheck="false"></textarea>
+        </section>
+
+        <section class="glass-panel mf-panel">
+            <label class="mf-head-label" for="mf-verify-input">Manifest verifizieren</label>
+            <textarea id="mf-verify-input" class="mf-output mf-verify" spellcheck="false" placeholder="sha256  path/to/file.ext"></textarea>
+            <button type="button" class="mf-btn mf-btn-primary" id="mf-verify" disabled>Gegen aktuelle Dateien prüfen</button>
+            <div id="mf-results" class="mf-results">
+                <p class="mf-empty">Noch keine Verifikation gestartet.</p>
+            </div>
+        </section>
+    </div>
+</div>
+

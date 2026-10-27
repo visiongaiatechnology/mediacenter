@@ -1,0 +1,75 @@
+# ========================================================
+# VGT MEDIACENTER — REPOSITORY GOVERNANCE (.gitignore)
+# Standard: VisionGaiaTechnology /vgt-github-pusher
+# ========================================================
+
+# Compiled Binaries & Release Artifacts
+*.exe
+*.dll
+*.so
+*.dylib
+*.bin
+*.iso
+*.img
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.zip
+*.7z
+desktop/build/bin/
+desktop/dist/
+build/bin/
+dist/
+
+# Logs & Temporary Debugging
+*.log
+debug.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+wsl_*.txt
+
+# Internal Agent & Workspace Artifacts (Strict VGT Hygiene)
+NEXT.md
+next.md
+CURRENT_TASK.md
+HANDOFF.md
+SESSION_NOTES.md
+DEVELOPER_NOTES.md
+AGENT_NOTES.md
+WORKLOG.md
+*.tmp
+*.bak
+*.swp
+*~
+scratch/
+.system_generated/
+
+# Credentials, Keys & Secrets
+*.pem
+*.key
+*.pkcs12
+*.pfx
+*.p12
+*.crt
+*.cert
+.env
+.env.*
+!.env.example
+secrets.*
+credentials.*
+
+# OS & Editor Artifacts
+.DS_Store
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node & Package Managers
+node_modules/
+.npm/
+.yarn/

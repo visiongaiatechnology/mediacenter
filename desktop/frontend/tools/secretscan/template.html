@@ -1,0 +1,86 @@
+﻿<div class="vgt-tool-wrapper ss-tool" id="vgt-secret-scan">
+    <div class="tool-hero">
+        <a href="#/tool/dashboard" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>System Hub</span>
+        </a>
+
+        <div class="hero-content">
+            <div class="hero-icon-wrapper ss-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon" aria-hidden="true">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    <path d="M9 12l2 2 4-4"></path>
+                </svg>
+            </div>
+            <div>
+                <h2 class="tool-title">Secret Scanner Pro</h2>
+                <p class="tool-desc">
+                    Lokaler Leak-Scanner fuer ZIPs, Projektordner, .env-Dateien und Code. Secrets werden nur maskiert angezeigt und verlassen den Browser nicht.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="ss-layout">
+        <section class="glass-panel ss-dropzone" id="ss-dropzone">
+            <div class="ss-drop-content">
+                <svg viewBox="0 0 24 24" class="ss-drop-icon" aria-hidden="true">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <h3>Dateien lokal pruefen</h3>
+                <p>Projektordner, einzelne Dateien oder ZIP-Archive hineinziehen. Die Analyse laeuft komplett im Browser.</p>
+                <div class="ss-actions">
+                    <button type="button" class="ss-btn ss-btn-primary" id="ss-select-files">
+                        Dateien waehlen
+                    </button>
+                    <button type="button" class="ss-btn" id="ss-select-dir">
+                        Ordner waehlen
+                    </button>
+                </div>
+            </div>
+            <input type="file" id="ss-file-input" class="hidden-input" multiple />
+            <input type="file" id="ss-dir-input" class="hidden-input" multiple webkitdirectory directory />
+        </section>
+
+        <section class="ss-dashboard">
+            <div class="glass-panel ss-stat">
+                <span>Dateien</span>
+                <strong id="ss-stat-files">0</strong>
+            </div>
+            <div class="glass-panel ss-stat">
+                <span>Uebersprungen</span>
+                <strong id="ss-stat-skipped">0</strong>
+            </div>
+            <div class="glass-panel ss-stat ss-stat-hot">
+                <span>Findings</span>
+                <strong id="ss-stat-findings">0</strong>
+            </div>
+        </section>
+
+        <section class="glass-panel ss-console" aria-live="polite">
+            <div class="ss-console-head">
+                <span>Scanner Engine</span>
+                <button type="button" class="ss-btn ss-btn-compact" id="ss-export" disabled>
+                    CSV Export
+                </button>
+            </div>
+            <progress class="ss-progress-meter" id="ss-progress" max="100" value="0"></progress>
+            <p id="ss-status" class="ss-status">Bereit fuer lokale Analyse.</p>
+        </section>
+
+        <section class="glass-panel ss-results">
+            <div class="ss-results-head">
+                <span>Findings Matrix</span>
+                <button type="button" class="ss-btn ss-btn-compact" id="ss-reset">
+                    Reset
+                </button>
+            </div>
+            <div id="ss-result-list" class="ss-result-list">
+                <p class="ss-empty">Noch keine Analyse gestartet.</p>
+            </div>
+        </section>
+    </div>
+</div>
+

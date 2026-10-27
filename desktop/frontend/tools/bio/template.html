@@ -1,0 +1,219 @@
+﻿<div class="vgt-tool-wrapper" id="vgt-bio">
+    
+    <!-- Hero Header: Navigations- und Titelbereich -->
+    <div class="tool-hero">
+        <a href="#/tool/dashboard" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>System Hub</span>
+        </a>
+        <div class="hero-content">
+            <div class="hero-icon-wrapper bio-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon">
+                    <path d="M4 12c2.67-8 5.33-8 8 0s5.33 8 8 0"></path>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                </svg>
+            </div>
+            <div>
+                <h2 class="tool-title">VGT Cosmic Biorhythm</h2>
+                <p class="tool-desc">
+                    Erweiterte biorhythmische Oszillation. Verknüpft deine internen Lebenszyklen mit aktueller stellarer und lunarer Telemetrie für hochpräzise Tages-Prognosen.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface Body -->
+    <div class="tool-body bio-layout">
+        
+        <!-- Left: Input & Cosmic Context -->
+        <div class="bio-sidebar">
+            
+            <!-- Setup Panel -->
+            <div class="glass-panel bio-setup-panel">
+                <div class="panel-header">
+                    <span class="panel-label">Temporale Initialisierung</span>
+                </div>
+                
+                <div class="control-group">
+                    <label>Geburtsdatum (Nullpunkt)</label>
+                    <div class="input-wrap">
+                        <svg viewBox="0 0 24 24" class="input-icon">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <input type="date" 
+                               id="bio-dob-input" 
+                               class="vgt-input" 
+                               max="">
+                    </div>
+                </div>
+
+                <button id="btn-sync-bio" class="btn-prime green-glow mt-4">
+                    <svg viewBox="0 0 24 24" class="svg-icon">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                    Resonanz Synchronisieren
+                </button>
+            </div>
+
+            <!-- Cosmic Modifiers (Live) -->
+            <div class="glass-panel bio-cosmic-panel hidden" id="cosmic-panel">
+                <div class="panel-header">
+                    <span class="panel-label">Astrosphärische Einflüsse</span>
+                    <span class="status-badge live-sync">
+                        <span class="pulse-dot"></span> LIVE
+                    </span>
+                </div>
+
+                <div class="cosmic-grid">
+                    <div class="cosmic-item">
+                        <svg viewBox="0 0 24 24" class="cosmic-icon moon-icon">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <div class="cosmic-data">
+                            <span class="c-key">Lunar-Phase</span>
+                            <span class="c-val" id="c-moon-phase">Analysiere...</span>
+                            <span class="c-mod" id="c-moon-mod">Emotionale Amplitude: --</span>
+                        </div>
+                    </div>
+                    
+                    <div class="cosmic-item">
+                        <svg viewBox="0 0 24 24" class="cosmic-icon sun-icon">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <div class="cosmic-data">
+                            <span class="c-key">Solares Zeichen</span>
+                            <span class="c-val" id="c-zodiac">Analysiere...</span>
+                            <span class="c-mod" id="c-zodiac-mod">Elementar-Fokus: --</span>
+                        </div>
+                    </div>
+
+                    <div class="cosmic-item">
+                        <svg viewBox="0 0 24 24" class="cosmic-icon season-icon">
+                            <path d="M12 2v20M17.5 6.5L6.5 17.5M22 12H2M17.5 17.5L6.5 6.5"></path>
+                        </svg>
+                        <div class="cosmic-data">
+                            <span class="c-key">Jahreszeit</span>
+                            <span class="c-val" id="c-season">Analysiere...</span>
+                            <span class="c-mod" id="c-season-mod">Physischer Bonus: --</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Right: Dashboard & Chart -->
+        <div class="bio-main hidden" id="bio-main">
+            
+            <!-- Today's Telemetry -->
+            <div class="glass-panel bio-today-panel">
+                <div class="panel-header">
+                    <span class="panel-label">Tages-Signatur (Heute)</span>
+                    <span id="bio-today-date" class="terminal-text" style="color:var(--vg-text-muted)">DD.MM.YYYY</span>
+                </div>
+                
+                <div class="metrics-grid">
+                    <!-- Physical -->
+                    <div class="metric-card">
+                        <div class="metric-head">
+                            <span class="m-title" style="color: rgba(var(--c-pink), 1)">Physisch (23d)</span>
+                            <span class="m-val" id="val-phy">0%</span>
+                        </div>
+                        <div class="bio-bar-track">
+                            <div class="bio-bar-zero"></div>
+                            <div class="bio-bar-fill fill-pink" id="bar-phy"></div>
+                        </div>
+                        <span class="m-desc" id="desc-phy">Analysiere Körperkraft...</span>
+                    </div>
+
+                    <!-- Emotional -->
+                    <div class="metric-card">
+                        <div class="metric-head">
+                            <span class="m-title" style="color: rgba(var(--c-blue), 1)">Emotional (28d)</span>
+                            <span class="m-val" id="val-emo">0%</span>
+                        </div>
+                        <div class="bio-bar-track">
+                            <div class="bio-bar-zero"></div>
+                            <div class="bio-bar-fill fill-blue" id="bar-emo"></div>
+                        </div>
+                        <span class="m-desc" id="desc-emo">Analysiere Sensibilität...</span>
+                    </div>
+
+                    <!-- Intellectual -->
+                    <div class="metric-card">
+                        <div class="metric-head">
+                            <span class="m-title" style="color: rgba(var(--c-green), 1)">Intellektuell (33d)</span>
+                            <span class="m-val" id="val-int">0%</span>
+                        </div>
+                        <div class="bio-bar-track">
+                            <div class="bio-bar-zero"></div>
+                            <div class="bio-bar-fill fill-green" id="bar-int"></div>
+                        </div>
+                        <span class="m-desc" id="desc-int">Analysiere Kognition...</span>
+                    </div>
+
+                    <!-- Spiritual -->
+                    <div class="metric-card">
+                        <div class="metric-head">
+                            <span class="m-title" style="color: rgba(var(--c-purple), 1)">Spirituell (53d)</span>
+                            <span class="m-val" id="val-spi">0%</span>
+                        </div>
+                        <div class="bio-bar-track">
+                            <div class="bio-bar-zero"></div>
+                            <div class="bio-bar-fill fill-purple" id="bar-spi"></div>
+                        </div>
+                        <span class="m-desc" id="desc-spi">Analysiere Intuition...</span>
+                    </div>
+                </div>
+
+                <!-- Critical Warning Box -->
+                <div class="critical-warning hidden" id="critical-warning">
+                    <svg viewBox="0 0 24 24" class="svg-icon">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    <div>
+                        <strong>Kritischer Transit-Tag:</strong>
+                        <span id="critical-text">
+                            Eine deiner Hauptkurven durchschneidet heute die Null-Linie. Hohes Potenzial für Instabilität. Vorsicht walten lassen.
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Chart Matrix -->
+            <div class="glass-panel bio-chart-panel">
+                <div class="panel-header">
+                    <span class="panel-label">Zyklus-Oszilloskop (-14 / +14 Tage)</span>
+                    <div class="chart-legend">
+                        <span style="color: rgba(var(--c-pink),1)">■ Phy</span>
+                        <span style="color: rgba(var(--c-blue),1)">■ Emo</span>
+                        <span style="color: rgba(var(--c-green),1)">■ Int</span>
+                        <span style="color: rgba(var(--c-purple),1)">■ Spi</span>
+                    </div>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="biorhythm-chart"></canvas>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

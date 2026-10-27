@@ -1,0 +1,38 @@
+{
+  "name": "vgt-mediacenter-desktop",
+  "version": "1.0.0-beta",
+  "description": "VGT Mediacenter V1.0 Beta — Sovereign Local Desktop Workstation. 100% Client-Side. Privacy First. Zero Cloud.",
+  "main": "main.js",
+  "author": "VisionGaiaTechnology",
+  "license": "Proprietary",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:linux": "electron-builder --linux AppImage deb",
+    "build:mac": "electron-builder --mac"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^33.2.0"
+  },
+  "build": {
+    "appId": "de.visiongaia.mediacenter.desktop",
+    "productName": "VGT Mediacenter V1.0 Beta",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": ["portable", "nsis"],
+      "icon": "assets/vendor/vgtcode.png"
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "category": "Utility"
+    },
+    "mac": {
+      "target": ["dmg", "zip"],
+      "category": "public.app-category.utilities"
+    }
+  }
+}

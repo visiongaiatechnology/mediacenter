@@ -1,0 +1,160 @@
+﻿<div class="vgt-tool-wrapper" id="vgt-imgconv">
+    
+    <!-- Hero Header: Navigations- und Titelbereich -->
+    <div class="tool-hero">
+        <a href="#/tool/dashboard" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>System Hub</span>
+        </a>
+        <div class="hero-content">
+            <div class="hero-icon-wrapper icv-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+            </div>
+            <div>
+                <h2 class="tool-title">Universal Media Forge</h2>
+                <p class="tool-desc">
+                    Format-Konvertierung und Rescaling im Browser-RAM. Transformiert PNG, JPG, WEBP, AVIF, SVG und HEIC in Millisekunden. Zero-Upload-Garantie.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface Body -->
+    <div class="tool-body">
+        
+        <!-- View 1: Dropzone (Initial Ingestion) -->
+        <div class="glass-panel drop-zone" id="icv-dropzone">
+            <div class="drop-content">
+                <div class="drop-icon-glow"></div>
+                <svg viewBox="0 0 24 24" class="drop-icon">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <h3 class="drop-title">Grafik-Asset injizieren</h3>
+                <p class="drop-subtitle">Unterstützt JPG, PNG, WEBP, AVIF, SVG, HEIC</p>
+                <div class="drop-badge">Client-Side Canvas Engine</div>
+            </div>
+            <input type="file" 
+                   id="icv-file-input" 
+                   class="hidden-input" 
+                   accept="image/jpeg, image/png, image/webp, image/avif, image/svg+xml, image/heic" />
+        </div>
+
+        <!-- View 2: Workspace View (Hidden until Ingestion) -->
+        <div id="icv-workspace" class="icv-layout hidden">
+            
+            <!-- Controls Sidebar: Konvertierungs-Parameter -->
+            <div class="glass-panel icv-controls">
+                <div class="controls-header">
+                    <span class="panel-label">Konvertierungs-Matrix</span>
+                    <button id="icv-btn-reset" class="btn-action-small">
+                        <svg viewBox="0 0 24 24" class="svg-icon"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        Asset verwerfen
+                    </button>
+                </div>
+
+                <!-- Format Selection -->
+                <div class="control-group">
+                    <label>Zielformat</label>
+                    <div class="format-grid">
+                        <button class="fmt-btn active" data-fmt="image/jpeg" data-ext="jpg">JPG</button>
+                        <button class="fmt-btn" data-fmt="image/png" data-ext="png">PNG</button>
+                        <button class="fmt-btn" data-fmt="image/webp" data-ext="webp">WEBP</button>
+                        <button class="fmt-btn" data-fmt="image/avif" data-ext="avif">AVIF</button>
+                    </div>
+                </div>
+
+                <!-- Quality Control -->
+                <div class="control-group" id="group-quality">
+                    <div class="control-label-row">
+                        <label>Encoding Qualität</label>
+                        <span id="lbl-quality" class="val-badge">90%</span>
+                    </div>
+                    <input type="range" id="icv-quality" class="vgt-slider cyan-slider" min="10" max="100" value="90" step="1">
+                </div>
+
+                <!-- Rescaling Controls -->
+                <div class="control-group">
+                    <div class="control-label-row">
+                        <label>Auflösung skalieren (px)</label>
+                        <button id="btn-lock-ratio" class="btn-icon-small active" title="Seitenverhältnis beibehalten">
+                            <svg viewBox="0 0 24 24" class="svg-icon"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        </button>
+                    </div>
+                    <div class="dim-inputs">
+                        <div class="input-wrap">
+                            <span class="dim-prefix">W</span>
+                            <input type="number" id="icv-width" class="vgt-input" placeholder="Width">
+                        </div>
+                        <div class="dim-separator"><svg viewBox="0 0 24 24" class="svg-icon"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></div>
+                        <div class="input-wrap">
+                            <span class="dim-prefix">H</span>
+                            <input type="number" id="icv-height" class="vgt-input" placeholder="Height">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Background (Alpha-Matte) for formats without transparency -->
+                <div class="control-group" id="group-background">
+                    <label>Hintergrund (Alpha-Matte)</label>
+                    <div class="bg-toggles">
+                        <button class="bg-btn active" data-color="transparent">
+                            <span class="bg-swatch checker"></span> Transp.
+                        </button>
+                        <button class="bg-btn" data-color="#ffffff">
+                            <span class="bg-swatch" style="background:#fff"></span> Weiß
+                        </button>
+                        <button class="bg-btn" data-color="#000000">
+                            <span class="bg-swatch" style="background:#000; border:1px solid #333;"></span> Schwarz
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <button id="icv-btn-convert" class="btn-prime cyan-glow mt-auto">
+                    <svg viewBox="0 0 24 24" class="svg-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    <span>Konvertieren & Speichern</span>
+                </button>
+            </div>
+
+            <!-- Preview Panel: Visueller Delta-Abgleich -->
+            <div class="glass-panel icv-preview-panel">
+                <div class="preview-header">
+                    <div class="preview-meta">
+                        <span class="meta-label">Original Asset</span>
+                        <span id="icv-orig-name" class="meta-value">image.png</span>
+                        <div class="meta-details">
+                            <span id="icv-orig-size" class="meta-tag">0 MB</span>
+                            <span id="icv-orig-res" class="meta-tag">0 x 0 px</span>
+                        </div>
+                    </div>
+                    <div class="preview-arrow">
+                        <svg viewBox="0 0 24 24" class="svg-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                    <div class="preview-meta target-meta">
+                        <span class="meta-label">Ziel-Format</span>
+                        <span id="icv-target-name" class="meta-value highlight-cyan">image.jpg</span>
+                        <div class="meta-details">
+                            <span id="icv-target-res" class="meta-tag active">0 x 0 px</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-container checkerboard" id="icv-preview-box">
+                    <div class="canvas-loader hidden" id="icv-loader">
+                        <div class="spinner"></div>
+                        <span id="loader-text">Verarbeite Pixel-Daten...</span>
+                    </div>
+                    <img id="icv-preview-img" src="" alt="Asset Preview">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

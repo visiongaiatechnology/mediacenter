@@ -1,0 +1,241 @@
+﻿<div class="vgt-tool-wrapper" id="vgt-cal">
+    
+    <!-- Hero Header: Navigations- und Titelbereich -->
+    <div class="tool-hero">
+        <a href="#/tool/dashboard" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>System Hub</span>
+        </a>
+        <div class="hero-content">
+            <div class="hero-icon-wrapper cal-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon">
+                    <path d="M2 12h20c0 5.52-4.48 10-10 10S2 17.52 2 12z"></path>
+                    <path d="M12 2v6"></path>
+                    <path d="M8 3v5"></path>
+                    <path d="M16 3v5"></path>
+                </svg>
+            </div>
+            <div>
+                <h2 class="tool-title">VGT Metabolic Engine</h2>
+                <p class="tool-desc">
+                    Hochpräzise Stoffwechsel-Telemetrie (Mifflin-St. Jeor). Berechne deinen Total Daily Energy Expenditure (TDEE) und optimiere deine Makronährstoff-Matrix in Echtzeit.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface Body -->
+    <div class="tool-body cal-layout">
+        
+        <!-- Left: Biometric Input Panel -->
+        <div class="cal-input-section">
+            
+            <div class="glass-panel cal-panel">
+                <div class="panel-header">
+                    <span class="panel-label">1. Biometrische Parameter</span>
+                    <button id="cal-btn-reset" class="btn-icon-small" title="Werte nullen">
+                        <svg viewBox="0 0 24 24" class="svg-icon">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Gender Toggle -->
+                <div class="control-group">
+                    <label>Biologisches Geschlecht</label>
+                    <div class="vgt-toggle-group">
+                        <button class="toggle-btn cal-gender-btn active" data-val="male">Männlich</button>
+                        <button class="toggle-btn cal-gender-btn" data-val="female">Weiblich</button>
+                    </div>
+                </div>
+
+                <!-- Physical Stats -->
+                <div class="physical-inputs mt-4">
+                    <div class="input-box">
+                        <label>Alter</label>
+                        <div class="input-wrap">
+                            <input type="number" id="cal-age" class="vgt-input cal-trigger" min="15" max="100" value="30">
+                            <span class="input-suffix">Jahre</span>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <label>Größe</label>
+                        <div class="input-wrap">
+                            <input type="number" id="cal-height" class="vgt-input cal-trigger" min="100" max="250" value="180">
+                            <span class="input-suffix">cm</span>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <label>Gewicht</label>
+                        <div class="input-wrap">
+                            <input type="number" id="cal-weight" class="vgt-input cal-trigger" min="40" max="200" value="80" step="0.5">
+                            <span class="input-suffix">kg</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Activity Level -->
+                <div class="control-group mt-4">
+                    <label>Aktivitätslevel (PAL-Faktor)</label>
+                    <div class="select-wrap">
+                        <select id="cal-activity" class="vgt-select cal-trigger">
+                            <option value="1.2">Sedentär (Bürojob, kaum Bewegung)</option>
+                            <option value="1.375" selected>Leicht aktiv (1-3x Sport / Woche)</option>
+                            <option value="1.55">Moderat aktiv (3-5x Sport / Woche)</option>
+                            <option value="1.725">Sehr aktiv (6-7x harter Sport / Woche)</option>
+                            <option value="1.9">Extrem aktiv (Körperl. Arbeit + 2x Sport / Tag)</option>
+                        </select>
+                        <svg viewBox="0 0 24 24" class="select-icon">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Target & Macros Panel -->
+            <div class="glass-panel cal-panel mt-4">
+                <div class="panel-header">
+                    <span class="panel-label">2. Zielsetzung & Ernährungsprofil</span>
+                </div>
+
+                <div class="control-group">
+                    <label>Physisches Ziel</label>
+                    <div class="target-grid">
+                        <button class="target-btn cal-goal-btn" data-val="-500">
+                            <span class="tb-title text-pink">Cut (Aggressiv)</span>
+                            <span class="tb-desc">-500 kcal</span>
+                        </button>
+                        <button class="target-btn cal-goal-btn" data-val="-300">
+                            <span class="tb-title text-orange">Defizit (Leicht)</span>
+                            <span class="tb-desc">-300 kcal</span>
+                        </button>
+                        <button class="target-btn cal-goal-btn active" data-val="0">
+                            <span class="tb-title text-green">Erhaltung (TDEE)</span>
+                            <span class="tb-desc">±0 kcal</span>
+                        </button>
+                        <button class="target-btn cal-goal-btn" data-val="300">
+                            <span class="tb-title text-cyan">Aufbau (Lean)</span>
+                            <span class="tb-desc">+300 kcal</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="control-group mt-4">
+                    <label>Makro-Verteilung (P / K / F)</label>
+                    <div class="vgt-toggle-group full-width">
+                        <button class="toggle-btn cal-macro-btn active" data-val="balanced">Balanced (30/40/30)</button>
+                        <button class="toggle-btn cal-macro-btn" data-val="high_protein">High Protein (40/30/30)</button>
+                        <button class="toggle-btn cal-macro-btn" data-val="low_carb">Low Carb (40/20/40)</button>
+                        <button class="toggle-btn cal-macro-btn" data-val="keto">Keto (25/5/70)</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Right: Telemetry Dashboard -->
+        <div class="cal-output-section">
+            
+            <!-- Energy Burn Breakdown -->
+            <div class="glass-panel energy-panel">
+                <div class="energy-header">
+                    <span class="panel-label">Metabolischer Gesamtumsatz</span>
+                    <span class="status-badge">
+                        <span class="pulse-dot"></span> 
+                        <span id="cal-status-text">Synchronisiert</span>
+                    </span>
+                </div>
+
+                <div class="energy-main-readout">
+                    <div class="readout-block">
+                        <span class="r-val highlight-orange" id="out-target-kcal">0</span>
+                        <span class="r-unit">kcal / Tag</span>
+                    </div>
+                    <div class="r-desc" id="out-target-desc">Tägliches Zielvolumen</div>
+                </div>
+
+                <div class="energy-split">
+                    <div class="split-box">
+                        <svg viewBox="0 0 24 24" class="svg-icon"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        <div class="sb-data">
+                            <span class="sb-val" id="out-bmr">0 kcal</span>
+                            <span class="sb-lbl">Grundumsatz (BMR)</span>
+                        </div>
+                    </div>
+                    <div class="split-box">
+                        <svg viewBox="0 0 24 24" class="svg-icon"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                        <div class="sb-data">
+                            <span class="sb-val" id="out-activity">0 kcal</span>
+                            <span class="sb-lbl">Aktivitäts-Burn (PAL)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Macro Matrix & Chart -->
+            <div class="glass-panel macro-panel mt-4">
+                <div class="panel-header">
+                    <span class="panel-label">Makronährstoff-Matrix</span>
+                </div>
+
+                <div class="macro-layout">
+                    <!-- Chart.js Container -->
+                    <div class="macro-chart-wrap">
+                        <canvas id="cal-macro-chart"></canvas>
+                        <div class="chart-center-info">
+                            <span class="cc-val">100%</span>
+                            <span class="cc-lbl">Energie</span>
+                        </div>
+                    </div>
+
+                    <!-- Macro Cards -->
+                    <div class="macro-cards">
+                        
+                        <div class="macro-card m-protein">
+                            <div class="mc-head">
+                                <span class="mc-title">Proteine</span>
+                                <span class="mc-pct" id="pct-pro">30%</span>
+                            </div>
+                            <div class="mc-body">
+                                <span class="mc-g" id="g-pro">0g</span>
+                                <span class="mc-kcal" id="kcal-pro">0 kcal</span>
+                            </div>
+                            <div class="mc-bar"><div class="mc-fill" id="bar-pro" style="width:0%"></div></div>
+                        </div>
+
+                        <div class="macro-card m-carbs">
+                            <div class="mc-head">
+                                <span class="mc-title">Kohlenhydrate</span>
+                                <span class="mc-pct" id="pct-carb">40%</span>
+                            </div>
+                            <div class="mc-body">
+                                <span class="mc-g" id="g-carb">0g</span>
+                                <span class="mc-kcal" id="kcal-carb">0 kcal</span>
+                            </div>
+                            <div class="mc-bar"><div class="mc-fill" id="bar-carb" style="width:0%"></div></div>
+                        </div>
+
+                        <div class="macro-card m-fat">
+                            <div class="mc-head">
+                                <span class="mc-title">Fette</span>
+                                <span class="mc-pct" id="pct-fat">30%</span>
+                            </div>
+                            <div class="mc-body">
+                                <span class="mc-g" id="g-fat">0g</span>
+                                <span class="mc-kcal" id="kcal-fat">0 kcal</span>
+                            </div>
+                            <div class="mc-bar"><div class="mc-fill" id="bar-fat" style="width:0%"></div></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

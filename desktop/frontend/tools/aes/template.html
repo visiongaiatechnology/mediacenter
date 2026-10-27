@@ -1,0 +1,219 @@
+﻿<style>
+    /* CSS-SHIELD: Verhindert, dass Icons den Klick auf den Button abfangen */
+    #vgt-cipher .mode-tab *, 
+    #vgt-cipher .algo-btn *, 
+    #vgt-cipher .dir-btn-txt * {
+        pointer-events: none !important;
+    }
+    
+    /* VGT Triade Pulse Animation */
+    .pulse-dot {
+        width: 8px; height: 8px;
+        background: rgba(var(--c-purple, 168, 85, 247), 1);
+        border-radius: 50%; display: inline-block;
+        box-shadow: 0 0 8px rgba(var(--c-purple, 168, 85, 247), 0.8);
+        animation: pulseDot 2s infinite;
+    }
+    @keyframes pulseDot {
+        0% { transform: scale(0.8); opacity: 0.5; }
+        50% { transform: scale(1.2); opacity: 1; }
+        100% { transform: scale(0.8); opacity: 0.5; }
+    }
+</style>
+
+<div class="vgt-tool-wrapper" id="vgt-cipher">
+    
+    <!-- Hero Header: Navigation und System-Identität -->
+    <div class="tool-hero">
+        <a href="#/tool/dashboard" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>System Hub</span>
+        </a>
+        <div class="hero-content">
+            <div class="hero-icon-wrapper cipher-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            </div>
+            <div>
+                <h2 class="tool-title">VGT Cipher (Triad Engine)</h2>
+                <p class="tool-desc">
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Crypto Warning Banner (Dynamic via JS) -->
+    <div id="crypto-warning" class="hidden" style="background: rgba(255,0,50,0.1); color: #ff4d4d; border: 1px solid rgba(255,0,50,0.3); border-radius: var(--radius-lg); padding: 1rem; margin-bottom: 2rem; font-weight: 600; text-align: center;">
+        <svg viewBox="0 0 24 24" class="svg-icon" style="vertical-align: middle; margin-right: 0.5rem;"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        SYSTEMWARNUNG: WebCrypto API ist offline. (SSL/HTTPS erforderlich). Verschlüsselung ist in dieser Umgebung deaktiviert.
+    </div>
+
+    <!-- Interface Body -->
+    <div class="tool-body cipher-layout">
+        
+        <!-- Global Settings Panel -->
+        <div class="glass-panel global-settings-panel">
+            <div class="key-vault">
+                <div class="key-header">
+                    <span class="key-label">1. Master Key (Passwort) definieren</span>
+                </div>
+                <div class="key-input-wrapper mt-2">
+                    <svg viewBox="0 0 24 24" class="key-icon"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
+                    <input type="password" id="cipher-key" class="key-input" placeholder="Hochsicheres Passwort eingeben..." />
+                    <button type="button" class="btn-toggle-vis" id="btn-toggle-key" aria-label="Passwort anzeigen">
+                        <svg viewBox="0 0 24 24" class="svg-icon eye-on"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="cipher-divider"></div>
+
+            <div class="engine-toggles">
+                <div class="toggle-group-wrap">
+                    <span class="key-label">2. Krypto-Engine wählen</span>
+                    <div class="vgt-toggle-group mt-2">
+                        <button type="button" class="toggle-btn algo-btn active" data-val="aes">
+                            AES-256 (Standard)
+                        </button>
+                        <button type="button" class="toggle-btn algo-btn" data-val="triad">
+                            <span class="pulse-dot"></span> VGT Triade
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODE TABS -->
+        <div class="cipher-mode-tabs mt-4">
+            <button type="button" class="mode-tab active" data-mode="text">
+                <svg viewBox="0 0 24 24" class="svg-icon"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                <div class="mt-text">
+                    <span class="mt-title">Text-Stream</span>
+                    <span class="mt-sub">Nachrichten ver-/entschlüsseln</span>
+                </div>
+            </button>
+            <button type="button" class="mode-tab" data-mode="file">
+                <svg viewBox="0 0 24 24" class="svg-icon"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                <div class="mt-text">
+                    <span class="mt-title">Datei-Tresor</span>
+                    <span class="mt-sub">Dateien & .vgt Archive</span>
+                </div>
+            </button>
+        </div>
+
+        <!-- ==================== TEXT MODE WORKSPACE ==================== -->
+        <div id="workspace-text" class="workspace-area active-workspace">
+            
+            <div class="action-direction-toggles mb-4">
+                <button type="button" class="dir-btn-txt active" data-dir="encrypt">
+                    <svg viewBox="0 0 24 24" class="svg-icon"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    Text Verschlüsseln
+                </button>
+                <button type="button" class="dir-btn-txt" data-dir="decrypt">
+                    <svg viewBox="0 0 24 24" class="svg-icon"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg>
+                    Text Entschlüsseln
+                </button>
+            </div>
+
+            <div class="cipher-grid">
+                <!-- Text Input -->
+                <div class="glass-panel cipher-panel input-panel">
+                    <div class="panel-header">
+                        <span class="panel-label" id="label-txt-in">Plaintext Eingabe</span>
+                        <button type="button" class="btn-action-small" id="btn-paste">
+                            <svg viewBox="0 0 24 24" class="svg-icon"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+                            Paste
+                        </button>
+                    </div>
+                    <textarea id="cipher-text-input" class="cipher-textarea" placeholder="Geheime Nachricht hier eingeben..."></textarea>
+                    <button type="button" id="btn-exec-text" class="btn-execute encrypt-state">
+                        <span id="exec-txt-label">Verschlüsseln & Hashen</span>
+                        <svg viewBox="0 0 24 24" class="svg-icon"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                </div>
+
+                <!-- Text Output -->
+                <div class="glass-panel cipher-panel output-panel">
+                    <div class="panel-header">
+                        <span class="panel-label" id="label-txt-out">Ciphertext (Base64)</span>
+                        <div class="action-group">
+                            <span class="status-badge hidden" id="status-badge-text">SECURE</span>
+                            <button type="button" class="btn-action-small" id="btn-copy">
+                                <svg viewBox="0 0 24 24" class="svg-icon"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                        </div>
+                    </div>
+                    <div class="output-wrapper" style="position: relative;">
+                        <!-- The Matrix Loading Overlay -->
+                        <div class="matrix-overlay hidden" id="matrix-overlay">
+                            <div class="matrix-text" id="matrix-stream">0100101...</div>
+                        </div>
+                        <textarea id="cipher-text-output" class="cipher-textarea output-terminal" readonly placeholder="Resultat erscheint hier..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== FILE MODE WORKSPACE ==================== -->
+        <div id="workspace-file" class="workspace-area hidden">
+            
+            <!-- DROPZONE -->
+            <div class="glass-panel drop-zone" id="file-dropzone">
+                <div class="drop-content">
+                    <div class="drop-icon-glow purple"></div>
+                    <svg viewBox="0 0 24 24" class="drop-icon"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                    <h3 class="drop-title" id="drop-title-file">Datei hier ablegen (oder klicken)</h3>
+                    <p class="drop-subtitle" id="drop-desc-file">
+                        
+                    </p>
+                    <div class="drop-badge">Max 50MB (RAM Limit)</div>
+                </div>
+                <input type="file" id="file-input" class="hidden-input" />
+            </div>
+
+            <!-- FILE PROCESSOR -->
+            <div class="glass-panel file-processor hidden" id="file-processor">
+                <div class="fp-header">
+                    <span class="fp-label" id="fp-mode-label">Datei-Stream Analytik</span>
+                    <button type="button" id="btn-reset-file" class="btn-action-small danger outline">
+                        Verwerfen
+                    </button>
+                </div>
+                
+                <div class="fp-meta">
+                    <div class="fp-meta-item">
+                        <span class="fp-key">Geladene Datei:</span>
+                        <span class="fp-val terminal-text" id="fp-name">document.pdf</span>
+                    </div>
+                    <div class="fp-meta-item">
+                        <span class="fp-key">Umfang:</span>
+                        <span class="fp-val terminal-text" id="fp-size">0 MB</span>
+                    </div>
+                </div>
+
+                <div class="encoding-progress hidden" id="file-progress-wrap">
+                    <div class="progress-bar">
+                        <div class="progress-fill purple-fill" id="file-progress-fill"></div>
+                    </div>
+                    <span class="progress-text" id="file-progress-text">
+                        Initialisiere Krypto-Engine...
+                    </span>
+                </div>
+
+                <div class="fp-actions">
+                    <button type="button" id="btn-exec-file" class="btn-execute encrypt-state">
+                        <span id="exec-file-label">Verschlüsseln & Speichern</span>
+                        <svg viewBox="0 0 24 24" class="svg-icon"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                    
+                    <button type="button" id="btn-download-file" class="btn-prime success-glow hidden">
+                        <svg viewBox="0 0 24 24" class="svg-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        <span id="dl-file-label">Datei speichern</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

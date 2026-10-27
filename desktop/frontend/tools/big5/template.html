@@ -1,0 +1,159 @@
+﻿<div class="vgt-tool-wrapper" id="vgt-big5">
+    
+    <!-- Hero Header: Navigations- und Titelbereich -->
+    <div class="tool-hero">
+        <a href="#/tool/dashboard" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>System Hub</span>
+        </a>
+        <div class="hero-content">
+            <div class="hero-icon-wrapper bp-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon">
+                    <path d="M2 12C2 6.48 6.48 2 12 2s10 4.48 10 10M6 12c0-3.31 2.69-6 6-6s6 2.69 6 6M10 12c0-1.1.9-2 2-2s2 .9 2 2"></path>
+                </svg>
+            </div>
+            <div>
+                <h2 class="tool-title">VGT Neural Profiler</h2>
+                <p class="tool-desc">
+                    Tiefenpsychologische Analyse basierend auf dem OCEAN-Modell. Erfasse deine kognitiven Präferenzen und extrahiere deine digitale Persönlichkeitssignatur.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface Body -->
+    <div class="tool-body bp-layout">
+        
+        <!-- ==================== STATE 1: INTRO ==================== -->
+        <div class="glass-panel state-view active" id="state-intro">
+            <div class="intro-visual">
+                <div class="brain-pulse-ring"></div>
+                <svg viewBox="0 0 24 24" class="brain-icon">
+                    <path d="M9.5 2h5M12 2v20M17.5 4.5a4.5 4.5 0 0 1 1 8.89V14a5 5 0 0 1-5 5h-3a5 5 0 0 1-5-5v-.61a4.5 4.5 0 0 1 1-8.89"></path>
+                </svg>
+            </div>
+            <h3 class="intro-title">Kognitive Matrix-Initialisierung</h3>
+            <p class="intro-text">
+                Dieser Test extrahiert 20 präzise Verhaltensmuster. Antworte intuitiv und ehrlich. Es gibt kein "Richtig" oder "Falsch
+            </p>
+            <div class="intro-meta">
+                <span>
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 
+                    Dauer: ~2 Minuten
+                </span>
+                <span>
+                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> 
+                    100% Lokale Berechnung
+                </span>
+            </div>
+            <button id="btn-start-quiz" class="btn-prime purple-glow">
+                <svg viewBox="0 0 24 24" class="svg-icon">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                Analyse Starten
+            </button>
+        </div>
+
+        <!-- ==================== STATE 2: QUIZ ==================== -->
+        <div class="state-view hidden" id="state-quiz">
+            <div class="quiz-header">
+                <div class="quiz-progress-wrap">
+                    <div class="progress-info">
+                        <span id="quiz-current-step">Fragment 1 / 20</span>
+                        <span id="quiz-percent" class="highlight-purple">0%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div id="quiz-progress-fill" class="progress-fill purple-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-container glass-panel" id="question-card">
+                <div class="question-content" id="question-content">
+                    <h2 class="question-text" id="active-question-text">
+                        Initialisiere Datenstrom...
+                    </h2>
+                </div>
+                
+                <div class="response-matrix">
+                    <span class="matrix-label reject">Trifft nicht zu</span>
+                    <div class="neural-nodes-group" id="neural-nodes">
+                        <!-- Die Verbindungslinie zwischen den Nodes -->
+                        <div class="node-connector"></div>
+                        <button class="neural-node node-xl" data-val="1" title="Starke Ablehnung"></button>
+                        <button class="neural-node node-md" data-val="2" title="Ablehnung"></button>
+                        <button class="neural-node node-sm neutral" data-val="3" title="Neutral"></button>
+                        <button class="neural-node node-md" data-val="4" title="Zustimmung"></button>
+                        <button class="neural-node node-xl" data-val="5" title="Starke Zustimmung"></button>
+                    </div>
+                    <span class="matrix-label accept">Trifft voll zu</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== STATE 3: PROCESSING ==================== -->
+        <div class="glass-panel state-view hidden" id="state-processing">
+            <div class="processing-core">
+                <div class="radar-spinner"></div>
+                <h3 class="processing-title">Kompiliere Psychometrisches Profil</h3>
+                <p class="processing-log" id="proc-log">
+                    Extrahiere Big-Five Parameter...
+                </p>
+                <div class="matrix-code-block" id="matrix-code">01001000 01100101 01101100</div>
+            </div>
+        </div>
+
+        <!-- ==================== STATE 4: RESULTS ==================== -->
+        <div class="state-view hidden" id="state-result">
+            
+            <div class="result-hero glass-panel">
+                <div class="type-badge-wrap">
+                    <div class="type-badge-glow"></div>
+                    <h1 class="mbti-type" id="mbti-type">----</h1>
+                </div>
+                <div class="type-archetype" id="mbti-archetype">
+                    Analysiere...
+                </div>
+            </div>
+
+            <div class="result-grid">
+                <!-- Chart Panel -->
+                <div class="glass-panel chart-panel">
+                    <div class="panel-header">
+                        <span class="panel-label">Neuronale Architektur (OCEAN)</span>
+                    </div>
+                    <div class="canvas-container">
+                        <canvas id="personality-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Analysis Details -->
+                <div class="glass-panel detail-panel">
+                    <div class="panel-header">
+                        <span class="panel-label">Kognitive Parameter</span>
+                        <button id="btn-restart-quiz" class="btn-action-small">
+                            <svg viewBox="0 0 24 24" class="svg-icon"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><polyline points="3 3 3 8 8 8"></polyline></svg>
+                            Reset
+                        </button>
+                    </div>
+                    
+                    <div class="ocean-list" id="ocean-breakdown">
+                        <!-- Dynamische Injektion via JavaScript -->
+                    </div>
+
+                    <div class="result-actions">
+                        <p class="privacy-note">
+                            <svg viewBox="0 0 24 24" class="svg-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                            Zero-Trust: Die Matrix ist volatil. Daten existieren nur lokal in deinem RAM.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+</div>

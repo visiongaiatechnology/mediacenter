@@ -1,0 +1,128 @@
+﻿<div class="vgt-tool-wrapper" id="vgt-har">
+    
+    <!-- Hero Header: Navigation und forensische Identität -->
+    <div class="tool-hero">
+        <a href="#/tool/dashboard" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>System Hub</span>
+        </a>
+        <div class="hero-content">
+            <div class="hero-icon-wrapper har-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon">
+                    <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                    <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                    <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                    <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                </svg>
+            </div>
+            <div>
+                <h2 class="tool-title">VGT HAR-Reactor</h2>
+                <p class="tool-desc">
+                    Deep-Packet Network Analysis. Analysiere .har (HTTP Archive) Traffic-Logs lokal im RAM. Enttarne Tracker, analysiere Payloads und identifiziere Data-Leaks (Cookies/Tokens).
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface Body -->
+    <div class="tool-body har-layout">
+        
+        <!-- Dropzone View: Daten-Injektion -->
+        <div class="glass-panel drop-zone" id="har-dropzone">
+            <div class="drop-content">
+                <div class="drop-icon-glow cyan"></div>
+                <svg viewBox="0 0 24 24" class="drop-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                <h3 class="drop-title">Traffic-Log (.har) injizieren</h3>
+                <p class="drop-subtitle">
+                    Exportiere Netzwerk-Daten aus den DevTools (F12) und ziehe sie hierher
+                </p>
+                <div class="drop-badge">Lokal & DSGVO-Konform</div>
+            </div>
+            <input type="file" id="har-file-input" class="hidden-input" accept=".har,application/json" />
+        </div>
+
+        <!-- Dashboard View: Forensische Analyse-Matrix (Hidden until load) -->
+        <div id="har-workspace" class="har-workspace hidden">
+            
+            <!-- Global Stats Bar: Echtzeit-Telemetrie -->
+            <div class="har-stats-bar">
+                <div class="glass-panel stat-box">
+                    <div class="stat-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
+                    <div class="stat-data">
+                        <span class="stat-lbl">Gesamt-Requests</span>
+                        <span class="stat-val" id="stat-reqs">0</span>
+                    </div>
+                </div>
+                <div class="glass-panel stat-box">
+                    <div class="stat-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="6" rx="2" ry="2"></rect><rect x="4" y="14" width="16" height="6" rx="2" ry="2"></rect></svg></div>
+                    <div class="stat-data">
+                        <span class="stat-lbl">Total Payload Size</span>
+                        <span class="stat-val highlight-cyan" id="stat-size">0 MB</span>
+                    </div>
+                </div>
+                <div class="glass-panel stat-box">
+                    <div class="stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+                    <div class="stat-data">
+                        <span class="stat-lbl">Ladezeit (Kumuliert)</span>
+                        <span class="stat-val" id="stat-time">0 ms</span>
+                    </div>
+                </div>
+                <div class="glass-panel stat-box danger">
+                    <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></div>
+                    <div class="stat-data">
+                        <span class="stat-lbl">Threats & Leaks</span>
+                        <span class="stat-val highlight-pink" id="stat-threats">0</span>
+                    </div>
+                </div>
+                <div class="glass-panel stat-box action-box">
+                    <button id="btn-har-reset" class="btn-action-small" title="Daten verwerfen">
+                        <svg viewBox="0 0 24 24" class="svg-icon"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        Flush
+                    </button>
+                </div>
+            </div>
+
+            <div class="har-grid">
+                
+                <!-- Chart: Domain Distribution -->
+                <div class="glass-panel chart-panel">
+                    <div class="panel-header">
+                        <span class="panel-label">Traffic Routing (Domains)</span>
+                    </div>
+                    <div class="chart-wrapper">
+                        <div id="chart-domains"></div>
+                    </div>
+                </div>
+
+                <!-- Chart: Content Types -->
+                <div class="glass-panel chart-panel">
+                    <div class="panel-header">
+                        <span class="panel-label">Payload Typen (MIME)</span>
+                    </div>
+                    <div class="chart-wrapper">
+                        <div id="chart-types"></div>
+                    </div>
+                </div>
+
+                <!-- Threat Matrix: Leaked Tokens & Cookies -->
+                <div class="glass-panel threat-panel">
+                    <div class="panel-header">
+                        <span class="panel-label" style="color: rgba(var(--c-pink), 1);">
+                            Threat Matrix (Data Leaks)
+                        </span>
+                        <span class="status-badge" id="threat-badge">
+                            Scanning...
+                        </span>
+                    </div>
+                    
+                    <div class="threat-list custom-scrollbar" id="threat-list">
+                        <!-- Dynamische Injektion der Leak-Karten via JavaScript Engine -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

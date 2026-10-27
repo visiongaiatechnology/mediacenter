@@ -1,0 +1,161 @@
+﻿<div class="vgt-tool-wrapper" id="vgt-stress">
+    
+    <!-- Hero Header: Navigation und systemische Identität -->
+    <div class="tool-hero">
+        <a href="#/tool/dashboard" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>System Hub</span>
+        </a>
+        <div class="hero-content">
+            <div class="hero-icon-wrapper cl-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon">
+                    <path d="M9.5 2h5M12 2v20M17.5 4.5a4.5 4.5 0 0 1 1 8.89V14a5 5 0 0 1-5 5h-3a5 5 0 0 1-5-5v-.61a4.5 4.5 0 0 1 1-8.89"></path>
+                </svg>
+            </div>
+            <div>
+                <h2 class="tool-title">VGT Cognitive Load</h2>
+                <p class="tool-desc">
+                    Echtzeit-Telemetrie deines mentalen Zustands. Analysiere Stress-Level, Fokus-Kapazität und neuronale Erschöpfung durch bio-metrische Selbsteinschätzung.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface Body -->
+    <div class="tool-body cl-layout">
+        
+        <!-- Left: Sensor Input Panel (Kalibrierungs-Matrix) -->
+        <div class="glass-panel cl-sensor-panel">
+            <div class="panel-header">
+                <span class="panel-label">Bio-Metrische Sensoren</span>
+                <button id="cl-btn-reset" class="btn-icon-small" title="Sensoren nullen">
+                    <svg viewBox="0 0 24 24" class="svg-icon"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            
+            <p class="panel-desc">
+                Kalibriere die Sensoren auf deinen exakten, gegenwärtigen Zustand.
+            </p>
+
+            <div class="sensor-list">
+                <!-- Sensor 1: Mental Speed -->
+                <div class="sensor-group">
+                    <div class="sensor-header">
+                        <label>Gedankenstrom (Mental Speed)</label>
+                        <span class="sensor-val" id="val-speed">Ruhig</span>
+                    </div>
+                    <input type="range" class="vgt-thermal-slider" id="sens-speed" min="0" max="100" value="20">
+                    <div class="sensor-marks">
+                        <span>Klar/Zentriert</span>
+                        <span>Rasend/Chaotisch</span>
+                    </div>
+                </div>
+
+                <!-- Sensor 2: Focus Drain -->
+                <div class="sensor-group">
+                    <div class="sensor-header">
+                        <label>Ablenkbarkeit (Focus Drain)</label>
+                        <span class="sensor-val" id="val-distract">Gering</span>
+                    </div>
+                    <input type="range" class="vgt-thermal-slider" id="sens-distract" min="0" max="100" value="30">
+                    <div class="sensor-marks">
+                        <span>Laser-Fokus</span>
+                        <span>Fragmentiert</span>
+                    </div>
+                </div>
+
+                <!-- Sensor 3: Cortisol/Tension -->
+                <div class="sensor-group">
+                    <div class="sensor-header">
+                        <label>Körperliche Anspannung (Cortisol)</label>
+                        <span class="sensor-val" id="val-tension">Entspannt</span>
+                    </div>
+                    <input type="range" class="vgt-thermal-slider" id="sens-tension" min="0" max="100" value="10">
+                    <div class="sensor-marks">
+                        <span>Gelöst</span>
+                        <span>Verkrampft</span>
+                    </div>
+                </div>
+
+                <!-- Sensor 4: Fatigue -->
+                <div class="sensor-group">
+                    <div class="sensor-header">
+                        <label>Neuronale Erschöpfung (Fatigue)</label>
+                        <span class="sensor-val" id="val-fatigue">Wach</span>
+                    </div>
+                    <input type="range" class="vgt-thermal-slider" id="sens-fatigue" min="0" max="100" value="15">
+                    <div class="sensor-marks">
+                        <span>Volle Energie</span>
+                        <span>Burnout</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sensor-footer mt-auto">
+                <div class="safety-note">
+                    <svg viewBox="0 0 24 24" class="svg-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    Telemetrie wird in Echtzeit berechnet.
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Telemetry Dashboard (Diagnostik-Zentrale) -->
+        <div class="glass-panel cl-telemetry-panel">
+            
+            <div class="telemetry-header">
+                <span class="panel-label">System-Diagnostik</span>
+                <span class="status-pill safe" id="sys-status-pill">
+                    OPTIMAL
+                </span>
+            </div>
+
+            <!-- Primary Readouts: Numerische Vektoren -->
+            <div class="readout-grid">
+                <div class="readout-box">
+                    <span class="readout-title">Stress-Level</span>
+                    <div class="readout-val-wrap">
+                        <span class="readout-val" id="out-stress">15</span>
+                        <span class="readout-unit">%</span>
+                    </div>
+                </div>
+                <div class="readout-box">
+                    <span class="readout-title">Fokus-Kapazität</span>
+                    <div class="readout-val-wrap">
+                        <span class="readout-val highlight-blue" id="out-focus">85</span>
+                        <span class="readout-unit">%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart Area: Neuronale Lastverteilung -->
+            <div class="cl-chart-container">
+                <canvas id="cognitive-chart"></canvas>
+                <!-- Center overlay for doughnut chart physics -->
+                <div class="chart-center-overlay">
+                    <span class="load-label">Cognitive Load</span>
+                    <span class="load-value" id="out-load">LOW</span>
+                </div>
+            </div>
+
+            <!-- AI Diagnosis & Recommended Action Path -->
+            <div class="diagnosis-box" id="diag-box">
+                <h4 class="diag-title" id="diag-title">
+                    Flow State detektiert.
+                </h4>
+                <p class="diag-desc" id="diag-desc">
+                    Dein System arbeitet hochgradig effizient. Nutze diesen Zustand für tiefe, komplexe Arbeit.
+                </p>
+                
+                <div class="diag-action mt-4" id="diag-action">
+                    <!-- Dynamische Empfehlung via Router-Link -->
+                    <a href="#/tool/freq" class="btn-action-small">
+                        <svg viewBox="0 0 24 24" class="svg-icon"><polyline points="2 12 6 4 10 20 14 4 18 20 22 12"></polyline></svg>
+                        Neural Sync: Alpha (Maintain Flow)
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

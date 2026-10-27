@@ -1,0 +1,429 @@
+[
+  {
+    "id": "dashboard",
+    "path": "dashboard",
+    "title": "Dashboard",
+    "desc": "System-Hub und Tool-Matrix",
+    "cat": "core",
+    "deps_css": {},
+    "deps_js": {},
+    "url": "#/tool/dashboard"
+  },
+  {
+    "id": "hashchecker",
+    "path": "hashchecker",
+    "title": "Hashchecker",
+    "desc": "Datei-Integritaet mit SHA-Pruefung",
+    "cat": "privacy",
+    "deps_css": {},
+    "deps_js": "vgt-crypto",
+    "url": "#/tool/hashchecker"
+  },
+  {
+    "id": "har",
+    "path": "har",
+    "title": "Browserdaten Analyse",
+    "desc": "HAR-Dateien lokal auswerten",
+    "cat": "privacy",
+    "deps_css": {},
+    "deps_js": "vgt-apexcharts",
+    "url": "#/tool/har"
+  },
+  {
+    "id": "stegano",
+    "path": "stegano",
+    "title": "Stegano Vault",
+    "desc": "Nachrichten in Bilder einbetten",
+    "cat": "privacy",
+    "deps_css": {},
+    "deps_js": "vgt-crypto",
+    "url": "#/tool/stegano"
+  },
+  {
+    "id": "truthlense",
+    "path": "truthlense",
+    "title": "Truthlense",
+    "desc": "Text- und Dokument-Diffs pruefen",
+    "cat": "privacy",
+    "deps_css": {},
+    "deps_js": "vgt-diff",
+    "url": "#/tool/truthlense"
+  },
+  {
+    "id": "whistle",
+    "path": "whistle",
+    "title": "VisionWhistleBlow",
+    "desc": "Text und PDF sicher schwaerzen",
+    "cat": "privacy",
+    "deps_css": {},
+    "deps_js": [
+      "vgt-pdf-lib",
+      "vgt-pdf",
+      "vgt-pdf-worker"
+    ],
+    "url": "#/tool/whistle"
+  },
+  {
+    "id": "meta-clean",
+    "path": "metaclean",
+    "title": "Metadata Cleaner",
+    "desc": "EXIF- und GPS-Spuren entfernen",
+    "cat": "privacy",
+    "deps_css": {},
+    "deps_js": [
+      "vgt-exif",
+      "vgt-exif-reader",
+      "vgt-heic2any"
+    ],
+    "url": "#/tool/meta-clean"
+  },
+  {
+    "id": "fingerprint",
+    "path": "fingerprint",
+    "title": "Fingerprint Analyzer",
+    "desc": "Browser-Fingerprint sichtbar machen",
+    "cat": "privacy",
+    "deps_css": {},
+    "deps_js": {},
+    "url": "#/tool/fingerprint"
+  },
+  {
+    "id": "pw-check",
+    "path": "pwcheck",
+    "title": "Passwort Check",
+    "desc": "Passwortstaerke lokal bewerten",
+    "cat": "privacy",
+    "deps_css": {},
+    "deps_js": "vgt-crypto",
+    "url": "#/tool/pw-check"
+  },
+  {
+    "id": "aes",
+    "path": "aes",
+    "title": "AES Encryption",
+    "desc": "Text und Dateien lokal verschluesseln",
+    "cat": "privacy",
+    "deps_css": {},
+    "deps_js": {},
+    "url": "#/tool/aes"
+  },
+  {
+    "id": "qr",
+    "path": "qr",
+    "title": "QR Generator",
+    "desc": "Offline QR-Codes erstellen",
+    "cat": "privacy",
+    "deps_css": {},
+    "deps_js": "vgt-qr",
+    "url": "#/tool/qr"
+  },
+  {
+    "id": "secret-scan",
+    "path": "secretscan",
+    "title": "Secret Scanner Pro",
+    "desc": "Keys, Tokens und .env-Leaks lokal finden",
+    "cat": "privacy",
+    "deps_css": {},
+    "deps_js": "vgt-jszip",
+    "url": "#/tool/secret-scan"
+  },
+  {
+    "id": "url-clean",
+    "path": "urlclean",
+    "title": "URL Cleaner Pro",
+    "desc": "Tracking-Parameter lokal entfernen",
+    "cat": "privacy",
+    "deps_css": {},
+    "deps_js": {},
+    "url": "#/tool/url-clean"
+  },
+  {
+    "id": "img-conv",
+    "path": "imgconv",
+    "title": "Bild Converter",
+    "desc": "Bilder lokal konvertieren",
+    "cat": "media",
+    "deps_css": {},
+    "deps_js": {},
+    "url": "#/tool/img-conv"
+  },
+  {
+    "id": "img-comp",
+    "path": "imgcomp",
+    "title": "Bild Kompressor",
+    "desc": "Bildgroessen lokal reduzieren",
+    "cat": "media",
+    "deps_css": {},
+    "deps_js": "vgt-compressor",
+    "url": "#/tool/img-comp"
+  },
+  {
+    "id": "pdf-merge",
+    "path": "pdfmerge",
+    "title": "PDF Merge",
+    "desc": "PDFs lokal zusammenfuehren",
+    "cat": "media",
+    "deps_css": {},
+    "deps_js": [
+      "vgt-pdf-lib",
+      "vgt-filesaver"
+    ],
+    "url": "#/tool/pdf-merge"
+  },
+  {
+    "id": "pdf-split",
+    "path": "pdfsplit",
+    "title": "PDF Split",
+    "desc": "PDF-Seiten lokal extrahieren",
+    "cat": "media",
+    "deps_css": {},
+    "deps_js": [
+      "vgt-pdf-lib",
+      "vgt-filesaver"
+    ],
+    "url": "#/tool/pdf-split"
+  },
+  {
+    "id": "audio-conv",
+    "path": "audiostudio",
+    "title": "Audio Studio Pro",
+    "desc": "Audio lokal analysieren und konvertieren",
+    "cat": "media",
+    "deps_css": {},
+    "deps_js": [
+      "vgt-wavesurfer",
+      "vgt-lame"
+    ],
+    "url": "#/tool/audio-conv"
+  },
+  {
+    "id": "zipmaster",
+    "path": "zipmaster",
+    "title": "ZIP Master",
+    "desc": "Archive lokal pruefen und entpacken",
+    "cat": "media",
+    "deps_css": {},
+    "deps_js": [
+      "vgt-jszip",
+      "vgt-filesaver"
+    ],
+    "url": "#/tool/zipmaster"
+  },
+  {
+    "id": "big5",
+    "path": "big5",
+    "title": "Big5 Profiling",
+    "desc": "Persoenlichkeitsprofil visualisieren",
+    "cat": "mind",
+    "deps_css": {},
+    "deps_js": "vgt-chart",
+    "url": "#/tool/big5"
+  },
+  {
+    "id": "jung",
+    "path": "jung",
+    "title": "Archetypen",
+    "desc": "Jung-Matrix lokal berechnen",
+    "cat": "mind",
+    "deps_css": {},
+    "deps_js": {},
+    "url": "#/tool/jung"
+  },
+  {
+    "id": "stress",
+    "path": "stress",
+    "title": "Stress & Fokus",
+    "desc": "Mentale Last analysieren",
+    "cat": "mind",
+    "deps_css": {},
+    "deps_js": "vgt-chart",
+    "url": "#/tool/stress"
+  },
+  {
+    "id": "moon",
+    "path": "moon",
+    "title": "Mondphasen",
+    "desc": "Lunare Telemetrie berechnen",
+    "cat": "cosmos",
+    "deps_css": {},
+    "deps_js": "vgt-suncalc",
+    "url": "#/tool/moon"
+  },
+  {
+    "id": "weather",
+    "path": "weather",
+    "title": "Wetter Live",
+    "desc": "Wetter ueber lokalen Proxy anzeigen",
+    "cat": "cosmos",
+    "deps_css": "vgt-leaflet",
+    "deps_js": "vgt-leaflet",
+    "url": "#/tool/weather"
+  },
+  {
+    "id": "bio",
+    "path": "bio",
+    "title": "Biorhythmus",
+    "desc": "Zyklen lokal berechnen",
+    "cat": "cosmos",
+    "deps_css": {},
+    "deps_js": "vgt-chart",
+    "url": "#/tool/bio"
+  },
+  {
+    "id": "cal",
+    "path": "cal",
+    "title": "Kalorien Pro",
+    "desc": "Kalorien und Makros berechnen",
+    "cat": "calc",
+    "deps_css": {},
+    "deps_js": {},
+    "url": "#/tool/cal"
+  },
+  {
+    "id": "unit",
+    "path": "unit",
+    "title": "Einheiten",
+    "desc": "Einheiten lokal umrechnen",
+    "cat": "calc",
+    "deps_css": {},
+    "deps_js": {},
+    "url": "#/tool/unit"
+  },
+  {
+    "id": "json",
+    "path": "json",
+    "title": "JSON Tools",
+    "desc": "JSON formatieren und validieren",
+    "cat": "dev",
+    "deps_css": {},
+    "deps_js": {},
+    "url": "#/tool/json"
+  },
+  {
+    "id": "cdash",
+    "path": "cdash",
+    "title": "CSV Explorer",
+    "desc": "CSV/JSON lokal visualisieren",
+    "cat": "dev",
+    "deps_css": {},
+    "deps_js": [
+      "vgt-papaparse",
+      "vgt-apexcharts",
+      "vgt-lucide"
+    ],
+    "url": "#/tool/cdash"
+  },
+  {
+    "id": "coder",
+    "path": "coder",
+    "title": "Code Omega",
+    "desc": "Code-Diffs lokal analysieren",
+    "cat": "dev",
+    "deps_css": {},
+    "deps_js": {},
+    "url": "#/tool/coder"
+  },
+  {
+    "id": "cipherflow",
+    "path": "cipherflow",
+    "title": "Cipher-Flow",
+    "desc": "Krypto-Pipelines bauen",
+    "cat": "dev",
+    "deps_css": {},
+    "deps_js": "vgt-crypto",
+    "url": "#/tool/cipherflow"
+  },
+  {
+    "id": "manifest",
+    "path": "manifest",
+    "title": "Manifest Forge",
+    "desc": "SHA-256 Datei-Manifeste bauen und pruefen",
+    "cat": "dev",
+    "deps_css": {},
+    "deps_js": {},
+    "url": "#/tool/manifest"
+  },
+  {
+    "id": "hexmap",
+    "path": "hexmap",
+    "title": "Hexmap",
+    "desc": "Dateien binaer inspizieren",
+    "cat": "dev",
+    "deps_css": {},
+    "deps_js": {},
+    "url": "#/tool/hexmap"
+  },
+  {
+    "id": "packetviz",
+    "path": "packetviz",
+    "title": "Packet-Viz",
+    "desc": "PCAP-Daten lokal visualisieren",
+    "cat": "dev",
+    "deps_css": {},
+    "deps_js": "vgt-d3",
+    "url": "#/tool/packetviz"
+  },
+  {
+    "id": "gitleaker",
+    "path": "gitleaker",
+    "title": "Git Checker",
+    "desc": "Leaks vor Upload finden",
+    "cat": "dev",
+    "deps_css": {},
+    "deps_js": "vgt-jszip",
+    "url": "#/tool/gitleaker"
+  },
+  {
+    "id": "readme",
+    "path": "readme",
+    "title": "ReadMe Generator",
+    "desc": "Projekt-Readmes lokal bauen",
+    "cat": "dev",
+    "deps_css": {},
+    "deps_js": {},
+    "url": "#/tool/readme"
+  },
+  {
+    "id": "color",
+    "path": "color",
+    "title": "Farb Tools",
+    "desc": "Farbraeume konvertieren",
+    "cat": "dev",
+    "deps_css": {},
+    "deps_js": {},
+    "url": "#/tool/color"
+  },
+  {
+    "id": "freq",
+    "path": "freq",
+    "title": "Frequenzen",
+    "desc": "Binaural Beats generieren",
+    "cat": "creative",
+    "deps_css": {},
+    "deps_js": {},
+    "url": "#/tool/freq"
+  },
+  {
+    "id": "energy",
+    "path": "energy",
+    "title": "Stromrechner",
+    "desc": "Kosten und Verbrauch berechnen",
+    "cat": "calc",
+    "deps_css": {},
+    "deps_js": [
+      "vgt-papaparse",
+      "vgt-apexcharts"
+    ],
+    "url": "#/tool/energy"
+  },
+  {
+    "id": "med",
+    "path": "med",
+    "title": "Meditation",
+    "desc": "Timer und Soundscapes starten",
+    "cat": "creative",
+    "deps_css": {},
+    "deps_js": "vgt-wavesurfer",
+    "url": "#/tool/med"
+  }
+]

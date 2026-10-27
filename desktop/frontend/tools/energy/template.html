@@ -1,0 +1,191 @@
+﻿<div class="vgt-tool-wrapper" id="vgt-energy">
+    
+    <!-- Hero Header: Navigations- und Titelbereich -->
+    <div class="tool-hero">
+        <a href="#/tool/dashboard" class="btn-back">
+            <svg viewBox="0 0 24 24" class="svg-icon"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>System Hub</span>
+        </a>
+        <div class="hero-content">
+            <div class="hero-icon-wrapper en-glow">
+                <svg viewBox="0 0 24 24" class="hero-icon"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+            </div>
+            <div>
+                <h2 class="tool-title">VGT Energy Core</h2>
+                <p class="tool-desc">
+                    Smart-Meter Analytics & Geräte-Matrix. Analysiere den lokalen Energieverbrauch und berechne Kosten in Echtzeit. Importiere CSV-Daten deines Netzbetreibers sicher und offline.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface Body -->
+    <div class="tool-body en-layout">
+        
+        <!-- Global Config: Tarif & Modus-Steuerung -->
+        <div class="glass-panel en-config-panel">
+            <div class="en-config-inner">
+                <span class="panel-label">Basis-Tarif (Strompreis)</span>
+                <div class="price-input-wrap">
+                    <input type="number" 
+                           id="en-price-input" 
+                           class="vgt-input price-input" 
+                           value="0.30" step="0.01" min="0">
+                    <span class="price-currency">€ / kWh</span>
+                </div>
+            </div>
+            <div class="en-mode-tabs">
+                <button class="mode-tab active" data-target="mode-manual">
+                    <svg viewBox="0 0 24 24" class="svg-icon"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+                    Geräte-Matrix
+                </button>
+                <button class="mode-tab" data-target="mode-csv">
+                    <svg viewBox="0 0 24 24" class="svg-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Smart-Meter (CSV)
+                </button>
+            </div>
+        </div>
+
+        <!-- ==================== MODE 1: MANUAL DEVICES ==================== -->
+        <div id="mode-manual" class="en-mode-view active">
+            
+            <div class="en-grid">
+                <!-- Left: Device Input & List -->
+                <div class="en-devices-section">
+                    
+                    <div class="glass-panel add-device-panel">
+                        <div class="panel-header">
+                            <span class="panel-label">Neuen Verbraucher anlegen</span>
+                        </div>
+                        <div class="device-form">
+                            <div class="input-group">
+                                <label>Gerätename</label>
+                                <input type="text" id="dev-name" class="vgt-input" placeholder="z.B. Gaming PC">
+                            </div>
+                            <div class="input-group-row">
+                                <div class="input-group">
+                                    <label>Leistung (Watt)</label>
+                                    <div class="input-wrap">
+                                        <input type="number" id="dev-watt" class="vgt-input" placeholder="600" min="0">
+                                        <span class="input-suffix">W</span>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label>Laufzeit (Std/Tag)</label>
+                                    <div class="input-wrap">
+                                        <input type="number" id="dev-hours" class="vgt-input" placeholder="4" min="0" max="24" step="0.5">
+                                        <span class="input-suffix">h/d</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="btn-add-device" class="btn-prime yellow-glow mt-2">
+                                <svg viewBox="0 0 24 24" class="svg-icon"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                In Matrix aufnehmen
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel device-list-panel mt-4">
+                        <div class="panel-header" style="border:none; padding-bottom:0;">
+                            <span class="panel-label">Aktive Verbraucher</span>
+                        </div>
+                        <div class="device-list custom-scrollbar" id="device-list">
+                            <div class="empty-state">Keine Geräte in der Matrix.</div>
+                            <!-- JS injiziert hier die Zeilen der Geräte-Matrix -->
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right: Analytics Dashboard -->
+                <div class="en-analytics-section">
+                    <div class="glass-panel stats-panel">
+                        <div class="stat-row">
+                            <div class="stat-box">
+                                <span class="stat-lbl">Kosten pro Tag</span>
+                                <span class="stat-val" id="stat-cost-day">0.00 €</span>
+                                <span class="stat-sub" id="stat-kwh-day">0 kWh</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-lbl">Kosten pro Monat</span>
+                                <span class="stat-val highlight-yellow" id="stat-cost-month">0.00 €</span>
+                                <span class="stat-sub" id="stat-kwh-month">0 kWh</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-lbl">Kosten pro Jahr (Projiziert)</span>
+                                <span class="stat-val" id="stat-cost-year">0.00 €</span>
+                                <span class="stat-sub" id="stat-kwh-year">0 kWh</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel chart-panel mt-4">
+                        <div class="panel-header">
+                            <span class="panel-label">Energie-Verteilung</span>
+                        </div>
+                        <div class="chart-wrapper">
+                            <div id="chart-devices-empty" class="chart-empty">
+                                Füge Geräte hinzu, um die Metrik zu generieren.
+                            </div>
+                            <div id="chart-devices"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ==================== MODE 2: SMART METER CSV ==================== -->
+        <div id="mode-csv" class="en-mode-view hidden">
+            
+            <div class="glass-panel drop-zone" id="csv-dropzone">
+                <div class="drop-content">
+                    <div class="drop-icon-glow"></div>
+                    <svg viewBox="0 0 24 24" class="drop-icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    <h3 class="drop-title">Smart-Meter Export injizieren</h3>
+                    <p class="drop-subtitle">Ziehe die CSV-Datei deines Stromanbieters hierher</p>
+                    <div class="drop-badge">Auto-Parsing Engine Active</div>
+                </div>
+                <input type="file" id="csv-file-input" class="hidden-input" accept=".csv" />
+            </div>
+
+            <div id="csv-workspace" class="csv-workspace hidden">
+                
+                <div class="glass-panel stats-panel mb-4">
+                    <div class="panel-header" style="border:none; padding:0 0 1rem 0;">
+                        <span class="panel-label" id="csv-filename">export.csv</span>
+                        <button id="btn-csv-reset" class="btn-action-small danger outline">
+                            Flush Data
+                        </button>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-box">
+                            <span class="stat-lbl">Gesamtverbrauch (Datensatz)</span>
+                            <span class="stat-val highlight-yellow" id="csv-stat-kwh">0 kWh</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-lbl">Gesamtkosten</span>
+                            <span class="stat-val" id="csv-stat-cost">0.00 €</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-lbl">Datenpunkte</span>
+                            <span class="stat-val" id="csv-stat-rows">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel chart-panel">
+                    <div class="panel-header">
+                        <span class="panel-label">Zeitraum-Analyse (Smart-Meter)</span>
+                    </div>
+                    <div class="chart-wrapper">
+                        <div id="chart-csv"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
