@@ -10,6 +10,10 @@
 **Sovereign Local Desktop Workstation & Hardened WordPress Ecosystem**  
 *100% Client-Side Invariant • Zero Cloud • Zero Telemetry • 40 Built-in Apps*
 
+
+<img width="2007" height="1150" alt="image" src="https://github.com/user-attachments/assets/9ea1ab58-c1c5-4f43-a925-130b778b2400" />
+
+
 ---
 
 ### Language Selection / Sprachauswahl
