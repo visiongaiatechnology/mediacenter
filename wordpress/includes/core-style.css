@@ -38,8 +38,17 @@
     --c-green: 34, 197, 94;
     --c-orange: 249, 115, 22;
     --c-pink: 236, 72, 153;
-    --c-teal: 20, 184, 166;
+        --c-teal: 20, 184, 166;
     --c-blue: 59, 130, 246;
+
+    /* Sovereign Dynamic Scrollbar Tokens (Dark Mode Default) */
+    --vgt-sb-track: rgba(6, 8, 13, 0.45);
+    --vgt-sb-thumb: rgba(14, 165, 233, 0.6);
+    --vgt-sb-hover: rgba(56, 189, 248, 0.9);
+    --vgt-sb-active: #00f0ff;
+    --vgt-sb-border: rgba(6, 8, 13, 0.55);
+    --vgt-sb-glow: 0 0 10px rgba(14, 165, 233, 0.4);
+    --vgt-sb-glow-hover: 0 0 16px rgba(56, 189, 248, 0.7);
     
     /* Layout */
     --max-w: 1600px;
@@ -65,7 +74,119 @@
     background-color: var(--vgt-bg-0);
     color: var(--vgt-text-primary);
     overflow-x: hidden;
-    transition: background-color 0.4s ease, color 0.4s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ==========================================================================
+   VGT DYNAMIC SCROLLBAR THEMES - CATEGORY ADAPTATION (DARK MODE)
+   ========================================================================== */
+[data-tool-cat="privacy"], .cat-privacy {
+    --vgt-sb-thumb: rgba(34, 197, 94, 0.65);
+    --vgt-sb-hover: rgba(74, 222, 128, 0.95);
+    --vgt-sb-active: #86efac;
+    --vgt-sb-glow: 0 0 10px rgba(34, 197, 94, 0.4);
+    --vgt-sb-glow-hover: 0 0 16px rgba(74, 222, 128, 0.7);
+}
+[data-tool-cat="media"], .cat-media {
+    --vgt-sb-thumb: rgba(6, 182, 212, 0.65);
+    --vgt-sb-hover: rgba(34, 211, 238, 0.95);
+    --vgt-sb-active: #67e8f9;
+    --vgt-sb-glow: 0 0 10px rgba(6, 182, 212, 0.4);
+    --vgt-sb-glow-hover: 0 0 16px rgba(34, 211, 238, 0.7);
+}
+[data-tool-cat="dev"], .cat-dev {
+    --vgt-sb-thumb: rgba(236, 72, 153, 0.65);
+    --vgt-sb-hover: rgba(244, 114, 182, 0.95);
+    --vgt-sb-active: #f472b6;
+    --vgt-sb-glow: 0 0 10px rgba(236, 72, 153, 0.4);
+    --vgt-sb-glow-hover: 0 0 16px rgba(244, 114, 182, 0.7);
+}
+[data-tool-cat="calc"], .cat-calc {
+    --vgt-sb-thumb: rgba(249, 115, 22, 0.65);
+    --vgt-sb-hover: rgba(251, 146, 60, 0.95);
+    --vgt-sb-active: #fdba74;
+    --vgt-sb-glow: 0 0 10px rgba(249, 115, 22, 0.4);
+    --vgt-sb-glow-hover: 0 0 16px rgba(251, 146, 60, 0.7);
+}
+[data-tool-cat="mind"], .cat-mind {
+    --vgt-sb-thumb: rgba(168, 85, 247, 0.65);
+    --vgt-sb-hover: rgba(192, 132, 252, 0.95);
+    --vgt-sb-active: #d8b4fe;
+    --vgt-sb-glow: 0 0 10px rgba(168, 85, 247, 0.4);
+    --vgt-sb-glow-hover: 0 0 16px rgba(192, 132, 252, 0.7);
+}
+[data-tool-cat="cosmos"], .cat-cosmos {
+    --vgt-sb-thumb: rgba(234, 179, 8, 0.65);
+    --vgt-sb-hover: rgba(250, 204, 21, 0.95);
+    --vgt-sb-active: #fef08a;
+    --vgt-sb-glow: 0 0 10px rgba(234, 179, 8, 0.4);
+    --vgt-sb-glow-hover: 0 0 16px rgba(250, 204, 21, 0.7);
+}
+[data-tool-cat="creative"], .cat-creative {
+    --vgt-sb-thumb: rgba(20, 184, 166, 0.65);
+    --vgt-sb-hover: rgba(45, 212, 191, 0.95);
+    --vgt-sb-active: #5eead4;
+    --vgt-sb-glow: 0 0 10px rgba(20, 184, 166, 0.4);
+    --vgt-sb-glow-hover: 0 0 16px rgba(45, 212, 191, 0.7);
+}
+
+/* ==========================================================================
+   VGT GLASS 2100 - SOVEREIGN CUSTOM SCROLLBAR ENGINE
+   ========================================================================== */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--vgt-sb-thumb) var(--vgt-sb-track);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--vgt-sb-track);
+    border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--vgt-sb-thumb);
+    border-radius: 9999px;
+    border: 2px solid var(--vgt-sb-border);
+    background-clip: padding-box;
+    box-shadow: var(--vgt-sb-glow);
+    transition: background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--vgt-sb-hover);
+    box-shadow: var(--vgt-sb-glow-hover);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: var(--vgt-sb-active);
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* Compact Inner Scrollbars (Inputs, Code blocks, Textareas, Modals) */
+textarea::-webkit-scrollbar,
+pre::-webkit-scrollbar,
+.code-view::-webkit-scrollbar,
+.vgt-command-body::-webkit-scrollbar,
+.vgt-modal-body::-webkit-scrollbar,
+.output-box::-webkit-scrollbar,
+.result-box::-webkit-scrollbar,
+.wb-output::-webkit-scrollbar,
+.clean-output::-webkit-scrollbar,
+.hash-table::-webkit-scrollbar,
+.terminal-output::-webkit-scrollbar,
+[class*="drop-zone"]::-webkit-scrollbar,
+[class*="dropzone"]::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
 }
 
 /* Light Theme (VGT Glass 2100 Opal Edition) */
@@ -86,8 +207,60 @@ html.light-mode .vgt-app-wrapper {
     --vg-surface-solid: var(--vgt-bg-1);
     --vg-border: var(--vgt-glass-stroke);
     --vg-text: var(--vgt-text-primary);
-    --vg-text-muted: var(--vgt-text-muted);
+        --vg-text-muted: var(--vgt-text-muted);
+
+    /* Dynamic Scrollbar Tokens (Light Mode) */
+    --vgt-sb-track: rgba(226, 232, 240, 0.75);
+    --vgt-sb-thumb: #0284c7;
+    --vgt-sb-hover: #0369a1;
+    --vgt-sb-active: #075985;
+    --vgt-sb-border: rgba(226, 232, 240, 0.95);
+    --vgt-sb-glow: none;
+    --vgt-sb-glow-hover: 0 0 8px rgba(2, 132, 199, 0.35);
 }
+
+/* Dynamic Scrollbar Category Overrides (Light Mode) */
+html.light-mode[data-tool-cat="privacy"], html.light-mode [data-tool-cat="privacy"], html.light-mode .cat-privacy {
+    --vgt-sb-thumb: #15803d;
+    --vgt-sb-hover: #166534;
+    --vgt-sb-active: #14532d;
+    --vgt-sb-glow-hover: 0 0 8px rgba(21, 128, 61, 0.35);
+}
+html.light-mode[data-tool-cat="media"], html.light-mode [data-tool-cat="media"], html.light-mode .cat-media {
+    --vgt-sb-thumb: #0e7490;
+    --vgt-sb-hover: #155e75;
+    --vgt-sb-active: #164e63;
+    --vgt-sb-glow-hover: 0 0 8px rgba(14, 116, 144, 0.35);
+}
+html.light-mode[data-tool-cat="dev"], html.light-mode [data-tool-cat="dev"], html.light-mode .cat-dev {
+    --vgt-sb-thumb: #be185d;
+    --vgt-sb-hover: #9d174d;
+    --vgt-sb-active: #831843;
+    --vgt-sb-glow-hover: 0 0 8px rgba(190, 24, 93, 0.35);
+}
+html.light-mode[data-tool-cat="calc"], html.light-mode [data-tool-cat="calc"], html.light-mode .cat-calc {
+    --vgt-sb-thumb: #c2410c;
+    --vgt-sb-hover: #9a3412;
+    --vgt-sb-active: #7c2d12;
+    --vgt-sb-glow-hover: 0 0 8px rgba(194, 65, 12, 0.35);
+}
+html.light-mode[data-tool-cat="mind"], html.light-mode [data-tool-cat="mind"], html.light-mode .cat-mind {
+    --vgt-sb-thumb: #7e22ce;
+    --vgt-sb-hover: #6b21a8;
+    --vgt-sb-active: #581c87;
+    --vgt-sb-glow-hover: 0 0 8px rgba(126, 34, 206, 0.35);
+}
+html.light-mode[data-tool-cat="cosmos"], html.light-mode [data-tool-cat="cosmos"], html.light-mode .cat-cosmos {
+    --vgt-sb-thumb: #a16207;
+    --vgt-sb-hover: #854d0e;
+    --vgt-sb-active: #713f12;
+    --vgt-sb-glow-hover: 0 0 8px rgba(161, 98, 7, 0.35);
+}
+html.light-mode[data-tool-cat="creative"], html.light-mode [data-tool-cat="creative"], html.light-mode .cat-creative {
+    --vgt-sb-thumb: #0f766e;
+    --vgt-sb-hover: #115e59;
+    --vgt-sb-active: #134e4a;
+    --vgt-sb-glow-hover: 0 0 8px rgba(15, 118, 110, 0.35);
 
 .vgt-app-wrapper * { box-sizing: border-box; }
 .vgt-app-wrapper a { text-decoration: none; color: inherit; }

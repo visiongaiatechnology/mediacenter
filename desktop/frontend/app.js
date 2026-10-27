@@ -55,6 +55,10 @@
 
             byId = new Map(tools.map(t => [t.id, t]));
 
+            // Set default category for dynamic scrollbar & theme accent
+            document.documentElement.setAttribute('data-tool-cat', 'core');
+            document.body.setAttribute('data-tool-cat', 'core');
+
             // Setup global vgtCore mock
             updateVgtCore();
 
@@ -246,6 +250,10 @@
         if (!tool) return;
 
         currentToolId = tool.id;
+        const activeCat = tool.cat || 'core';
+        document.documentElement.setAttribute('data-tool-cat', activeCat);
+        document.body.setAttribute('data-tool-cat', activeCat);
+
         updateVgtCore();
         recordRecentTool(tool);
         renderRecentStrip();

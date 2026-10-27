@@ -28,6 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const byId = new Map(tools.map((tool) => [tool.id, tool]));
+
+    const activeToolObj = tools.find((tool) => tool.id === currentTool);
+    const activeCat = (activeToolObj && activeToolObj.cat) ? activeToolObj.cat : 'core';
+    document.documentElement.setAttribute('data-tool-cat', activeCat);
+    document.body.setAttribute('data-tool-cat', activeCat);
     const icons = {
         sun: {
             circle: [["cx", "12"], ["cy", "12"], ["r", "5"]],
