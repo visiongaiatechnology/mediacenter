@@ -282,8 +282,12 @@
             window.vgtCurrentToolId = tool.id;
 
             // Deep Sovereign I18N DOM Translation Pass
-            if (window.VGT_I18N && window.VGT_I18N.translateDOM) {
-                window.VGT_I18N.translateDOM(mainContent, tool.id);
+            try {
+                if (window.VGT_I18N && window.VGT_I18N.translateDOM) {
+                    window.VGT_I18N.translateDOM(mainContent, tool.id);
+                }
+            } catch (i18nErr) {
+                console.warn('VGT_I18N non-fatal notice:', i18nErr);
             }
 
             // 4. Enqueue JS Dependencies sequentially (normalized array)
