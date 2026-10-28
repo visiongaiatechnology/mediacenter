@@ -1,5 +1,5 @@
 
-<img width="1199" height="1312" alt="sirdu" src="https://github.com/user-attachments/assets/691901ee-13f8-4536-86f6-c679c394dd1e" />
+<img width="300" height="450" alt="sirdu" src="https://github.com/user-attachments/assets/691901ee-13f8-4536-86f6-c679c394dd1e" />
 
 
 
